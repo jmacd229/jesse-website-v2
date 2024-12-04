@@ -47,7 +47,8 @@
     "vite": "^5.0.0"
   },
   "workspaces": [
-    "apps/jesse-website"
+    "apps/jesse-website",
+    "libs/design-system"
   ],
   "packageManager": "yarn@4.5.3"
 }

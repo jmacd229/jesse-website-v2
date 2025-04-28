@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../../assets/fonts/Inter.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../../assets/fonts/Raleway.ttf') format('truetype');
+}

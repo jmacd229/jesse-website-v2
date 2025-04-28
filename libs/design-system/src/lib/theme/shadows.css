@@ -1,0 +1,24 @@
+:root {
+  --shadow-color: var(--neutral-700);
+
+  --elevation-0: 0 0 0 var(--shadow-color);
+  --elevation-1: 1px 1px 0 var(--shadow-color);
+  --elevation-2: 4px 4px 0 var(--shadow-color);
+  --elevation-3: 8px 8px 0 var(--shadow-color);
+}
+
+html.dark {
+  --shadow-color: black;
+}
+
+.elevation-1 {
+  box-shadow: var(--elevation-1);
+}
+
+.elevation-2 {
+  box-shadow: var(--elevation-2);
+}
+
+.elevation-3 {
+  box-shadow: var(--elevation-3);
+}

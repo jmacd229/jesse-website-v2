@@ -1,0 +1,128 @@
+@value switch-width: 3rem;
+@value switch-padding: 0.25rem;
+@value switch-handle-size: 1.25rem;
+@value switch-border-width: 1px;
+@value switch-label-gap: 2rem;
+
+:root {
+  --toggle-height: calc(
+    switch-handle-size + (switch-padding * 2) + (switch-border-width * 2)
+  );
+  --toggle-width: switch-width;
+}
+
+.switch-container {
+  position: relative;
+  width: switch-width;
+  display: flex;
+  border-radius: var(--radius-1);
+  height: switch-handle-size;
+  cursor: pointer;
+  padding: switch-padding;
+  border: switch-border-width solid transparent;
+
+  &.active .switch-handle {
+    left: calc(switch-width - switch-handle-size);
+  }
+
+  transition: border-color var(--animation), background-color var(--animation);
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--page-font-color);
+    background-color: var(--neutral-200);
+
+    .switch-handle {
+      outline-color: var(--neutral-500);
+      background-color: var(--element-background);
+    }
+
+    .label {
+      height: 1rem;
+      padding: 0.5rem;
+      border-width: 1px;
+
+      @media (min-width: 1500px) {
+        width: 150px;
+        height: unset;
+      }
+    }
+  }
+
+  @media (min-width: 1500px) {
+    width: switch-handle-size;
+    height: switch-width;
+    flex-direction: column;
+
+    .switch-handle {
+      height: switch-handle-size;
+      width: 100%;
+      left: unset;
+      top: 0;
+    }
+
+    &.active .switch-handle {
+      top: calc(switch-width - switch-handle-size);
+      left: unset;
+    }
+  }
+}
+
+.switch-handle {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 0;
+  border-radius: 50%;
+  align-items: center;
+  height: 100%;
+  width: switch-handle-size;
+  aspect-ratio: 1 / 1;
+  transition: left 150ms ease-in-out, outline-color var(--animation),
+    background-color var(--animation);
+
+  &:hover,
+  &:focus-within {
+    outline-color: var(--primary-500) !important;
+    background-color: var(--primary-100) !important;
+  }
+
+  @media (min-width: 1500px) {
+    flex-direction: row;
+  }
+}
+
+.touch-target {
+  position: absolute;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  z-index: -1;
+  right: -100%;
+  top: -100%;
+}
+
+.label {
+  font-size: 1rem;
+  white-space: nowrap;
+  position: absolute;
+  align-self: center;
+  top: switch-label-gap;
+  right: 0;
+  height: 0;
+  overflow: hidden;
+  background-color: var(--element-background);
+  border: 0px solid var(--neutral-800);
+  padding: 0 0.25rem;
+
+  transition: width var(--animation), border-width var(--animation),
+    height var(--animation), padding var(--animation);
+
+  @media (min-width: 1500px) {
+    top: 0;
+    left: switch-label-gap;
+    padding: 0.25rem 0;
+    height: unset;
+    width: 0;
+  }
+}

@@ -1,0 +1,88 @@
+.text-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  flex-shrink: 100;
+
+  @media (min-width: 993px) {
+    .jesse {
+      display: none;
+    }
+  }
+}
+
+.main-title {
+  /* Allows for slight overlap into right side of page. Prevents text wrapping too early*/
+  width: 130%;
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  column-gap: 2rem;
+
+  @media (max-width: 992px) {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    .main-title {
+      width: 120%;
+    }
+  }
+
+  .jesse {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+
+    .main-title {
+      text-align: center;
+      width: 100%;
+    }
+
+    .jesse {
+      order: -1;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.home-container {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  height: 800px;
+  width: 100%;
+  justify-content: space-around;
+  gap: 3rem;
+}
+
+.intro-card {
+  position: relative;
+  margin-top: 3rem;
+  max-width: 48rem;
+}
+
+.rocket {
+  position: absolute;
+  width: 11rem;
+  bottom: -5rem;
+  right: -5rem;
+}
+
+.graphic {
+  position: relative;
+  right: 0;
+  top: 2rem;
+  width: 30rem;
+  height: 100%;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}

@@ -1,0 +1,5 @@
+.animation {
+  position: absolute;
+  display: flex;
+  transform: scale(2.4);
+}

@@ -1843,6 +1843,7 @@ __metadata:
     "@types/react-dom": "npm:18.3.0"
     "@vitejs/plugin-react": "npm:^4.2.0"
     babel-jest: "npm:^29.7.0"
+    date-fns: "npm:^4.1.0"
     eslint: "npm:^9.8.0"
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-import: "npm:2.31.0"
@@ -1852,6 +1853,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jsdom: "npm:~22.1.0"
+    lottie-web: "npm:^5.12.2"
     nx: "npm:20.1.4"
     prettier: "npm:^2.6.2"
     react: "npm:^18.3.1"
@@ -5263,6 +5265,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "date-fns@npm:4.1.0"
+  checksum: 10c0/b79ff32830e6b7faa009590af6ae0fb8c3fd9ffad46d930548fbb5acf473773b4712ae887e156ba91a7b3dc30591ce0f517d69fd83bd9c38650fdc03b4e0bac8
+  languageName: node
+  linkType: hard
+
 "date-format@npm:^4.0.14":
   version: 4.0.14
   resolution: "date-format@npm:4.0.14"
@@ -5426,6 +5435,16 @@ __metadata:
   version: 2.0.3
   resolution: "dequal@npm:2.0.3"
   checksum: 10c0/f98860cdf58b64991ae10205137c0e97d384c3a4edc7f807603887b7c4b850af1224a33d88012009f150861cbee4fa2d322c4cc04b9313bee312e47f6ecaa888
+  languageName: node
+  linkType: hard
+
+"design-system@file:../../libs/design-system::locator=jesse-website%40workspace%3Aapps%2Fjesse-website":
+  version: 0.0.0
+  resolution: "design-system@file:../../libs/design-system#../../libs/design-system::hash=7884f4&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
+  dependencies:
+    react: "npm:^18.3.1"
+    react-dom: "npm:18.3.1"
+  checksum: 10c0/aeb439303b45748291e3c64ebe0c28dea4c96faac930e1164dbd0e9d06b2597db5b31d279a7ea95039fccfa8c5a521373cbe9a7d9de3566cea4e9ab9bf483747
   languageName: node
   linkType: hard
 
@@ -7844,6 +7863,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jesse-website@workspace:apps/jesse-website"
   dependencies:
+    design-system: "file:../../libs/design-system"
     react: "npm:^18.3.1"
     react-dom: "npm:18.3.1"
   languageName: unknown
@@ -8756,6 +8776,13 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 10c0/655d110220983c1a4b9c0c679a2e8016d4b67f6e9c7b5435ff5979ecdb20d0813f4dec0a08674fcbdd4846a3f07edbb50a36811fd37930b94aaa0d9daceb017e
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.12.2":
+  version: 5.12.2
+  resolution: "lottie-web@npm:5.12.2"
+  checksum: 10c0/0aeaf631b10a76afd025df70c2a1486543530708e07a316946c08e55891dac483ffbaf2bf3648ae0b9c54c733118a0a086fd150aa76f7848606214c67ad72c30
   languageName: node
   linkType: hard
 

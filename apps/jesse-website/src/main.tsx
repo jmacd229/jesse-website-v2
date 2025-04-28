@@ -1,6 +1,13 @@
+import {
+  AnimationContextProvider,
+  ThemeContextProvider,
+} from '@jesse-website-v2/design-system';
+import 'design-system/src/lib/theme/theme.css';
+import 'design-system/src/lib/theme/utilities.css';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './app/app';
+import './styles.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -8,6 +15,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <AnimationContextProvider>
+        <App />
+      </AnimationContextProvider>
+    </ThemeContextProvider>
   </StrictMode>
 );

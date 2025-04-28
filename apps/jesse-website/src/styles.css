@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+#root {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+
+  background-image: url('./assets/images/grid.svg');
+
+  @media (max-width: 1500px) {
+    flex-direction: column;
+  }
+}
+
+html.dark #root {
+  background-image: url('./assets/images/grid_dark.svg');
+}

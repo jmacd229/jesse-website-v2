@@ -1,5 +1,5 @@
 import lottie, { AnimationConfigWithData, AnimationItem } from 'lottie-web';
-import { PropsWithChildren, useEffect, useRef } from 'react';
+import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 import animations from '../../../assets/animations';
 import { useAnimations } from '../../hooks';
 
@@ -8,7 +8,6 @@ type AnimationProps = PropsWithChildren<{
   animation?: keyof typeof animations;
   animationConfig?: Partial<AnimationConfigWithData<'svg'>>;
   loopDelay?: number;
-  setAnimationRef?: (ref: AnimationItem) => void;
 }>;
 
 export const Animation = ({
@@ -16,64 +15,74 @@ export const Animation = ({
   animation,
   animationConfig,
   loopDelay,
-  setAnimationRef,
   ...rest
 }: AnimationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [animationRef, setAnimationRef] = useState<AnimationItem>();
 
   const { areAnimationsEnabled } = useAnimations();
 
+  // Load initial Animation item via lottie
   useEffect(() => {
     if (!animation && !animationConfig?.animationData) {
       return;
     }
-    let animationRef: AnimationItem;
-    let autoPlayInterval: NodeJS.Timer | undefined;
+    let animationItem: AnimationItem | undefined;
     if (containerRef.current) {
-      animationRef = lottie.loadAnimation({
+      animationItem = lottie.loadAnimation({
         container: containerRef.current,
         renderer: 'svg',
         loop: !loopDelay,
-        autoplay: areAnimationsEnabled && !loopDelay,
+        autoplay: !loopDelay,
         animationData: animation
           ? animations[animation]
           : animationConfig?.animationData,
         ...animationConfig,
       });
-
-      if (setAnimationRef) {
-        setAnimationRef(animationRef);
-      }
-
-      if (areAnimationsEnabled) {
-        if (loopDelay) {
-          autoPlayInterval = setInterval(() => {
-            animationRef.stop();
-            animationRef.play();
-          }, loopDelay);
-        }
-      } else {
-        // Set animations to their final frames since looping animations will go back to frame 1 and enter/exit animations will be in their final state
-        animationRef.setSegment(
-          Math.max(animationRef.totalFrames - animationRef.frameRate, 0),
-          animationRef.totalFrames - 1
-        );
-      }
+      setAnimationRef(animationItem);
     }
     return () => {
-      animationRef.destroy();
-      if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-      }
+      animationItem?.destroy();
+      setAnimationRef(undefined);
     };
-  }, [
-    containerRef,
-    animation,
-    animationConfig,
-    loopDelay,
-    setAnimationRef,
-    areAnimationsEnabled,
-  ]);
+  }, [containerRef, animation, animationConfig, loopDelay]);
+
+  // In the case of a loopDelay, we set an interval to play the animation at
+  useEffect(() => {
+    let timer: NodeJS.Timer | undefined;
+    if (animationRef && loopDelay && areAnimationsEnabled) {
+      timer = setInterval(() => {
+        animationRef?.stop();
+        animationRef?.play();
+      }, loopDelay);
+    }
+    return () => {
+      clearInterval(timer);
+    };
+  }, [loopDelay, animationRef, areAnimationsEnabled]);
+
+  // When enabling and disabling animations different behaviours are necessary
+  useEffect(() => {
+    if (animationRef) {
+      if (areAnimationsEnabled) {
+        // Only need to play if the animation was looping.
+        // If it was on an interval, the interval will be restarted in the previous use-effect
+        if (animationRef.loop) {
+          animationRef.play();
+        }
+      } else {
+        if (animationRef.loop) {
+          // Only need to pause if the animation was looping.
+          // If it was on an interval, it will be cleaned up as part of previous use-effect callback
+          animationRef.pause();
+        } else {
+          // For non-looping animations we set them to their final frame since some animations have a "reveal effect" they are
+          // invisible in initial frames.
+          animationRef.goToAndStop(animationRef.totalFrames, true);
+        }
+      }
+    }
+  }, [areAnimationsEnabled, animationRef, animationConfig]);
 
   return (
     <div ref={containerRef} {...rest}>

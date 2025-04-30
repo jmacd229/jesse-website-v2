@@ -15,10 +15,14 @@
 
 .animation-toggle {
   position: absolute;
-  right: calc(theme-toggle-spacing + var(--toggle-width));
-  margin-right: 1.5rem;
-  /* Horizontal nav bar positioning */
   bottom: calc(50% - (var(--toggle-height) / 2));
+  left: theme-toggle-spacing;
+
+  @media (min-width: 576px) {
+    left: unset;
+    right: calc(theme-toggle-spacing + var(--toggle-width));
+    margin-right: 1.5rem;
+  }
 
   /* Vertical nav bar positioning */
   @media (min-width: 1500px) {
@@ -27,4 +31,10 @@
     margin-bottom: 1.5rem;
     margin-right: 0;
   }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 5vw, 8rem);
 }

@@ -1,16 +1,21 @@
-import { HTMLProps, ReactNode, useState } from 'react';
+import {
+  HTMLProps,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styles from './toggle.module.css';
+import { centerLabel, getCurrentRemRatio, isBasicLabel } from './utilities';
 
-type ToggleProps = HTMLProps<HTMLDivElement> & {
+export type ToggleProps = HTMLProps<HTMLDivElement> & {
   onToggle?: ({ isActive }: { isActive: boolean }) => void;
   initialState?: boolean;
   labelValue: string | { enabled: string; disabled: string };
   hideLabel?: boolean;
   display: { enabled: ReactNode; disabled: ReactNode };
 };
-
-const isBasicLabel = (label: ToggleProps['labelValue']): label is string =>
-  typeof label === 'string';
 
 export const Toggle = ({
   className,
@@ -22,15 +27,54 @@ export const Toggle = ({
   ...rest
 }: ToggleProps) => {
   const [isActive, setIsActive] = useState(!!initialState);
+  const lastLabelPosition = useRef<number>(0);
+  const labelRef = useRef<HTMLDivElement>(null);
+  const switchRef = useRef<HTMLDivElement>(null);
 
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     const newState = !isActive;
     onToggle?.({ isActive: newState });
     setIsActive(newState);
-  };
+  }, [isActive, onToggle]);
+
+  useEffect(() => {
+    if (hideLabel || !labelRef.current || !switchRef.current) {
+      return;
+    }
+    const ratio = getCurrentRemRatio();
+
+    // Gets the width of the label in REM
+    const staticWidth = labelRef.current.getBoundingClientRect().width / ratio;
+    // We then remove a temporary class that is used for
+    labelRef.current.classList.remove(styles['loading']);
+
+    const calculateLabelPosition = () => {
+      const lastWindowWidth = centerLabel(
+        labelRef.current,
+        staticWidth,
+        getCurrentRemRatio(),
+        lastLabelPosition.current
+      );
+      // Store the value of the last window width
+      // This way the function can return without re-calculating the label position if the screen has not been resized
+      if (lastWindowWidth !== undefined) {
+        lastLabelPosition.current = lastWindowWidth;
+      }
+    };
+
+    // Initial label positioning on first render
+    calculateLabelPosition();
+
+    // Re-calc the label position on hover
+    switchRef.current.addEventListener('mouseover', calculateLabelPosition);
+
+    return () =>
+      window.removeEventListener('mouseover', calculateLabelPosition);
+  }, [labelRef, hideLabel]);
 
   return (
     <div
+      ref={switchRef}
       {...rest}
       onClick={handleToggle}
       onKeyDown={(e) => {
@@ -50,7 +94,13 @@ export const Toggle = ({
         className={styles['switch-handle']}
       >
         {isActive ? display.enabled : display.disabled}
-        <div className={`${styles['label']} ${!!hideLabel && 'sr-only'}`}>
+        {/* loading is a temporary class used for calculating the label width on first render */}
+        <div
+          className={`${styles['label']} ${
+            hideLabel ? 'sr-only' : styles['loading']
+          }`}
+          ref={labelRef}
+        >
           {isBasicLabel(labelValue)
             ? labelValue
             : labelValue[isActive ? 'enabled' : 'disabled']}

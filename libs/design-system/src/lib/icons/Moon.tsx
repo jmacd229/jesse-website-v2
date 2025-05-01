@@ -1,5 +1,6 @@
-export default () => (
+export default ({ ...rest }: React.SVGProps<SVGSVGElement>) => (
   <svg
+    {...rest}
     width="32px"
     height="32px"
     viewBox="0 0 24 24"

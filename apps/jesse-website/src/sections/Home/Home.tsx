@@ -18,7 +18,7 @@ const Home = () => {
         </div>
 
         <Card className={styles['intro-card']} elevation="1">
-          I've been working in web development for that past{' '}
+          I've been working in web development for the past{' '}
           {differenceInYears(new Date(), new Date(2016, 5, 1))} years. In that
           time I've grown a passion for building beautiful, accessible and
           responsive UIs while writing clean, highly-maintainable code.
@@ -37,7 +37,11 @@ const Home = () => {
             LinkedIn Profile
           </a>
           .
-          <Animation className={styles['rocket']} animation="rocket" />
+          <Animation
+            aria-hidden="true"
+            className={styles['rocket']}
+            animation="rocket"
+          />
         </Card>
       </div>
       <DynamicThemeGraphic className={styles['graphic']} />

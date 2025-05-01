@@ -11,7 +11,10 @@ export const AnimationToggle = ({ ...rest }: HTMLProps<HTMLDivElement>) => {
     <Toggle
       {...rest}
       onToggle={toggleAnimations}
-      display={{ enabled: <Play />, disabled: <Pause /> }}
+      display={{
+        enabled: <Play aria-hidden="true" />,
+        disabled: <Pause aria-hidden="true" />,
+      }}
       initialState={areAnimationsEnabled}
       labelValue={{
         enabled: 'Animations Enabled',

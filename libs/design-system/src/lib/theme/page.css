@@ -1,7 +1,7 @@
 :root {
   --page-background: var(--neutral-200);
   --element-background: var(--neutral-100);
-  --page-font-color: var(--neutral-700);
+  --page-font-color: var(--neutral-800);
   --link-color: var(--primary-600);
   --link-hover-color: var(--secondary-600);
   --link-underline-color: var(--primary-600);

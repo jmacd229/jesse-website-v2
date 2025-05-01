@@ -1,7 +1,7 @@
 import { HTMLAttributes, PropsWithChildren } from 'react';
 import style from './card.module.css';
 
-type CardProps = PropsWithChildren<{
+export type CardProps = PropsWithChildren<{
   elevation: '0' | '1' | '2' | '3';
 }> &
   HTMLAttributes<HTMLDivElement>;

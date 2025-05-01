@@ -4,6 +4,7 @@ import {
   ThemeToggle,
 } from '@jesse-website-v2/design-system';
 import Home from '../sections/Home/Home';
+import Work from '../sections/Work/Work';
 import styles from './app.module.css';
 
 export function App() {
@@ -19,7 +20,10 @@ export function App() {
         <ThemeToggle className={styles['theme-toggle']} />
       </Navigation>
       <main>
-        <Home />
+        <div className={styles['sections']}>
+          <Home />
+          <Work />
+        </div>
       </main>
     </>
   );

@@ -3,6 +3,7 @@ import {
   ReactNode,
   useCallback,
   useEffect,
+  useId,
   useRef,
   useState,
 } from 'react';
@@ -26,6 +27,7 @@ export const Toggle = ({
   hideLabel,
   ...rest
 }: ToggleProps) => {
+  const id = useId();
   const [isActive, setIsActive] = useState(!!initialState);
   const lastLabelPosition = useRef<number>(0);
   const labelRef = useRef<HTMLDivElement>(null);
@@ -76,13 +78,6 @@ export const Toggle = ({
     <div
       ref={switchRef}
       {...rest}
-      onClick={handleToggle}
-      onKeyDown={(e) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault(); // prevent scrolling when pressing space
-          handleToggle();
-        }
-      }}
       className={`${styles['switch-container']} ${
         isActive && styles['active']
       } ${className}`}
@@ -90,12 +85,21 @@ export const Toggle = ({
       <div
         tabIndex={0}
         role="switch"
+        onClick={handleToggle}
+        onKeyDown={(e) => {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault(); // prevent scrolling when pressing space
+            handleToggle();
+          }
+        }}
+        aria-labelledby={`toggle-label-${id}`}
         aria-checked={isActive}
         className={styles['switch-handle']}
       >
         {isActive ? display.enabled : display.disabled}
         {/* loading is a temporary class used for calculating the label width on first render */}
         <div
+          id={`toggle-label-${id}`}
           className={`${styles['label']} ${
             hideLabel ? 'sr-only' : styles['loading']
           }`}

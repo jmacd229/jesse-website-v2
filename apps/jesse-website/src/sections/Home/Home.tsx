@@ -37,7 +37,11 @@ const Home = () => {
             LinkedIn Profile
           </a>
           .
-          <Animation className={styles['rocket']} animation="rocket" />
+          <Animation
+            aria-hidden="true"
+            className={styles['rocket']}
+            animation="rocket"
+          />
         </Card>
       </div>
       <DynamicThemeGraphic className={styles['graphic']} />

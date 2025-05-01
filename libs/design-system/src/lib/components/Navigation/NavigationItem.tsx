@@ -11,7 +11,7 @@ const NavigationItem = ({ icon, children }: NavigationItemProps) => {
   return (
     <div role="listitem">
       <a className={style[`nav-item`]} href="#">
-        <IconElement />
+        <IconElement aria-hidden="true" />
         <div className={style[`icon-text`]}>{children}</div>
       </a>
     </div>

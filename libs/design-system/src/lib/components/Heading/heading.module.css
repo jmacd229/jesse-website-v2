@@ -65,15 +65,12 @@ h2 {
 
 @keyframes hover1 {
   0% {
-    left: -2px;
-    top: -2px;
+    transform: translate(-2px, -2px);
   }
   50% {
-    left: -4px;
-    top: -4px;
+    transform: translate(-4px, -4px);
   }
   100% {
-    left: -2px;
-    top: -2px;
+    transform: translate(-2px, -2px);
   }
 }

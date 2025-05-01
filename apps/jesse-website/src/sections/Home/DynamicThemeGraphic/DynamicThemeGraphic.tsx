@@ -60,6 +60,7 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
               <div className={`${styles['indent']} ${styles['input']}`}>
                 --theme-color: #
                 <input
+                  aria-label="Theme customization hex value editor"
                   value={colorInputValue}
                   onChange={(e) => setColorInputValue(e.target.value)}
                 />

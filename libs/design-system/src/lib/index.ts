@@ -1,3 +1,3 @@
 export * from './components';
 export * from './hooks';
-export { Icon } from './icons';
+export { Icon, type IconType } from './icons';

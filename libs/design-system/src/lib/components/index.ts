@@ -1,3 +1,4 @@
+export * from './Accordion/Accordion';
 export * from './Animation/Animation';
 export * from './Card/Card';
 export * from './Heading/Heading';

@@ -1,0 +1,88 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-height: calc(100vh - 11rem);
+  overflow-y: auto;
+
+  @media (min-width: 1500px) {
+    max-height: calc(100vh - 8rem);
+  }
+}
+
+.experience-details {
+  position: sticky;
+  align-self: flex-start;
+  top: 5rem;
+
+  @media (min-width: 1500px) {
+    top: 2rem;
+  }
+}
+
+.close-button {
+  @value button-size: 3rem;
+
+  position: absolute;
+  top: calc((var(--card-padding) / 2) * -1);
+  right: calc((var(--card-padding) / 2) * -1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background-color: var(--primary-500);
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: button-size;
+  height: button-size;
+  border: 1px solid var(--white);
+  box-shadow: var(--elevation-1);
+  cursor: pointer;
+
+  transition: background-color var(--animation);
+
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-600);
+  }
+}
+
+.main-title {
+  position: sticky;
+  top: 0;
+  background-color: var(--element-background);
+  color: var(--neutral-900);
+  width: 100%;
+  z-index: 1;
+
+  > * {
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+}
+
+.chip-list:not(:empty) {
+  margin-top: 1rem;
+}
+
+.role-title {
+  position: sticky;
+  top: 4rem;
+  padding: 1rem 0;
+  color: var(--primary-900);
+  background-color: var(--element-background);
+  z-index: 1;
+
+  + .chip-list {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.version {
+  font-size: 1.5rem;
+  color: var(--neutral-700);
+  vertical-align: middle;
+  margin-left: 1rem;
+}

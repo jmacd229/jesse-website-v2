@@ -1,0 +1,9 @@
+.work-item-image {
+  width: 100%;
+  border-radius: var(--radius-1);
+}
+
+.work-item-card {
+  margin-top: 2rem;
+  border-color: var(--neutral-900);
+}

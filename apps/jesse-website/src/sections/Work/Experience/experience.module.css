@@ -1,0 +1,72 @@
+@value details-window-gap: 8rem;
+
+.experience-container {
+  display: grid;
+  column-gap: details-window-gap;
+  grid-template-columns: 100% 0%;
+
+  transition: grid-template-columns 500ms ease-in-out;
+
+  &:has(.experience-details:not(:empty)) {
+    grid-template-columns: 20% calc(80% - details-window-gap);
+  }
+}
+
+.experience-items {
+  display: flex;
+  justify-content: center;
+}
+
+.heading-container {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  align-items: flex-end;
+  column-gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.gears {
+  grid-row: 1 / span 2;
+}
+
+.instructions {
+  align-self: flex-start;
+}
+
+@property --radial-center-position {
+  syntax: '<length> | <percentage>';
+  initial-value: 500%;
+  inherits: false;
+}
+
+.spotlight-hover {
+  --spotlight-color: color-mix(
+    in hsl,
+    var(--primary-500),
+    var(--element-background) 80%
+  );
+
+  cursor: pointer;
+  background: radial-gradient(
+    circle at 50% var(--radial-center-position),
+    var(--spotlight-color) 0%,
+    var(--element-background) 80%
+  );
+  transition: --radial-center-position 500ms, border-color 500ms,
+    box-shadow 500ms;
+
+  &:hover,
+  &:focus,
+  &.active {
+    --radial-center-position: 100%;
+    border-color: var(--primary-500);
+    box-shadow: 0 3px 0 var(--secondary-700);
+    h4 {
+      transition: color 500ms;
+    }
+  }
+}
+
+:global html.dark :local .spotlight-hover {
+  --spotlight-color: var(--primary-500);
+}

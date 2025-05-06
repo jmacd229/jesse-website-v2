@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
 
   background-image: url('./assets/images/grid.svg');
 

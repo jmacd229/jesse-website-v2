@@ -12,9 +12,15 @@ export function App() {
     <>
       <Navigation>
         <Navigation.Group>
-          <Navigation.Item icon="Home">Home</Navigation.Item>
-          <Navigation.Item icon="Work">Work</Navigation.Item>
-          <Navigation.Item icon="About">About Me</Navigation.Item>
+          <Navigation.Item id="home" icon="Home">
+            Home
+          </Navigation.Item>
+          <Navigation.Item id="work" icon="Work">
+            Work
+          </Navigation.Item>
+          <Navigation.Item id="about" icon="About">
+            About Me
+          </Navigation.Item>
         </Navigation.Group>
         <AnimationToggle className={styles['animation-toggle']} />
         <ThemeToggle className={styles['theme-toggle']} />

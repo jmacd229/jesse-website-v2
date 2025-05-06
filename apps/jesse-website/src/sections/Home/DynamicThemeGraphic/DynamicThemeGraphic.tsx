@@ -1,7 +1,9 @@
 import {
   Animation,
-  getHtmlAnimation,
-  useTheme,
+  dynamicAnimations,
+  getAnimation,
+  HexString,
+  useCSS,
 } from '@jesse-website-v2/design-system';
 import {
   CSSProperties,
@@ -19,12 +21,18 @@ type DynamicThemeGraphicProps = HTMLAttributes<HTMLDivElement>;
 
 const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
   const [colorInputValue, setColorInputValue] = useState('8500BB');
-  const [graphicThemeColor, setGraphicThemeColor] = useState('8500BB');
-  const { currentTheme } = useTheme();
+  const [graphicThemeColor, setGraphicThemeColor] =
+    useState<HexString>('#8500BB');
+  const { getCSSColor } = useCSS();
 
   const htmlAnimationData = useMemo(
-    () => getHtmlAnimation(graphicThemeColor, currentTheme),
-    [graphicThemeColor, currentTheme]
+    () =>
+      getAnimation(
+        dynamicAnimations.htmlAnimation,
+        graphicThemeColor,
+        getCSSColor('--neutral-700')
+      ),
+    [graphicThemeColor, getCSSColor]
   );
 
   useEffect(() => {

@@ -1,6 +1,10 @@
+:root {
+  --card-padding: 2rem;
+}
+
 .card {
   background-color: var(--element-background);
-  padding: var(--card-padding, 2rem);
-  border-radius: var(--radius-1);
+  padding: var(--card-padding);
+  border-radius: var(--radius-2);
   border: 1px solid var(--neutral-300);
 }

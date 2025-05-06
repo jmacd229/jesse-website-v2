@@ -85,7 +85,7 @@ export const Animation = ({
   }, [areAnimationsEnabled, animationRef, animationConfig]);
 
   return (
-    <div ref={containerRef} {...rest}>
+    <div aria-hidden="true" ref={containerRef} {...rest}>
       {children}
     </div>
   );

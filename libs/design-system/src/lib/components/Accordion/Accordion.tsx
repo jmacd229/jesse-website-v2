@@ -1,4 +1,5 @@
 import { HTMLAttributes, PropsWithChildren, ReactNode, useState } from 'react';
+import { OnActivateProps } from '../../utilities/onActivateProps';
 import styles from './accordion.module.css';
 
 export type AccordionProps = PropsWithChildren<
@@ -35,15 +36,9 @@ export const Accordion = ({
         isExpanded && styles['expanded']
       } ${className}`}
       tabIndex={0}
-      onClick={handleToggle}
       role="button"
       aria-expanded={isExpanded}
-      onKeyDown={(e) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault(); // prevent scrolling when pressing space
-          handleToggle();
-        }
-      }}
+      {...OnActivateProps(handleToggle)}
       {...rest}
     >
       <div className={styles['title']}>{title}</div>

@@ -4,6 +4,7 @@ import {
   dynamicAnimations,
   getAnimation,
   Heading,
+  OnActivateProps,
   Tree,
   useCSS,
 } from '@jesse-website-v2/design-system';
@@ -31,7 +32,7 @@ const SpotlightWorkNode = ({
       role="button"
       aria-expanded={selectedItem?.id === item.id}
       aria-owns={`${selectedItem?.id}-details`}
-      onClick={() => setSelectedItem(item)}
+      {...OnActivateProps(() => setSelectedItem(item))}
       className={`${styles['spotlight-hover']} ${
         selectedItem?.id === item.id && styles['active']
       }`}

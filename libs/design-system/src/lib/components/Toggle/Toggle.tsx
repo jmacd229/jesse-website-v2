@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { OnActivateProps } from '../../utilities/onActivateProps';
 import styles from './toggle.module.css';
 import { centerLabel, getCurrentRemRatio, isBasicLabel } from './utilities';
 
@@ -83,13 +84,7 @@ export const Toggle = ({
       } ${className}`}
       tabIndex={0}
       role="switch"
-      onClick={handleToggle}
-      onKeyDown={(e) => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault(); // prevent scrolling when pressing space
-          handleToggle();
-        }
-      }}
+      {...OnActivateProps(handleToggle)}
       aria-labelledby={`toggle-label-${id}`}
       aria-checked={isActive}
     >

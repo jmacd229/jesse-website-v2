@@ -12,6 +12,10 @@
   white-space: nowrap;
 }
 
+.small-text {
+  font-size: 12px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

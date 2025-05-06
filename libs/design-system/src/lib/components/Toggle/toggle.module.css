@@ -15,7 +15,7 @@
   position: relative;
   width: switch-width;
   display: flex;
-  border-radius: var(--radius-1);
+  border-radius: var(--radius-2);
   height: switch-handle-size;
   cursor: pointer;
   padding: switch-padding;
@@ -25,10 +25,14 @@
     left: calc(switch-width - switch-handle-size);
   }
 
+  &:focus {
+    border-radius: var(--radius-2);
+  }
+
   transition: border-color var(--animation), background-color var(--animation);
 
   &:hover,
-  &:focus-within {
+  &:focus {
     border-color: var(--page-font-color);
     background-color: var(--neutral-200);
 
@@ -82,7 +86,7 @@
     background-color var(--animation);
 
   &:hover,
-  &:focus-within {
+  &:focus {
     outline-color: var(--primary-500) !important;
     background-color: var(--primary-100) !important;
   }
@@ -95,10 +99,10 @@
 .touch-target {
   position: absolute;
   cursor: pointer;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: calc(switch-width * 2);
   z-index: -1;
-  right: -100%;
+  right: -switch-width;
   top: -100%;
 }
 

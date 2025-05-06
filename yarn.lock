@@ -1843,7 +1843,6 @@ __metadata:
     "@types/react-dom": "npm:18.3.0"
     "@vitejs/plugin-react": "npm:^4.2.0"
     babel-jest: "npm:^29.7.0"
-    date-fns: "npm:^4.1.0"
     eslint: "npm:^9.8.0"
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-import: "npm:2.31.0"
@@ -5265,13 +5264,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "date-fns@npm:4.1.0"
-  checksum: 10c0/b79ff32830e6b7faa009590af6ae0fb8c3fd9ffad46d930548fbb5acf473773b4712ae887e156ba91a7b3dc30591ce0f517d69fd83bd9c38650fdc03b4e0bac8
-  languageName: node
-  linkType: hard
-
 "date-format@npm:^4.0.14":
   version: 4.0.14
   resolution: "date-format@npm:4.0.14"
@@ -5440,11 +5432,11 @@ __metadata:
 
 "design-system@file:../../libs/design-system::locator=jesse-website%40workspace%3Aapps%2Fjesse-website":
   version: 0.0.0
-  resolution: "design-system@file:../../libs/design-system#../../libs/design-system::hash=7884f4&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
+  resolution: "design-system@file:../../libs/design-system#../../libs/design-system::hash=8d2bea&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
   dependencies:
     react: "npm:^18.3.1"
     react-dom: "npm:18.3.1"
-  checksum: 10c0/aeb439303b45748291e3c64ebe0c28dea4c96faac930e1164dbd0e9d06b2597db5b31d279a7ea95039fccfa8c5a521373cbe9a7d9de3566cea4e9ab9bf483747
+  checksum: 10c0/4b7a9f9014cf95b8fb265834a5a2278375dcd74d3ce0c96fb78d347e42da2f97e210c41d1fa376240e0e8d635f6cc27053d4c490a67efd7def7315ecd2538f4e
   languageName: node
   linkType: hard
 

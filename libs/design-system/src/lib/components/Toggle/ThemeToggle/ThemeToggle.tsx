@@ -16,7 +16,6 @@ export const ThemeToggle = ({ ...rest }: HTMLProps<HTMLDivElement>) => {
       enabled: (
         <Animation
           className={styles['animation']}
-          aria-hidden="true"
           animation="dark"
           animationConfig={{ loop: false }}
         />
@@ -24,7 +23,6 @@ export const ThemeToggle = ({ ...rest }: HTMLProps<HTMLDivElement>) => {
       disabled: (
         <Animation
           className={styles['animation']}
-          aria-hidden="true"
           animation="light"
           animationConfig={{ loop: false }}
         />

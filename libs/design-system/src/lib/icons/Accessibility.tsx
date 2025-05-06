@@ -9,6 +9,7 @@ export default ({ ...rest }: React.SVGProps<SVGSVGElement>) => (
     strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
     {...rest}
   >
     <circle cx="16" cy="4" r="1" />

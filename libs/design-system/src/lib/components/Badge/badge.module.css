@@ -1,0 +1,130 @@
+.badge {
+  position: absolute;
+  font-size: 12px;
+  line-height: 12px;
+  background-color: var(--secondary-700);
+  color: var(--white);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 32px;
+  z-index: var(--badge-z-index);
+  /* Creates a starburst polygon shape */
+  clip-path: polygon(
+    100% 50%,
+    86.71% 59.84%,
+    93.3% 75%,
+    76.87% 76.87%,
+    75% 93.3%,
+    59.84% 86.71%,
+    50% 100%,
+    40.16% 86.71%,
+    25% 93.3%,
+    23.13% 76.87%,
+    6.7% 75%,
+    13.29% 59.84%,
+    0% 50%,
+    13.29% 40.16%,
+    6.7% 25%,
+    23.13% 23.13%,
+    25% 6.7%,
+    40.16% 13.29%,
+    50% 0%,
+    59.84% 13.29%,
+    75% 6.7%,
+    76.87% 23.13%,
+    93.3% 25%,
+    86.71% 40.16%
+  );
+
+  &.top-left {
+    top: 0;
+    left: 0;
+  }
+  &.top-right {
+    top: 0;
+    right: 0;
+  }
+  &.bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+  &.bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  /* Creates a 3px width border for the starburst polygon shape */
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--secondary-800);
+
+    clip-path: polygon(
+      100% 50%,
+      86.71% 59.84%,
+      93.3% 75%,
+      76.87% 76.87%,
+      75% 93.3%,
+      59.84% 86.71%,
+      50% 100%,
+      40.16% 86.71%,
+      25% 93.3%,
+      23.13% 76.87%,
+      6.7% 75%,
+      13.29% 59.84%,
+      0% 50%,
+      13.29% 40.16%,
+      6.7% 25%,
+      23.13% 23.13%,
+      25% 6.7%,
+      40.16% 13.29%,
+      50% 0%,
+      59.84% 13.29%,
+      75% 6.7%,
+      76.87% 23.13%,
+      93.3% 25%,
+      86.71% 40.16%,
+      100% 50%,
+      86.71% 59.84%,
+      calc(86.71% - 2.2px) calc(59.84% - 0.59px),
+      calc(100% - 3px) calc(50% - 0px),
+      calc(86.71% - 2.2px) calc(40.16% - -0.59px),
+      calc(93.3% - 2.6px) calc(25% - -1.5px),
+      calc(76.87% - 1.61px) calc(23.13% - -1.61px),
+      calc(75% - 1.5px) calc(6.7% - -2.6px),
+      calc(59.84% - 0.59px) calc(13.29% - -2.2px),
+      calc(50% - 0px) calc(0% - -3px),
+      calc(40.16% - -0.59px) calc(13.29% - -2.2px),
+      calc(25% - -1.5px) calc(6.7% - -2.6px),
+      calc(23.13% - -1.61px) calc(23.13% - -1.61px),
+      calc(6.7% - -2.6px) calc(25% - -1.5px),
+      calc(13.29% - -2.2px) calc(40.16% - -0.59px),
+      calc(0% - -3px) calc(50% - 0px),
+      calc(13.29% - -2.2px) calc(59.84% - 0.59px),
+      calc(6.7% - -2.6px) calc(75% - 1.5px),
+      calc(23.13% - -1.61px) calc(76.87% - 1.61px),
+      calc(25% - -1.5px) calc(93.3% - 2.6px),
+      calc(40.16% - -0.59px) calc(86.71% - 2.2px),
+      calc(50% - 0px) calc(100% - 3px),
+      calc(59.84% - 0.59px) calc(86.71% - 2.2px),
+      calc(75% - 1.5px) calc(93.3% - 2.6px),
+      calc(76.87% - 1.61px) calc(76.87% - 1.61px),
+      calc(93.3% - 2.6px) calc(75% - 1.5px),
+      calc(86.71% - 2.2px) calc(59.84% - 0.59px),
+      calc(100% - 3px) calc(50% - 0px)
+    );
+  }
+}
+
+:global html.dark :local .badge {
+  color: var(--black);
+  font-weight: 500;
+}

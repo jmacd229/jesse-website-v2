@@ -31,7 +31,6 @@ const PrincipleItem = ({ item, ...rest }: PrincipleItemProps) => {
           </div>
         </Accordion>
         <IconType
-          aria-hidden="true"
           className={`${styles['icon']} ${isExpanded && styles['expanded']}`}
         />
       </Card>

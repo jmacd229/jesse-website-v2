@@ -1,6 +1,7 @@
 :root {
   --base-z-index: 1;
 
-  --nav-z-index: calc(var(--base-z-index) + 1);
+  --badge-z-index: calc(var(--base-z-index) + 1);
+  --nav-z-index: calc(var(--base-z-index) + 2);
   --skip-to-content-index: calc(var(--nav-z-index) + 1);
 }

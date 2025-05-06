@@ -81,21 +81,19 @@ export const Toggle = ({
       className={`${styles['switch-container']} ${
         isActive && styles['active']
       } ${className}`}
+      tabIndex={0}
+      role="switch"
+      onClick={handleToggle}
+      onKeyDown={(e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault(); // prevent scrolling when pressing space
+          handleToggle();
+        }
+      }}
+      aria-labelledby={`toggle-label-${id}`}
+      aria-checked={isActive}
     >
-      <div
-        tabIndex={0}
-        role="switch"
-        onClick={handleToggle}
-        onKeyDown={(e) => {
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault(); // prevent scrolling when pressing space
-            handleToggle();
-          }
-        }}
-        aria-labelledby={`toggle-label-${id}`}
-        aria-checked={isActive}
-        className={styles['switch-handle']}
-      >
+      <div className={styles['switch-handle']}>
         {isActive ? display.enabled : display.disabled}
         {/* loading is a temporary class used for calculating the label width on first render */}
         <div

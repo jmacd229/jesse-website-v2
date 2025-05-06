@@ -7,7 +7,7 @@ import styles from './principles.module.css';
 const Principles = () => {
   return (
     <div className={styles['principles-container']}>
-      <Heading className={styles['main-title']} level="3">
+      <Heading className={styles['main-title']} level={3}>
         Principles
       </Heading>
       <div role="tree" className={styles['principles']}>

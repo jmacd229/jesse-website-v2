@@ -12,22 +12,25 @@
           document.querySelector('html')?.classList.remove('dark');
           localStorage.setItem('theme', 'light');
         }
-      }
+      };
       window.setTheme = setTheme;
 
       const parseTheme = () => {
         // Attempt to retrieve saved settings if they're valid
         const theme = localStorage.getItem('theme');
-        if(theme === 'light' || theme === 'dark') {
+        if (theme === 'light' || theme === 'dark') {
           return theme;
         }
         // Otherwise use system defaults
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return'dark';
+        if (
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
+          return 'dark';
         }
-        
+
         return 'light';
-      }
+      };
       window.parseTheme = parseTheme;
       setTheme(parseTheme());
     </script>
@@ -39,24 +42,26 @@
         } else {
           document.querySelector('html')?.classList.add('no-motion');
           localStorage.setItem('animations-disabled', true);
-
         }
-      }
+      };
       window.setAnimations = setAnimations;
 
       const getAnimationsSetting = () => {
         // Attempt to retrieve saved settings if they're valid
         const isDisabled = localStorage.getItem('animations-disabled');
-        if(isDisabled) {
-          return {isEnabled: false};
+        if (isDisabled) {
+          return { isEnabled: false };
         }
         // Otherwise use system defaults
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion)').matches) {
-          return {isEnabled: false};
+        if (
+          window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion)').matches
+        ) {
+          return { isEnabled: false };
         }
-        
-        return {isEnabled: true};
-      }
+
+        return { isEnabled: true };
+      };
       window.getAnimationsSetting = getAnimationsSetting;
       setAnimations(getAnimationsSetting().isEnabled);
     </script>
@@ -65,7 +70,7 @@
     <base href="/" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>

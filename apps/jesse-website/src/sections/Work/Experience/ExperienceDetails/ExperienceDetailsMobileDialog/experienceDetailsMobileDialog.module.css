@@ -1,0 +1,51 @@
+.experience-details-dialog {
+  background: none;
+  position: fixed;
+  border: none;
+  overflow: hidden;
+
+  &::backdrop {
+    backdrop-filter: blur(3px);
+    background-color: color-mix(in hsl, var(--black), transparent 50%);
+  }
+
+  &:open {
+    animation: slide-in 150ms ease-out;
+
+    &::backdrop {
+      animation: backdrop-fade-in 250ms ease-out forwards;
+    }
+  }
+}
+
+/* Reposition close button for dialog */
+.close-button {
+  top: 0;
+  right: 0;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    backdrop-filter: blur(0px);
+    background-color: color-mix(in hsl, var(--black), transparent 100%);
+  }
+
+  100% {
+    backdrop-filter: blur(3px);
+    background-color: color-mix(in hsl, var(--black), transparent 50%);
+  }
+}

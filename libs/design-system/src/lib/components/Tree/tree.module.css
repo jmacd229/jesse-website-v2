@@ -1,0 +1,124 @@
+/* Border Values */
+@value tree-border-width 3px;
+@value tree-trunk-border-color var(--tree-trunk-border-color, var(--primary-700));
+@value tree-branch-border-color var(--tree-branch-border-color, var(--primary-500));
+@value tree-radius var(--tree-radius, var(--radius-3));
+
+/* Node Values */
+@value tree-consecutive-node-spacing var(--tree-consecutive-node-spacing, 3rem);
+@value tree-node-size var(--tree-node-size, 8rem);
+@value tree-node-padding var(--tree-node-padding, 1rem);
+
+:global html.dark :local .tree-root {
+  --trunk-glow: -1px 0px 0px var(--secondary-600);
+}
+
+.tree-root {
+  --trunk-glow: none;
+
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+
+  .tree-root {
+    grid-column: 2 / span 1;
+
+    .tree-node {
+      /* Creates connecter for root tree branch */
+      &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 100%;
+        border-left: tree-border-width solid tree-trunk-border-color;
+        left: -50%;
+        top: 0;
+        box-shadow: var(--trunk-glow);
+      }
+
+      /* Makes adjustment for consecutive spacing connecter on branch */
+      &:not(:last-of-type)::after {
+        border-left: tree-border-width dashed tree-branch-border-color;
+        stroke-dashoffset: 5px;
+        left: 50%;
+        box-shadow: none;
+      }
+
+      /* Reconnects new path back to root */
+      &:last-of-type::after {
+        display: block;
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        border: tree-border-width dashed tree-branch-border-color;
+        border-top: none;
+        border-left: none;
+        border-bottom-right-radius: tree-radius;
+        bottom: -50%;
+        left: 0;
+      }
+    }
+  }
+}
+
+.tree-node {
+  position: relative;
+  grid-column: 1 / span 2;
+
+  /* Branches root node to new path*/
+  &:has(+ .tree-root)::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    border: tree-border-width dashed tree-branch-border-color;
+    border-bottom: none;
+    border-left: none;
+    border-top-right-radius: tree-radius;
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Spaces out consecutive nodes*/
+  &:has(+ .tree-node) {
+    padding-bottom: tree-consecutive-node-spacing;
+
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: tree-consecutive-node-spacing;
+      border-left: tree-border-width solid tree-trunk-border-color;
+      left: 25%;
+      top: calc(100% - tree-consecutive-node-spacing);
+      box-shadow: var(--trunk-glow);
+    }
+  }
+}
+
+.tree-node-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: tree-node-size;
+  height: tree-node-size;
+  aspect-ratio: 1 / 1;
+  background-color: var(--element-background);
+  border: 1px solid var(--neutral-300);
+  box-shadow: var(--elevation-1);
+  padding: tree-node-padding;
+  border-radius: 50%;
+  z-index: 1;
+
+  &:focus {
+    border-radius: 50%;
+    outline-width: 4px;
+    outline-offset: 2px;
+  }
+}

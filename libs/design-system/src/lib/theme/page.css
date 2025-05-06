@@ -14,3 +14,7 @@ html.dark {
   --link-hover-color: var(--secondary-800);
   --link-underline-color: var(--secondary-500);
 }
+
+.no-scroll {
+  overflow: hidden;
+}

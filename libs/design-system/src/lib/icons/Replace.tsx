@@ -12,7 +12,12 @@ export default ({ ...rest }: React.SVGProps<SVGSVGElement>) => (
     aria-hidden="true"
     {...rest}
   >
-    <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-    <circle cx="12" cy="12" r="10" />
+    <path d="M14 4a2 2 0 0 1 2-2" />
+    <path d="M16 10a2 2 0 0 1-2-2" />
+    <path d="M20 2a2 2 0 0 1 2 2" />
+    <path d="M22 8a2 2 0 0 1-2 2" />
+    <path d="m3 7 3 3 3-3" />
+    <path d="M6 10V5a3 3 0 0 1 3-3h1" />
+    <rect x="2" y="14" width="8" height="8" rx="2" />
   </svg>
 );

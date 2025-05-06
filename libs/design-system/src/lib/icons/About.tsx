@@ -1,17 +1,18 @@
 export default ({ ...rest }: React.SVGProps<SVGSVGElement>) => (
   <svg
-    {...rest}
-    width="32px"
-    height="32px"
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
     strokeWidth="1"
     strokeLinecap="round"
     strokeLinejoin="round"
-    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    {...rest}
   >
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
-    <path d="M5.5 21a7.5 7.5 0 0 1 13 0" />
   </svg>
 );

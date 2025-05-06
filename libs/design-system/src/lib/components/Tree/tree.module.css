@@ -68,7 +68,7 @@
   grid-column: 1 / span 2;
 
   /* Branches root node to new path*/
-  &:has(+ .tree-root)::before {
+  &:has(+ .tree-branch)::before {
     display: block;
     content: '';
     position: absolute;
@@ -98,6 +98,10 @@
       box-shadow: var(--trunk-glow);
     }
   }
+}
+
+.tree-branch {
+  display: contents;
 }
 
 .tree-node-content {

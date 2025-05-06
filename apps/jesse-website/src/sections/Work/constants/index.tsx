@@ -1,4 +1,13 @@
-import { WorkPrinciple } from './types';
+import { WorkPrinciple } from '../types';
+import { ALICIA_V1, ALICIA_V2 } from './workExperienceItems/Alicia';
+import CANADA_LIFE from './workExperienceItems/CanadaLife';
+import HUMI from './workExperienceItems/Humi';
+import { JESSE_V1, JESSE_V2 } from './workExperienceItems/Jesse';
+import PRODIGY from './workExperienceItems/Prodigy';
+import UWO from './workExperienceItems/Western';
+
+export const WORK_ITEMS = { HUMI, PRODIGY, CANADA_LIFE, UWO };
+export const PROJECT_ITEMS = { JESSE_V1, JESSE_V2, ALICIA_V1, ALICIA_V2 };
 
 const CODE_QUALITY: WorkPrinciple = {
   title: 'Code quality = Overall quality',

@@ -5,6 +5,17 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  test: {
+    watch: false,
+    globals: true,
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../coverage/apps/jesse-website',
+      provider: 'v8',
+    },
+  },
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/jesse-website',
   server: {

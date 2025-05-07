@@ -48,8 +48,13 @@ export const Toggle = ({
 
     // Gets the width of the label in REM
     const staticWidth = labelRef.current.getBoundingClientRect().width / ratio;
-    // We then remove a temporary class that is used for
-    labelRef.current.classList.remove(styles['loading']);
+    // We then remove a temporary class that is used for calculating the initial width of the label
+    labelRef.current?.classList.remove(styles['loading']);
+    // After giving the DOM a ms to update with the removed class, then we can add animations back onto the label
+    // Waiting for this ensures that the user's don't see a flash of the label on screen when the page first loads
+    setTimeout(() => {
+      labelRef.current?.classList.add(styles['loaded']);
+    });
 
     const calculateLabelPosition = () => {
       const lastWindowWidth = centerLabel(

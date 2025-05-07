@@ -118,9 +118,6 @@
   border: 0px solid var(--neutral-800);
   padding: 0 0.25rem;
 
-  transition: width var(--animation), border-width var(--animation),
-    height var(--animation), padding var(--animation);
-
   @media (min-width: 1500px) {
     top: 0;
     left: switch-label-gap;
@@ -132,9 +129,15 @@
   /* A temporary class only added on first render to calculate the label width */
   &.loading {
     opacity: 0;
-    padding: 0.5rem;
+    padding: 0 0.5rem;
     border: 1px solid transparent;
     width: auto;
-    height: auto;
+    height: 0;
+  }
+
+  /* Only load animations onto the label after we've calculated the width and hidden the temporary class */
+  &.loaded {
+    transition: width var(--animation), border-width var(--animation),
+      height var(--animation), padding var(--animation);
   }
 }

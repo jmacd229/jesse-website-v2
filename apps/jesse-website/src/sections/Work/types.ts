@@ -37,7 +37,8 @@ export type Tool =
   | 'Sanity'
   | 'MUI'
   | 'Vite'
-  | 'CSS Modules';
+  | 'CSS Modules'
+  | 'Playwright';
 
 type BaseWorkItem = {
   id: string;

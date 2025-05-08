@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@jesse-website-v2/design-system": ["libs/design-system/src/index.ts"]
+      "@jmacd229/design-system": ["libs/design-system/src/index.ts"],
+      "@test-utils/*": ["test-utils/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,4 +1,4 @@
-import { Heading, Icon, IconType } from '@jesse-website-v2/design-system';
+import { Heading, Icon, IconType } from '@jmacd229/design-system';
 
 import { PropsWithChildren } from 'react';
 import styles from './experienceDetailsDescriptionHeading.module.css';

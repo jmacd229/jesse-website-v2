@@ -1,4 +1,4 @@
-import { Card } from '@jesse-website-v2/design-system';
+import { Card } from '@jmacd229/design-system';
 import { HTMLProps } from 'react';
 import styles from './ExperienceDetailsDescriptionImage.module.css';
 

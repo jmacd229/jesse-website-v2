@@ -1,4 +1,4 @@
-import { IconType } from '@jesse-website-v2/design-system';
+import { IconType } from '@jmacd229/design-system';
 import { ReactNode } from 'react';
 
 export type Tool =

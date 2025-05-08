@@ -4,7 +4,7 @@ import {
   getAnimation,
   HexString,
   useCSS,
-} from '@jesse-website-v2/design-system';
+} from '@jmacd229/design-system';
 import {
   CSSProperties,
   HTMLAttributes,

@@ -1,4 +1,4 @@
-import { Accordion, Card, Icon } from '@jesse-website-v2/design-system';
+import { Accordion, Card, Icon } from '@jmacd229/design-system';
 
 import { WorkPrinciple } from '../../types';
 

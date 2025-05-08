@@ -1,4 +1,4 @@
-import { Heading } from '@jesse-website-v2/design-system';
+import { Heading } from '@jmacd229/design-system';
 
 import { WORK_PRINCIPLES } from '../constants';
 import PrincipleItem from './PrincipleItem/PrincipleItem';

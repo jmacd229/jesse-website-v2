@@ -2,14 +2,14 @@ import {
   AnimationToggle,
   Navigation,
   ThemeToggle,
-} from '@jesse-website-v2/design-system';
+} from '@jmacd229/design-system';
 import Home from '../sections/Home/Home';
 import Work from '../sections/Work/Work';
 import styles from './app.module.css';
 
 export function App() {
   return (
-    <>
+    <div className={styles['app']}>
       <Navigation>
         <Navigation.Group>
           <Navigation.Item id="home" icon="Home">
@@ -31,7 +31,7 @@ export function App() {
           <Work />
         </div>
       </main>
-    </>
+    </div>
   );
 }
 

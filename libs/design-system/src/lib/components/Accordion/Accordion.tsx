@@ -43,7 +43,9 @@ export const Accordion = ({
     >
       <div className={styles['title']}>{title}</div>
       <div className={styles['expander']}>
-        <div className={styles['content']}>{children}</div>
+        <div aria-hidden={!isExpanded} className={styles['content']}>
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Icon } from '@jesse-website-v2/design-system';
+import { Icon } from '@jmacd229/design-system';
 import JesseWebsiteV2 from '../../../../assets/images/SVG/JesseWebsiteV2';
 import jesse_v1_logo from '../../../../assets/images/jesse-website-v1.png';
 import jesse_v1 from '../../../../assets/images/jesse_v1.jpg';

@@ -1,16 +1,18 @@
-/* Border Values */
-@value tree-border-width 3px;
-@value tree-trunk-border-color var(--tree-trunk-border-color, var(--primary-700));
-@value tree-branch-border-color var(--tree-branch-border-color, var(--primary-500));
-@value tree-radius var(--tree-radius, var(--radius-3));
-
-/* Node Values */
-@value tree-consecutive-node-spacing var(--tree-consecutive-node-spacing, 3rem);
-@value tree-node-size var(--tree-node-size, 8rem);
-@value tree-node-padding var(--tree-node-padding, 1rem);
-
-:global html.dark :local .tree-root {
+:global(html.dark) .tree-root {
   --trunk-glow: -1px 0px 0px var(--secondary-600);
+}
+
+:root {
+  /* Border Values */
+  --tree-border-width: 3px;
+  --tree-trunk-border-color: var(--primary-700);
+  --tree-branch-border-color: var(--primary-500);
+  --tree-radius: var(--radius-3);
+
+  /* Node Values */
+  --tree-consecutive-node-spacing: 3rem;
+  --tree-node-size: 8rem;
+  --tree-node-padding: 1rem;
 }
 
 .tree-root {
@@ -31,7 +33,8 @@
         position: absolute;
         width: 1px;
         height: 100%;
-        border-left: tree-border-width solid tree-trunk-border-color;
+        border-left: var(--tree-border-width) solid
+          var(--tree-trunk-border-color);
         left: -50%;
         top: 0;
         box-shadow: var(--trunk-glow);
@@ -39,7 +42,8 @@
 
       /* Makes adjustment for consecutive spacing connecter on branch */
       &:not(:last-of-type)::after {
-        border-left: tree-border-width dashed tree-branch-border-color;
+        border-left: var(--tree-border-width) dashed
+          var(--tree-branch-border-color);
         stroke-dashoffset: 5px;
         left: 50%;
         box-shadow: none;
@@ -52,10 +56,10 @@
         position: absolute;
         width: 50%;
         height: 50%;
-        border: tree-border-width dashed tree-branch-border-color;
+        border: var(--tree-border-width) dashed var(--tree-branch-border-color);
         border-top: none;
         border-left: none;
-        border-bottom-right-radius: tree-radius;
+        border-bottom-right-radius: var(--tree-radius);
         bottom: -50%;
         left: 0;
       }
@@ -74,27 +78,27 @@
     position: absolute;
     width: 25%;
     height: 100%;
-    border: tree-border-width dashed tree-branch-border-color;
+    border: var(--tree-border-width) dashed var(--tree-branch-border-color);
     border-bottom: none;
     border-left: none;
-    border-top-right-radius: tree-radius;
+    border-top-right-radius: var(--tree-radius);
     top: 50%;
     left: 50%;
   }
 
   /* Spaces out consecutive nodes*/
   &:has(+ .tree-node) {
-    padding-bottom: tree-consecutive-node-spacing;
+    padding-bottom: var(--tree-consecutive-node-spacing);
 
     &::after {
       display: block;
       content: '';
       position: absolute;
       width: 1px;
-      height: tree-consecutive-node-spacing;
-      border-left: tree-border-width solid tree-trunk-border-color;
+      height: var(--tree-consecutive-node-spacing);
+      border-left: var(--tree-border-width) solid var(--tree-trunk-border-color);
       left: 25%;
-      top: calc(100% - tree-consecutive-node-spacing);
+      top: calc(100% - var(--tree-consecutive-node-spacing));
       box-shadow: var(--trunk-glow);
     }
   }
@@ -110,13 +114,13 @@
   justify-content: center;
   text-align: center;
   position: relative;
-  width: tree-node-size;
-  height: tree-node-size;
+  width: var(--tree-node-size);
+  height: var(--tree-node-size);
   aspect-ratio: 1 / 1;
   background-color: var(--element-background);
   border: 1px solid var(--neutral-300);
   box-shadow: var(--elevation-1);
-  padding: tree-node-padding;
+  padding: var(--tree-node-padding);
   border-radius: 50%;
   z-index: 1;
 

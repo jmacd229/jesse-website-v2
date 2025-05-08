@@ -6,4 +6,3 @@ import '@jmacd229/design-system-theme/src/lib/theme/theme.css';
 import '@jmacd229/design-system-theme/src/lib/theme/utilities.css';
 import '@testing-library/jest-dom/vitest';
 import 'vitest-canvas-mock';
-import './matchers';

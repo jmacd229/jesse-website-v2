@@ -2182,11 +2182,11 @@ __metadata:
 
 "@jmacd229/design-system-theme@file:../../libs/design-system::locator=jesse-website%40workspace%3Aapps%2Fjesse-website":
   version: 0.0.0
-  resolution: "@jmacd229/design-system-theme@file:../../libs/design-system#../../libs/design-system::hash=f67544&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
+  resolution: "@jmacd229/design-system-theme@file:../../libs/design-system#../../libs/design-system::hash=845d4d&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
   dependencies:
     react: "npm:^18.3.1"
     react-dom: "npm:18.3.1"
-  checksum: 10c0/98eb8c295ae5b23aff017feef85cc9a4616e2c57814aa9f01b4b8c3e62d3c944f4d18b0b9ffa00cf4ae569ee41e3ba0d09bff1f0306e5d62b52f7bcee4ddcecf
+  checksum: 10c0/9a6d372044e851ee6dade11545ad7df94cf7318cd8c4b98c76cbdca742e087c1d16c87ec8d6a0f7bc9e4177235a77da54f168348d5c8965faf1c4107d152c995
   languageName: node
   linkType: hard
 

@@ -1,14 +1,13 @@
-@value details-window-gap: 8rem;
-
 .experience-container {
+  --details-window-gap: 8rem;
   display: grid;
-  column-gap: details-window-gap;
+  column-gap: var(--details-window-gap);
   grid-template-columns: 100% 0%;
 
   transition: grid-template-columns 500ms ease-in-out;
 
   &:has(.experience-details:not(:empty)) {
-    grid-template-columns: 20% calc(80% - details-window-gap);
+    grid-template-columns: 20% calc(80% - var(--details-window-gap));
   }
 }
 
@@ -67,6 +66,6 @@
   }
 }
 
-:global html.dark :local .spotlight-hover {
+:global(html.dark) .spotlight-hover {
   --spotlight-color: var(--primary-500);
 }

@@ -72,7 +72,7 @@
   transition: color 100ms;
 }
 
-:global html.dark :local .icon {
+:global(html.dark) .icon {
   color: var(--primary-800);
 
   &.expanded {

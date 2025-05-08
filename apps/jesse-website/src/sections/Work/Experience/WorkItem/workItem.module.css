@@ -79,6 +79,6 @@
   font-family: 'Inter';
 }
 
-:global html.dark :local .work-experience {
+:global(html.dark) .work-experience {
   --logo-color: var(--white);
 }

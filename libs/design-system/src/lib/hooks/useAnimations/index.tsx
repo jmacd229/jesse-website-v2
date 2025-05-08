@@ -5,7 +5,15 @@ import {
   useEffect,
   useState,
 } from 'react';
+import warnOnMissingWindowScript from '../warnOnMissingWindowScript';
 import { AnimationContextProps } from './types';
+
+// Ensure we safely attempt to call window functions
+const getAnimationsSetting = warnOnMissingWindowScript(
+  'getAnimationsSetting',
+  () => ({ isEnabled: true })
+);
+const setAnimations = warnOnMissingWindowScript('setAnimations');
 
 const AnimationContext = createContext<AnimationContextProps>({
   areAnimationsEnabled: true,
@@ -19,7 +27,7 @@ export const AnimationContextProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (areAnimationsEnabled !== undefined) {
-      window.setAnimations(areAnimationsEnabled);
+      setAnimations(areAnimationsEnabled);
     }
   }, [areAnimationsEnabled]);
 
@@ -27,10 +35,10 @@ export const AnimationContextProvider = ({ children }: PropsWithChildren) => {
     <AnimationContext.Provider
       value={{
         areAnimationsEnabled:
-          areAnimationsEnabled ?? window.getAnimationsSetting().isEnabled,
+          areAnimationsEnabled ?? getAnimationsSetting().isEnabled,
         toggleAnimations: () =>
           setAnimationsEnabled(
-            !(areAnimationsEnabled ?? window.getAnimationsSetting().isEnabled)
+            !(areAnimationsEnabled ?? getAnimationsSetting().isEnabled)
           ),
       }}
     >

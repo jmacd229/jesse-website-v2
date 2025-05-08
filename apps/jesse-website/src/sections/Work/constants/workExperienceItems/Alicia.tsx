@@ -1,4 +1,4 @@
-import { Icon } from '@jesse-website-v2/design-system';
+import { Icon } from '@jmacd229/design-system';
 import AliciaWebsiteV1 from '../../../../assets/images/SVG/AliciaWebsiteV1';
 import AliciaWebsiteV2 from '../../../../assets/images/SVG/AliciaWebsiteV2';
 import alicia_v1 from '../../../../assets/images/alicia_v1.jpg';

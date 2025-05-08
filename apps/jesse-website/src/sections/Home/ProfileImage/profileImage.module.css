@@ -20,7 +20,7 @@
   }
 }
 
-:global html.dark :local .profile {
+:global(html.dark) .profile {
   outline: 2px inset var(--primary-600);
   border: 2px solid var(--secondary-900);
 }

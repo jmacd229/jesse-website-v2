@@ -1,33 +1,37 @@
-@value theme-toggle-spacing: 1rem;
+.app {
+  --theme-toggle-spacing: 1rem;
+
+  display: contents;
+}
 
 .theme-toggle {
   position: absolute;
-  right: theme-toggle-spacing;
+  right: var(--theme-toggle-spacing);
   /* Horizontal nav bar positioning */
   bottom: calc(50% - (var(--toggle-height) / 2));
 
   /* Vertical nav bar positioning */
   @media (min-width: 1500px) {
     right: calc(50% - (var(--toggle-height) / 2));
-    bottom: theme-toggle-spacing;
+    bottom: var(--theme-toggle-spacing);
   }
 }
 
 .animation-toggle {
   position: absolute;
   bottom: calc(50% - (var(--toggle-height) / 2));
-  left: theme-toggle-spacing;
+  left: var(--theme-toggle-spacing);
 
   @media (min-width: 576px) {
     left: unset;
-    right: calc(theme-toggle-spacing + var(--toggle-width));
+    right: calc(var(--theme-toggle-spacing) + var(--toggle-width));
     margin-right: 1.5rem;
   }
 
   /* Vertical nav bar positioning */
   @media (min-width: 1500px) {
     right: calc(50% - (var(--toggle-height) / 2));
-    bottom: calc(theme-toggle-spacing + var(--toggle-width));
+    bottom: calc(var(--theme-toggle-spacing) + var(--toggle-width));
     margin-bottom: 1.5rem;
     margin-right: 0;
   }

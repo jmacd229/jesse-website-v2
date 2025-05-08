@@ -1,4 +1,4 @@
-:global html.dark :local .graphic {
+:global(html.dark) .graphic {
   --graphic-theme-color-light: var(--secondary-400);
   --graphic-text-outline-color: var(--neutral-900);
   --graphic-shadow-color: var(--secondary-900);

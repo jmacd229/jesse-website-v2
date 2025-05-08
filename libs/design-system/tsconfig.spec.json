@@ -23,9 +23,6 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
-    "src/**/*.d.ts",
-    "../../test-utils/*.ts",
-    "../../test-utils/*.tsx",
-    "../../test-utils/*.js",
+    "src/**/*.d.ts"
   ]
 }

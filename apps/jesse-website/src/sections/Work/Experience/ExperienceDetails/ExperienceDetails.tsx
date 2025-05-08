@@ -4,7 +4,7 @@ import {
   Heading,
   Icon,
   useBreakpoint,
-} from '@jesse-website-v2/design-system';
+} from '@jmacd229/design-system';
 import { useExperienceContext } from '../ExperienceContext';
 
 import { HTMLProps, useMemo } from 'react';

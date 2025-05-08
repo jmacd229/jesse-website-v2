@@ -1,4 +1,4 @@
-import { Card, Icon } from '@jesse-website-v2/design-system';
+import { Card, Icon } from '@jmacd229/design-system';
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useExperienceContext } from '../../ExperienceContext';
 

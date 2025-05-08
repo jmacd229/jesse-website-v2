@@ -1,4 +1,4 @@
-import { Animation, Card, Heading } from '@jesse-website-v2/design-system';
+import { Animation, Card, Heading } from '@jmacd229/design-system';
 
 import DynamicThemeGraphic from './DynamicThemeGraphic/DynamicThemeGraphic';
 import styles from './home.module.css';

@@ -1,28 +1,28 @@
-@value switch-width: 3rem;
-@value switch-padding: 0.25rem;
-@value switch-handle-size: 1.25rem;
-@value switch-border-width: 1px;
-@value switch-label-gap: 2rem;
-
 :root {
+  --toggle-width: 3rem;
+  --toggle-padding: 0.25rem;
+  --toggle-handle-size: 1.25rem;
+  --toggle-border-width: 1px;
+  --toggle-label-gap: 2rem;
+
   --toggle-height: calc(
-    switch-handle-size + (switch-padding * 2) + (switch-border-width * 2)
+    var(--toggle-handle-size) + (var(--toggle-padding) * 2) +
+      (var(--toggle-border-width) * 2)
   );
-  --toggle-width: switch-width;
 }
 
 .switch-container {
   position: relative;
-  width: switch-width;
+  width: var(--toggle-width);
   display: flex;
   border-radius: var(--radius-2);
-  height: switch-handle-size;
+  height: var(--toggle-handle-size);
   cursor: pointer;
-  padding: switch-padding;
-  border: switch-border-width solid transparent;
+  padding: var(--toggle-padding);
+  border: var(--toggle-border-width) solid transparent;
 
   &.active .switch-handle {
-    left: calc(switch-width - switch-handle-size);
+    left: calc(var(--toggle-width) - var(--toggle-handle-size));
   }
 
   &:focus {
@@ -54,19 +54,19 @@
   }
 
   @media (min-width: 1500px) {
-    width: switch-handle-size;
-    height: switch-width;
+    width: var(--toggle-handle-size);
+    height: var(--toggle-width);
     flex-direction: column;
 
     .switch-handle {
-      height: switch-handle-size;
+      height: var(--toggle-handle-size);
       width: 100%;
       left: unset;
       top: 0;
     }
 
     &.active .switch-handle {
-      top: calc(switch-width - switch-handle-size);
+      top: calc(var(--toggle-width) - var(--toggle-handle-size));
       left: unset;
     }
   }
@@ -80,7 +80,7 @@
   border-radius: 50%;
   align-items: center;
   height: 100%;
-  width: switch-handle-size;
+  width: var(--toggle-handle-size);
   aspect-ratio: 1 / 1;
   transition: left 150ms ease-in-out, outline-color var(--animation),
     background-color var(--animation);
@@ -100,9 +100,9 @@
   position: absolute;
   cursor: pointer;
   height: 60px;
-  width: calc(switch-width * 2);
+  width: calc(var(--toggle-width) * 2);
   z-index: -1;
-  right: -switch-width;
+  right: -var(--toggle-width);
   top: -100%;
 }
 
@@ -111,7 +111,7 @@
   white-space: nowrap;
   position: absolute;
   align-self: center;
-  top: switch-label-gap;
+  top: var(--toggle-label-gap);
   height: 0;
   overflow: hidden;
   background-color: var(--element-background);
@@ -120,7 +120,7 @@
 
   @media (min-width: 1500px) {
     top: 0;
-    left: switch-label-gap;
+    left: var(--toggle-label-gap);
     padding: 0.25rem 0;
     height: unset;
     width: 0;

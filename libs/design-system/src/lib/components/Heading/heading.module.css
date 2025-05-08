@@ -4,7 +4,7 @@
   --h1-shadow-color: var(--page-font-color);
 }
 
-:global html.dark {
+:global(html.dark) {
   --h1-fill-color: var(--neutral-200);
   --h1-stroke-color: var(--secondary-900);
   --h1-shadow-color: var(--primary-500);
@@ -30,7 +30,7 @@ h1.heading {
   animation: hover1 5s linear infinite;
 }
 
-:global html.no-motion {
+:global(html.no-motion) {
   h1.heading {
     left: -4px;
     top: -4px;

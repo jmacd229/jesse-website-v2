@@ -7,7 +7,7 @@ import {
   OnActivateProps,
   Tree,
   useCSS,
-} from '@jesse-website-v2/design-system';
+} from '@jmacd229/design-system';
 
 import { useMemo } from 'react';
 import { PROJECT_ITEMS, WORK_ITEMS } from '../constants';

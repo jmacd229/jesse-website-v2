@@ -124,7 +124,7 @@
   }
 }
 
-:global html.dark :local .badge {
+:global(html.dark) .badge {
   color: var(--black);
   font-weight: 500;
 }

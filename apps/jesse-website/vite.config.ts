@@ -5,6 +5,20 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  test: {
+    watch: true,
+    globals: true,
+    css: true,
+    environment: 'happy-dom',
+    setupFiles: ['../../test-utils/vitest.setup.ts'],
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    reporters: ['default'],
+    coverage: {
+      reportsDirectory: '../../coverage/apps/jesse-website',
+      provider: 'v8',
+    },
+  },
+  css: { transformer: 'lightningcss' },
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/jesse-website',
   server: {
@@ -19,17 +33,19 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: 'design-system',
+        find: '@jmacd229/design-system-theme',
         replacement: fileURLToPath(
           new URL('../../libs/design-system', import.meta.url)
         ),
       },
+      {
+        find: 'test-utils',
+        replacement: fileURLToPath(
+          new URL('../../test-utils', import.meta.url)
+        ),
+      },
     ],
   },
-  // Uncomment this if you are using workers.
-  // worker: {
-  //  plugins: [ nxViteTsPaths() ],
-  // },
   build: {
     outDir: '../../dist/apps/jesse-website',
     emptyOutDir: true,

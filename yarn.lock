@@ -2180,15 +2180,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jmacd229/design-system-theme@file:../../libs/design-system::locator=jesse-website%40workspace%3Aapps%2Fjesse-website":
-  version: 0.0.0
-  resolution: "@jmacd229/design-system-theme@file:../../libs/design-system#../../libs/design-system::hash=845d4d&locator=jesse-website%40workspace%3Aapps%2Fjesse-website"
+"@jmacd229/design-system@npm:1.0.0, @jmacd229/design-system@workspace:libs/design-system":
+  version: 0.0.0-use.local
+  resolution: "@jmacd229/design-system@workspace:libs/design-system"
   dependencies:
     react: "npm:^18.3.1"
     react-dom: "npm:18.3.1"
-  checksum: 10c0/9a6d372044e851ee6dade11545ad7df94cf7318cd8c4b98c76cbdca742e087c1d16c87ec8d6a0f7bc9e4177235a77da54f168348d5c8965faf1c4107d152c995
-  languageName: node
-  linkType: hard
+  languageName: unknown
+  linkType: soft
 
 "@jridgewell/gen-mapping@npm:^0.3.5":
   version: 0.3.5
@@ -7003,15 +7002,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"design-system@workspace:libs/design-system":
-  version: 0.0.0-use.local
-  resolution: "design-system@workspace:libs/design-system"
-  dependencies:
-    react: "npm:^18.3.1"
-    react-dom: "npm:18.3.1"
-  languageName: unknown
-  linkType: soft
-
 "destroy@npm:1.2.0, destroy@npm:^1.0.4":
   version: 1.2.0
   resolution: "destroy@npm:1.2.0"
@@ -9995,7 +9985,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jesse-website@workspace:apps/jesse-website"
   dependencies:
-    "@jmacd229/design-system-theme": "file:../../libs/design-system"
+    "@jmacd229/design-system": "npm:1.0.0"
     happy-dom: "npm:^17.4.6"
     react: "npm:^18.3.1"
     react-dom: "npm:18.3.1"

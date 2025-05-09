@@ -49,3 +49,8 @@ Thumbs.db
 .nx/workspace-data
 
 vite.config.*.timestamp*
+# Local Netlify folder
+.netlify
+
+# Ignore macOS visual snapshots
+**/*-snapshots/*-darwin.png

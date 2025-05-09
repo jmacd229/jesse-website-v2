@@ -1,6 +1,6 @@
 import { Card } from '@jmacd229/design-system';
 import { HTMLProps } from 'react';
-import styles from './ExperienceDetailsDescriptionImage.module.css';
+import styles from './experienceDetailsDescriptionImage.module.css';
 
 const ExperienceDetailsDescriptionImage = ({
   src,

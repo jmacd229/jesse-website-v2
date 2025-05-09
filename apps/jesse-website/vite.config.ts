@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   test: {
-    watch: true,
+    watch: false,
     globals: true,
     css: true,
     environment: 'happy-dom',
@@ -32,12 +32,6 @@ export default defineConfig({
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   resolve: {
     alias: [
-      {
-        find: '@jmacd229/design-system-theme',
-        replacement: fileURLToPath(
-          new URL('../../libs/design-system', import.meta.url)
-        ),
-      },
       {
         find: 'test-utils',
         replacement: fileURLToPath(

@@ -16,7 +16,7 @@ export type ToggleProps = HTMLProps<HTMLDivElement> & {
   initialState?: boolean;
   labelValue: string | { enabled: string; disabled: string };
   hideLabel?: boolean;
-  display: { enabled: ReactNode; disabled: ReactNode };
+  display?: { enabled: ReactNode; disabled: ReactNode };
 };
 
 export const Toggle = ({
@@ -94,7 +94,7 @@ export const Toggle = ({
       aria-checked={isActive}
     >
       <div className={styles['switch-handle']}>
-        {isActive ? display.enabled : display.disabled}
+        {isActive ? display?.enabled : display?.disabled}
         {/* loading is a temporary class used for calculating the label width on first render */}
         <div
           id={`toggle-label-${id}`}

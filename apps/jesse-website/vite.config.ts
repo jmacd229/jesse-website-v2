@@ -33,12 +33,6 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@jmacd229/design-system-theme',
-        replacement: fileURLToPath(
-          new URL('../../libs/design-system', import.meta.url)
-        ),
-      },
-      {
         find: 'test-utils',
         replacement: fileURLToPath(
           new URL('../../test-utils', import.meta.url)

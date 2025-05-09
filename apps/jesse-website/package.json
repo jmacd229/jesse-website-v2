@@ -2,7 +2,7 @@
   "name": "jesse-website",
   "version": "0.0.0",
   "dependencies": {
-    "@jmacd229/design-system-theme": "file:../../libs/design-system",
+    "@jmacd229/design-system": "1.0.0",
     "react": "^18.3.1",
     "react-dom": "18.3.1"
   },

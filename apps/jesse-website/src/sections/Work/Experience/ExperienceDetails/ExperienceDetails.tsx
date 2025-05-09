@@ -3,11 +3,13 @@ import {
   Chip,
   Heading,
   Icon,
+  useAnimations,
   useBreakpoint,
 } from '@jmacd229/design-system';
 import { useExperienceContext } from '../ExperienceContext';
 
-import { HTMLProps, useMemo } from 'react';
+import { HTMLProps, useEffect, useMemo } from 'react';
+import { WORK_ITEMS } from '../../constants';
 import { itemIsWorkHistory } from '../utilities';
 import styles from './experienceDetails.module.css';
 import ExperienceDetailsMobileDialog from './ExperienceDetailsMobileDialog/ExperienceDetailsMobileDialog';
@@ -15,6 +17,14 @@ import ExperienceDetailsMobileDialog from './ExperienceDetailsMobileDialog/Exper
 const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
   const { matchesLargeUp } = useBreakpoint();
+  const { areAnimationsEnabled } = useAnimations();
+
+  // Auto select the first item for users with animations disabled. This reduces the motion of expanding and collapsing the details panel
+  useEffect(() => {
+    if (matchesLargeUp && !areAnimationsEnabled && selectedItem === undefined) {
+      setSelectedItem(Object.values(WORK_ITEMS)[0]);
+    }
+  }, [areAnimationsEnabled, matchesLargeUp, selectedItem]);
 
   const experienceDetailsContent = useMemo(() => {
     if (!selectedItem) {
@@ -68,13 +78,16 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
         elevation="0"
         className={`${styles['experience-details']} ${className}`}
       >
-        <button
-          className={styles['close-button']}
-          onClick={() => setSelectedItem(undefined)}
-          aria-label={`Close ${selectedItem?.title}`}
-        >
-          <Icon.Close />
-        </button>
+        {/* Only shows the button to close the panel if animations are enabled. Again to reduce motion from closing */}
+        {areAnimationsEnabled && (
+          <button
+            className={styles['close-button']}
+            onClick={() => setSelectedItem(undefined)}
+            aria-label={`Close ${selectedItem?.title}`}
+          >
+            <Icon.Close />
+          </button>
+        )}
         <div>{experienceDetailsContent}</div>
       </Card>
     );

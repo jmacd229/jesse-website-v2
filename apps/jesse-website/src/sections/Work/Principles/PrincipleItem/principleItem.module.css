@@ -79,3 +79,7 @@
     color: var(--secondary-800);
   }
 }
+
+:global(html.no-motion) .principle-card-container {
+  transform: none;
+}

@@ -29,6 +29,11 @@
   transition: box-shadow var(--animation), background-color var(--animation),
     width var(--animation), padding var(--animation), border var(--animation);
 
+  a {
+    color: unset;
+    text-decoration: none;
+  }
+
   /* Vertical Navigation */
   @media (min-width: 1500px) {
     flex-direction: column;

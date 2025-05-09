@@ -62,7 +62,15 @@ export const JESSE_V2: ProjectHistoryItem = {
   id: 'jesse_v2',
   title: 'Personal Website',
   icon: <JesseWebsiteV2 />,
-  tools: ['React', 'TypeScript', 'Vite', 'CSS Modules', 'Nx', 'Playwright'],
+  tools: [
+    'React',
+    'TypeScript',
+    'Vite',
+    'CSS Modules',
+    'Nx',
+    'Playwright',
+    'Vitest',
+  ],
   version: 2,
   content: (
     <div>

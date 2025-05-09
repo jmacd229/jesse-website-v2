@@ -70,7 +70,10 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
                 <input
                   aria-label="Theme customization hex value editor"
                   value={colorInputValue}
-                  onChange={(e) => setColorInputValue(e.target.value)}
+                  maxLength={6}
+                  onChange={(e) =>
+                    setColorInputValue(e.target.value.substring(0, 6))
+                  }
                 />
                 ;
               </div>

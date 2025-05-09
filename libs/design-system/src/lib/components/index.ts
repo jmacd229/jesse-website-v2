@@ -4,6 +4,7 @@ export * from './Badge/Badge';
 export * from './Card/Card';
 export * from './Chips';
 export * from './Heading/Heading';
+export * from './Link';
 export * from './Navigation';
 export * from './Toggle/AnimationToggle/AnimationToggle';
 export * from './Toggle/ThemeToggle/ThemeToggle';

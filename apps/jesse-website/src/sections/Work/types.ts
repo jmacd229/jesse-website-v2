@@ -38,7 +38,8 @@ export type Tool =
   | 'MUI'
   | 'Vite'
   | 'CSS Modules'
-  | 'Playwright';
+  | 'Playwright'
+  | 'Vitest';
 
 type BaseWorkItem = {
   id: string;

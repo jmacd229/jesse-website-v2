@@ -82,3 +82,10 @@
 :global(html.dark) .work-experience {
   --logo-color: var(--white);
 }
+
+:global(html.no-motion) .work-experience {
+  .work-experience-content,
+  .work-experience-version {
+    transform: none;
+  }
+}

@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   test: {
-    watch: true,
+    watch: false,
     globals: true,
     css: true,
     environment: 'happy-dom',

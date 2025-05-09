@@ -35,7 +35,7 @@ jobs:
         run: yarn playwright install --with-deps
 
       - name: Run Playwright tests and update snapshots
-        run: yarn playwright test --update-snapshots
+        run: yarn nx e2e jesse-website --update-snapshots
 
       - name: Commit updated snapshots (if any)
         run: |

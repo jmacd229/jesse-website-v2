@@ -44,7 +44,10 @@ jobs:
         run: |
           set +e
           yarn nx affected -t test e2e --output-style=stream
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          echo "TEST_EXIT_CODE=$?" >> $GITHUB_ENV
+
+      - name: Debug test exit code
+        run: echo "Test exit code was $TEST_EXIT_CODE"
 
       - name: Upload Playwright snapshot diffs
         if: always()
@@ -54,5 +57,5 @@ jobs:
           path: dist/.playwright/apps/jesse-website/playwright-report
 
       - name: Fail if tests failed
-        if: steps.run-tests.outputs.exit_code != '0'
+        if: env.TEST_EXIT_CODE != '0'
         run: exit 1

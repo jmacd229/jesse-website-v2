@@ -27,7 +27,7 @@ h1.heading {
   paint-order: stroke fill;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--h1-stroke-color);
-  animation: hover1 5s linear infinite;
+  animation: hover 5s linear infinite;
 }
 
 :global(html.no-motion) {
@@ -101,14 +101,14 @@ h6 {
   text-align: center;
 }
 
-@keyframes hover1 {
+@keyframes hover {
   0% {
-    transform: translate(-2px, -2px);
+    translate: -2px -2px;
   }
   50% {
-    transform: translate(-4px, -4px);
+    translate: -4px -4px;
   }
   100% {
-    transform: translate(-2px, -2px);
+    translate: -2px -2px;
   }
 }

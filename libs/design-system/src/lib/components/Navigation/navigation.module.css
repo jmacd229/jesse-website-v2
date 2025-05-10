@@ -43,14 +43,11 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
-    /* Used for floating-nav style */
-    --max-elevation: var(--elevation-3);
-
     &:hover,
     &:focus-within {
       border-color: var(--neutral-300);
       background: var(--element-background);
-      animation: floating-nav 4s linear infinite;
+      box-shadow: var(--elevation-2);
     }
   }
 
@@ -66,10 +63,8 @@
     border-top-right-radius: 0;
     border-color: var(--neutral-300);
     background: var(--element-background);
-    animation: floating-nav 4s linear infinite;
 
-    /* Used for floating-nav style */
-    --max-elevation: var(--elevation-2);
+    box-shadow: var(--elevation-1);
 
     .nav-item {
       flex-direction: column;
@@ -212,17 +207,5 @@
   }
   to {
     transform: rotateY(180deg);
-  }
-}
-
-@keyframes floating-nav {
-  0% {
-    box-shadow: var(--min-elevation, var(--elevation-1));
-  }
-  50% {
-    box-shadow: var(--max-elevation, var(--elevation-2));
-  }
-  100% {
-    box-shadow: var(--min-elevation, var(--elevation-1));
   }
 }

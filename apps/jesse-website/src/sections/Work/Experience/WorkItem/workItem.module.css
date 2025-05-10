@@ -15,7 +15,7 @@
 
     .work-experience-date {
       color: var(--primary-900);
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 }
@@ -41,7 +41,6 @@
 
 .work-experience-icon {
   height: 100%;
-  width: fit-content;
   overflow: hidden;
 }
 

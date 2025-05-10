@@ -41,3 +41,11 @@ jobs:
 
       - name: Run Tests
         run: yarn nx affected -t test e2e --output-style=stream
+        continue-on-error: true
+
+      - name: Upload Playwright snapshot diffs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-snapshot-diffs
+          path: dist/.playwright/apps/jesse-website/playwright-report

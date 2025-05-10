@@ -13,6 +13,7 @@
 
     input {
       -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: var(--graphic-shadow-color);
     }
   }
 }
@@ -37,9 +38,13 @@
   .html {
     position: absolute;
     width: 9.5rem;
-    top: 1rem;
-    right: 12rem;
+    top: -4rem;
+    right: 6rem;
     z-index: 1;
+
+    @media (min-width: 1499px) {
+      right: 12rem;
+    }
   }
 
   .jesse {
@@ -65,7 +70,7 @@
 
   .dynamic-text {
     position: absolute;
-    bottom: -2rem;
+    bottom: -4rem;
     right: -5rem;
     font-family: 'Inter';
     white-space: nowrap;
@@ -73,7 +78,6 @@
     color: var(--graphic-theme-color-dark);
     -webkit-text-stroke-width: 4px;
     -webkit-text-stroke-color: var(--graphic-text-outline-color);
-    text-shadow: 3px 3px 0 var(--graphic-shadow-color);
     paint-order: stroke fill;
 
     .input {

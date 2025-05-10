@@ -52,12 +52,9 @@
 }
 
 .main-title {
-  position: sticky;
-  top: 0;
   background-color: var(--element-background);
   color: var(--neutral-900);
   width: 100%;
-  z-index: 1;
 
   > * {
     width: 100%;
@@ -70,8 +67,6 @@
 }
 
 .role-title {
-  position: sticky;
-  top: 4rem;
   padding: 1rem 0;
   color: var(--primary-900);
   background-color: var(--element-background);
@@ -88,4 +83,10 @@
   color: var(--neutral-700);
   vertical-align: middle;
   margin-left: 1rem;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

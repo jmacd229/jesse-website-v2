@@ -61,6 +61,7 @@
     justify-content: center;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    border-top: 0;
     border-color: var(--neutral-300);
     background: var(--element-background);
 

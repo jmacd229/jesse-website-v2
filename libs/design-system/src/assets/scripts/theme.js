@@ -1,11 +1,13 @@
+const META_COLORS = {light: '#f2f2f2', dark: '#262626'};
+
 const setTheme = (theme) => {
   if (theme === 'dark') {
     document.querySelector('html')?.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
   } else {
     document.querySelector('html')?.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
   }
+  localStorage.setItem('theme', theme);
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', META_COLORS[theme]);
 };
 window.setTheme = setTheme;
 

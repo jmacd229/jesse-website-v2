@@ -1,5 +1,9 @@
 :root {
-  --card-padding: 2rem;
+  --card-padding: 1rem;
+
+  @media (min-width: 576px) {
+    --card-padding: 2rem;
+  }
 }
 
 .card {

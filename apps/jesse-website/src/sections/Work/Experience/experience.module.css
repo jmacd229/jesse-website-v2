@@ -32,32 +32,25 @@
   align-self: flex-start;
 }
 
-@property --radial-center-position {
-  syntax: '<length> | <percentage>';
-  initial-value: 500%;
-  inherits: false;
-}
-
 .spotlight-hover {
   --spotlight-color: color-mix(
     in hsl,
     var(--primary-500),
-    var(--element-background) 80%
+    var(--element-background) 70%
   );
-
   cursor: pointer;
   background: radial-gradient(
-    circle at 50% var(--radial-center-position),
+    circle at 50% 100%,
     var(--spotlight-color) 0%,
-    var(--element-background) 80%
+    var(--element-background) 70%
   );
-  transition: --radial-center-position 500ms, border-color 500ms,
-    box-shadow 500ms;
+  background-size: 100% 350%;
+  transition: background-size 500ms, border-color 500ms, box-shadow 500ms;
 
   &:hover,
   &:focus,
   &.active {
-    --radial-center-position: 100%;
+    background-size: 100% 100%;
     border-color: var(--primary-500);
     box-shadow: 0 3px 0 var(--secondary-700);
     h4 {

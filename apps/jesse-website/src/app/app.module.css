@@ -40,5 +40,6 @@
 .sections {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: clamp(4rem, 5vw, 8rem);
 }

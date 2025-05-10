@@ -12,7 +12,9 @@ const Home = () => {
           <Heading className={styles['main-title']} level={1}>
             Hi, I'm Jesse
           </Heading>
-          <Heading level={2}>A front-end web engineer based in Toronto</Heading>
+          <Heading className={styles['sub-title']} level={2}>
+            A front-end web engineer based in Toronto
+          </Heading>
           <ProfileImage className={styles['jesse']} />
         </div>
 

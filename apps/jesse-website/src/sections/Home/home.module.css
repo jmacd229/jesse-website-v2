@@ -3,6 +3,7 @@
   flex-direction: column;
   padding-bottom: 1rem;
   flex-shrink: 100;
+  width: 100%;
 
   @media (min-width: 993px) {
     .jesse {
@@ -14,6 +15,13 @@
 .main-title {
   /* Allows for slight overlap into right side of page. Prevents text wrapping too early*/
   width: 130%;
+}
+
+.sub-title {
+  text-align: center;
+  @media (min-width: 576px) {
+    text-align: start;
+  }
 }
 
 .heading-container {
@@ -48,6 +56,7 @@
     .jesse {
       order: -1;
       margin-bottom: 1rem;
+      max-width: 12rem;
     }
   }
 }
@@ -70,9 +79,15 @@
 
 .rocket {
   position: absolute;
-  width: 11rem;
-  bottom: -5rem;
-  right: -5rem;
+  width: 7rem;
+  bottom: -4rem;
+  right: -1.5rem;
+
+  @media (min-width: 1499px) {
+    width: 11rem;
+    bottom: -5rem;
+    right: -5rem;
+  }
 }
 
 .graphic {

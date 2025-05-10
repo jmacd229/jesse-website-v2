@@ -3,8 +3,11 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  max-height: calc(100vh - 11rem);
   overflow-y: auto;
+
+  @media (min-width: 576px) {
+    max-height: calc(100vh - 11rem);
+  }
 
   @media (min-width: 1500px) {
     max-height: calc(100vh - 8rem);

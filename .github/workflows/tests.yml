@@ -51,11 +51,12 @@ jobs:
 
       - name: Create Pull Request with updated snapshots
         if: failure() && steps.snapshots.outcome == 'failure'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GH_PAT }}
           commit-message: 'chore: update Playwright snapshots'
           title: 'Update Playwright snapshots'
           body: 'This PR includes updated Playwright snapshots generated from CI.'
           branch: chore/update-playwright-snapshots
+          delete-branch: true
           base: ${{ github.ref_name }}

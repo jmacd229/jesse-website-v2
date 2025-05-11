@@ -1,5 +1,5 @@
 :root {
-  --page-background: var(--neutral-200);
+  --page-background: red;
   --element-background: var(--neutral-100);
   --page-font-color: var(--neutral-800);
   --link-color: var(--primary-600);
@@ -8,7 +8,7 @@
 }
 
 html.dark {
-  --page-background: var(--neutral-100);
+  --page-background: blue;
   --element-background: var(--neutral-200);
   --link-color: var(--primary-800);
   --link-hover-color: var(--secondary-800);

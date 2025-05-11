@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Run Unit/Integration Tests
+        run: yarn nx affected -t test --output-style=stream
+
       - name: Cache Playwright browsers
         uses: actions/cache@v3
         with:
@@ -39,15 +42,15 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      - name: Run Unit/Integration Tests
-        run: yarn nx affected -t test --output-style=stream
-
       - name: Run E2E Tests
-        id: 'e2e'
         run: yarn nx affected -t e2e  --update-snapshots --output-style=stream
 
+      - name: Fail if snapshots were updated
+        id: 'snapshots'
+        run: git diff --exit-code
+
       - name: Create Pull Request with updated snapshots
-        if: failure() && steps.e2e.outcome == 'failure'
+        if: failure() && steps.snapshots.outcome == 'failure'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GH_PAT }}

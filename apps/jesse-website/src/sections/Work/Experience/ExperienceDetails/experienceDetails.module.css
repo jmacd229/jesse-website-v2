@@ -3,8 +3,11 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  max-height: calc(100vh - 11rem);
   overflow-y: auto;
+
+  @media (min-width: 576px) {
+    max-height: calc(100vh - 11rem);
+  }
 
   @media (min-width: 1500px) {
     max-height: calc(100vh - 8rem);
@@ -49,12 +52,9 @@
 }
 
 .main-title {
-  position: sticky;
-  top: 0;
   background-color: var(--element-background);
   color: var(--neutral-900);
   width: 100%;
-  z-index: 1;
 
   > * {
     width: 100%;
@@ -63,21 +63,14 @@
 }
 
 .chip-list:not(:empty) {
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .role-title {
-  position: sticky;
-  top: 4rem;
-  padding: 1rem 0;
+  margin-top: 1rem;
   color: var(--primary-900);
   background-color: var(--element-background);
   z-index: 1;
-
-  + .chip-list {
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
 }
 
 .version {
@@ -85,4 +78,12 @@
   color: var(--neutral-700);
   vertical-align: middle;
   margin-left: 1rem;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding-bottom: 0.5rem;
+  background-color: var(--element-background);
 }

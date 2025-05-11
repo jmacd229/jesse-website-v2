@@ -40,8 +40,14 @@ jobs:
         run: yarn playwright install --with-deps
 
       - name: Run Tests
-        run: yarn nx affected -t test e2e --output-style=stream
-        continue-on-error: true
+        # Capture exit code so we can fail after capturing artifacts
+        run: |
+          set +e
+          yarn nx affected -t test e2e --output-style=stream
+          echo "TEST_EXIT_CODE=$?" >> $GITHUB_ENV
+
+      - name: Debug test exit code
+        run: echo "Test exit code was $TEST_EXIT_CODE"
 
       - name: Upload Playwright snapshot diffs
         if: always()
@@ -49,3 +55,7 @@ jobs:
         with:
           name: playwright-snapshot-diffs
           path: dist/.playwright/apps/jesse-website/playwright-report
+
+      - name: Fail if tests failed
+        if: env.TEST_EXIT_CODE != '0'
+        run: exit 1

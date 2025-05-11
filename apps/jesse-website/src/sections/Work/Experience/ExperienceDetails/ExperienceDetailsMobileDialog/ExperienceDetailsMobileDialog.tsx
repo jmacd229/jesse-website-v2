@@ -39,7 +39,9 @@ const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
       >
         <Icon.Close />
       </button>
-      <Card elevation="2">{children}</Card>
+      <Card className="flex" elevation="2">
+        {children}
+      </Card>
     </dialog>
   );
 };

@@ -1,6 +1,8 @@
 .experience-details-dialog {
-  background: none;
   position: fixed;
+  display: flex;
+  margin: 0;
+  background: none;
   border: none;
   overflow: hidden;
 

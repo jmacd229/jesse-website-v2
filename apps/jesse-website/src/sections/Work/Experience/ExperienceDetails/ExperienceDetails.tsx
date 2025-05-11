@@ -24,7 +24,7 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
     if (matchesLargeUp && !areAnimationsEnabled && selectedItem === undefined) {
       setSelectedItem(Object.values(WORK_ITEMS)[0]);
     }
-  }, [areAnimationsEnabled, matchesLargeUp, selectedItem]);
+  }, [areAnimationsEnabled, matchesLargeUp, selectedItem, setSelectedItem]);
 
   const experienceDetailsContent = useMemo(() => {
     if (!selectedItem) {
@@ -38,26 +38,28 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
         id={`${selectedItem.id}-details`}
         className={styles['details-container']}
       >
-        <Heading
-          id={`${selectedItem.id}-title`}
-          className={styles['main-title']}
-          level={4}
-          displayAs={2}
-        >
-          <span>{selectedItem.title}</span>
-          {!isWorkItem && selectedItem.version ? (
-            <span
-              className={styles['version']}
-            >{`Version ${selectedItem.version?.toString()}`}</span>
-          ) : (
-            ''
-          )}
-        </Heading>
-        {isWorkItem && (
-          <Heading className={styles['role-title']} level={5} displayAs={3}>
-            {selectedItem.role}
+        <div className={styles['sticky-header']}>
+          <Heading
+            id={`${selectedItem.id}-title`}
+            className={styles['main-title']}
+            level={4}
+            displayAs={2}
+          >
+            <span>{selectedItem.title}</span>
+            {!isWorkItem && selectedItem.version ? (
+              <span
+                className={styles['version']}
+              >{`Version ${selectedItem.version?.toString()}`}</span>
+            ) : (
+              ''
+            )}
           </Heading>
-        )}
+          {isWorkItem && (
+            <Heading className={styles['role-title']} level={5} displayAs={3}>
+              {selectedItem.role}
+            </Heading>
+          )}
+        </div>
         <Chip.List className={styles['chip-list']}>
           {selectedItem.tools.map((tool) => (
             <Chip key={tool}>{tool}</Chip>

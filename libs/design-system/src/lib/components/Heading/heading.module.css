@@ -54,12 +54,12 @@ h2 {
 
 h1 {
   font-family: 'Inter';
-  font-size: 10rem;
+  font-size: clamp(6rem, 20vw, 10rem);
   line-height: 1;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 300;
   line-height: 1.2;
   letter-spacing: -1px;

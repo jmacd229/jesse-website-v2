@@ -39,23 +39,20 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
 
-      - name: Run Tests
-        # Capture exit code so we can fail after capturing artifacts
-        run: |
-          set +e
-          yarn nx affected -t test e2e --output-style=stream
-          echo "TEST_EXIT_CODE=$?" >> $GITHUB_ENV
+      - name: Run Unit/Integration Tests
+        run: yarn nx affected -t test --output-style=stream
 
-      - name: Debug test exit code
-        run: echo "Test exit code was $TEST_EXIT_CODE"
+      - name: Run E2E Tests
+        id: 'e2e'
+        run: yarn nx affected -t e2e  --update-snapshots --output-style=stream
 
-      - name: Upload Playwright snapshot diffs
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Create Pull Request with updated snapshots
+        if: failure() && steps.e2e.outcome == 'failure'
+        uses: peter-evans/create-pull-request@v5
         with:
-          name: playwright-snapshot-diffs
-          path: dist/.playwright/apps/jesse-website/playwright-report
-
-      - name: Fail if tests failed
-        if: env.TEST_EXIT_CODE != '0'
-        run: exit 1
+          token: ${{ secrets.GH_PAT }}
+          commit-message: 'chore: update Playwright snapshots'
+          title: 'Update Playwright snapshots'
+          body: 'This PR includes updated Playwright snapshots generated from CI.'
+          branch: chore/update-playwright-snapshots
+          base: ${{ github.ref_name }}

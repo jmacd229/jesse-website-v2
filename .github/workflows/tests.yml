@@ -13,8 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
-          filter: tree:0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -59,4 +59,4 @@ jobs:
           body: 'This PR includes updated Playwright snapshots generated from CI.'
           branch: chore/update-playwright-snapshots
           delete-branch: true
-          base: ${{ github.ref_name }}
+          base: ${{ github.head_ref }}

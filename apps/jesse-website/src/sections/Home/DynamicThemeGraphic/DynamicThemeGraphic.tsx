@@ -13,7 +13,7 @@ import {
   useState,
 } from 'react';
 import WebsiteImg from '../../../assets/images/SVG/WebsiteImg';
-import ProfileImage from '../ProfileImage/ProfileImage';
+import JesseProfileImage from './JesseProfileImage';
 import { HEX_COLOR_VALIDATOR } from './constants';
 import styles from './dynamicThemeGraphic.module.css';
 
@@ -55,7 +55,7 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
           loopDelay={5000}
         />
         <div className={styles['jesse']}>
-          <ProfileImage />
+          <JesseProfileImage />
 
           <div className={styles['website']}>
             <WebsiteImg />

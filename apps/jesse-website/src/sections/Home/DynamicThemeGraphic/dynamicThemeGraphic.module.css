@@ -39,7 +39,7 @@
     position: absolute;
     width: 9.5rem;
     top: -4rem;
-    right: 6rem;
+    right: 10rem;
     z-index: 1;
 
     @media (min-width: 1499px) {
@@ -49,13 +49,13 @@
 
   .jesse {
     position: absolute;
-    bottom: -15rem;
+    bottom: -16rem;
     right: -13rem;
     z-index: -1;
 
     @media (max-width: 1500px) {
       bottom: -12rem;
-      right: -5rem;
+      right: -10rem;
     }
   }
 

@@ -1,7 +1,7 @@
 :root {
-  --toggle-width: 3rem;
+  --toggle-width: 2.5rem;
   --toggle-padding: 0.25rem;
-  --toggle-handle-size: 1.25rem;
+  --toggle-handle-size: 1rem;
   --toggle-border-width: 1px;
   --toggle-label-gap: 2rem;
 

@@ -1,5 +1,7 @@
 :root {
   --nav-item-hover-color: var(--primary-500);
+  --nav-item-horizontal-padding: 1rem;
+  --nav-item-vertical-padding: 1rem;
 }
 
 :global(html.dark) {
@@ -15,6 +17,69 @@
   /* Horizontal Navigation */
   @media (max-width: 1499px) {
     height: 4rem;
+  }
+}
+
+/* The nav group is only used to supply an a11y role */
+.nav-group {
+  display: contents;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  padding: var(--nav-item-vertical-padding) var(--nav-item-horizontal-padding);
+  gap: 0.5rem;
+  align-items: flex-end;
+  overflow: hidden;
+  font-size: 1rem;
+
+  svg {
+    flex-shrink: 0;
+    transition: color var(--animation);
+  }
+
+  .icon-text {
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 500;
+    transition: max-width 0.5s ease-in, max-height 0.5s ease-in;
+
+    /* Touch screen can always see the text labels since hover is not possible */
+    @media (pointer: coarse) {
+      max-width: 200px !important;
+      max-height: 200px !important;
+    }
+  }
+
+  /* Pseudo element used for underline animation*/
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0%;
+    height: 1px;
+    background-color: var(--primary-400);
+    bottom: 0.5rem;
+
+    transition: width 0.5s ease-in;
+  }
+
+  &:hover,
+  &:focus {
+    .icon-text {
+      max-width: 200px;
+    }
+
+    &::after {
+      width: calc(100% - (var(--nav-item-horizontal-padding) * 2));
+    }
+
+    svg {
+      animation: rotate 350ms ease-out 1;
+      color: var(--nav-item-hover-color);
+    }
   }
 }
 
@@ -110,70 +175,6 @@
     }
     &::after {
       width: 0;
-    }
-  }
-}
-
-/* The nav group is only used to supply an a11y role */
-.nav-group {
-  display: contents;
-}
-
-.nav-item {
-  --nav-item-horizontal-padding: 1rem;
-  --nav-item-vertical-padding: 1rem;
-  position: relative;
-  display: flex;
-  padding: var(--nav-item-vertical-padding) var(--nav-item-horizontal-padding);
-  gap: 0.5rem;
-  align-items: flex-end;
-  overflow: hidden;
-  font-size: 1rem;
-
-  svg {
-    flex-shrink: 0;
-    transition: color var(--animation);
-  }
-
-  .icon-text {
-    max-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: 500;
-    transition: max-width 0.5s ease-in, max-height 0.5s ease-in;
-
-    @media (pointer: coarse) {
-      max-width: 200px !important;
-      max-height: 200px !important;
-    }
-  }
-
-  /* Pseudo element used for underline animation*/
-  &::after {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 0%;
-    height: 1px;
-    background-color: var(--primary-400);
-    bottom: 0.5rem;
-
-    transition: width 0.5s ease-in;
-  }
-
-  &:hover,
-  &:focus {
-    .icon-text {
-      max-width: 200px;
-    }
-
-    &::after {
-      width: calc(100% - (var(--nav-item-horizontal-padding) * 2));
-    }
-
-    svg {
-      animation: rotate 350ms ease-out 1;
-      color: var(--nav-item-hover-color);
     }
   }
 }

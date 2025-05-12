@@ -1,8 +1,8 @@
 import { Animation, Card, Heading, Link } from '@jmacd229/design-system';
 
 import DynamicThemeGraphic from './DynamicThemeGraphic/DynamicThemeGraphic';
+import JesseProfileImage from './DynamicThemeGraphic/JesseProfileImage';
 import styles from './home.module.css';
-import ProfileImage from './ProfileImage/ProfileImage';
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
           <Heading className={styles['sub-title']} level={2}>
             A front-end web engineer based in Toronto
           </Heading>
-          <ProfileImage className={styles['jesse']} />
+          <JesseProfileImage className={styles['jesse']} />
         </div>
 
         <Card className={styles['intro-card']} elevation="1">

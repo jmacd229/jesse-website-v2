@@ -1,5 +1,6 @@
 .experience-container {
   --details-window-gap: 8rem;
+  margin-bottom: 3rem;
   display: grid;
   column-gap: var(--details-window-gap);
   grid-template-columns: 100% 0%;

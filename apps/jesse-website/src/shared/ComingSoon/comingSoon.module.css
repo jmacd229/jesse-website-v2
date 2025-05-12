@@ -1,0 +1,21 @@
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.coming-soon-card {
+  position: relative;
+}
+
+.hammer {
+  --animation-width: 6rem;
+
+  position: absolute;
+  width: var(--animation-width);
+  right: 0;
+  top: calc(var(--animation-width) * -0.9);
+  scale: -1 1;
+}

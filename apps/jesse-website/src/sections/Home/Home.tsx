@@ -26,10 +26,8 @@ const Home = () => {
           <br />
           <br />
           If you'd like to know more about the work I've done (including this
-          website) visit the <Link to="work">Work</Link> section below. If you
-          want to know more about myself then check out the{' '}
-          <Link to="about">About Me</Link> section. If you're looking to get in
-          touch with me, please send me a message on my{' '}
+          website) visit the <Link to="work">Work</Link> section below. If
+          you're looking to get in touch with me, please send me a message on my{' '}
           <Link
             to="https://www.linkedin.com/in/jesse-macdougall-6709b7114/"
             isExternal

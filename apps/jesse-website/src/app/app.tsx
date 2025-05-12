@@ -3,6 +3,7 @@ import {
   Navigation,
   ThemeToggle,
 } from '@jmacd229/design-system';
+import About from '../sections/About/About';
 import Home from '../sections/Home/Home';
 import Work from '../sections/Work/Work';
 import styles from './app.module.css';
@@ -18,7 +19,7 @@ export function App() {
           <Navigation.Item id="work" icon="Work">
             Work
           </Navigation.Item>
-          <Navigation.Item id="about" icon="About">
+          <Navigation.Item id="about" icon="About" isUnavailable>
             About Me
           </Navigation.Item>
         </Navigation.Group>
@@ -29,6 +30,7 @@ export function App() {
         <div className={styles['sections']}>
           <Home />
           <Work />
+          <About />
         </div>
       </main>
     </div>

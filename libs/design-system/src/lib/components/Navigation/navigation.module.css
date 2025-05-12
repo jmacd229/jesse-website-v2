@@ -203,6 +203,31 @@
   }
 }
 
+.coming-soon,
+.coming-soon:hover {
+  cursor: default;
+
+  svg {
+    color: var(--neutral-300);
+  }
+
+  .icon-text {
+    color: var(--neutral-600);
+  }
+
+  .coming-soon-text {
+    position: absolute;
+    top: 25%;
+    rotate: -10deg;
+    color: var(--secondary-700);
+    transition-duration: 100ms;
+  }
+
+  &::after {
+    display: none;
+  }
+}
+
 @keyframes rotate {
   from {
     transform: rotateY(20deg);

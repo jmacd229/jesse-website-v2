@@ -39,7 +39,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 6rem;
   flex: 1;
 
   > *:first-child {

@@ -46,10 +46,10 @@ export const JESSE_V1: ProjectHistoryItem = {
       <ExperienceDetailsDescriptionHeading icon="Puzzle">
         Creative Problem Solving
       </ExperienceDetailsDescriptionHeading>
-      Proud of early custom solutions built without formal React knowledge—such
-      as a self-made FadeIn component to sequentially animate a
-      list—demonstrating initiative and inventive thinking before mastering
-      standard best practices.
+      Proud of early custom solutions built without formal React knowledge,
+      like a self-made FadeIn component to sequentially animate a list. It
+      showed initiative and inventive thinking before I'd mastered standard
+      best practices.
       <ExperienceDetailsDescriptionImage
         src={jesse_v1}
         alt={`Previous version of Jesse MacDougall's portfolio website. The following text can be found inside: Hi, I'm Jesse. A full-stack web developer based in Toronto. Sorry, this site is still in progress - please check back later for updates! Unfortunately, while this website has been an enjoyable personal project of mine, it can still be difficult to find time to work on it. I work as a full-time developer throughout the week, while also working on the occasional side project. This site was originally developed when I had little experince with React, and I have devoted a fair amount of time into refactoring it with more performant and maintainable/readable solutions. I will continue to make updates as often as I can, and if you'd like to check in on the progress, you can view the public GitHub repo for this site. Finally, if you'd like to read more about me and my work history, or to contact me, please visit my LinkedIn profile`}

@@ -8,6 +8,8 @@ import {
 import warnOnMissingWindowScript from '../warnOnMissingWindowScript';
 import { Theme, ThemeContextProps } from './types';
 
+export * from './types';
+
 const ThemeContext = createContext<ThemeContextProps>({
   currentTheme: 'light',
   setTheme: () => void 0,

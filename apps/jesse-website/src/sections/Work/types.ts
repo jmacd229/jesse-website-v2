@@ -1,4 +1,4 @@
-import { IconType } from '@jmacd229/design-system';
+import type { IconType, Theme } from '@jmacd229/design-system';
 import { ReactNode } from 'react';
 
 export type Tool =
@@ -39,13 +39,18 @@ export type Tool =
   | 'Vite'
   | 'CSS Modules'
   | 'Playwright'
-  | 'Vitest';
+  | 'Vitest'
+  | 'Electron'
+  | 'React Query'
+  | 'Zustand'
+  | 'Motion'
+  | 'dnd-kit';
 
 type BaseWorkItem = {
   id: string;
   title: string;
   icon?: ReactNode;
-  iconImg?: { src: string; alt: string };
+  iconImg?: { src: string | Record<Theme, string>; alt: string };
   tools: Tool[];
   content: ReactNode;
 };

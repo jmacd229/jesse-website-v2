@@ -1,4 +1,4 @@
-import { HTMLProps, PropsWithChildren } from 'react';
+import { createElement, HTMLProps, JSX, PropsWithChildren } from 'react';
 import style from './heading.module.css';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -27,9 +27,11 @@ export const Heading = ({
         centered && style['centered']
       }`}
     >
-      <Tag aria-level={level} className={style['heading']} {...rest}>
-        {children}
-      </Tag>
+      {createElement(
+        Tag,
+        { 'aria-level': level, className: style['heading'], ...rest },
+        children
+      )}
       {level === 1 && (
         <h1 aria-hidden className={style['heading-shadow']}>
           {children}

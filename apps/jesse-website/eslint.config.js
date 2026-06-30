@@ -3,7 +3,10 @@ const nx = require('@nx/eslint-plugin');
 const baseConfig = require('../../eslint.config.js');
 
 module.exports = [
-  playwright.configs['flat/recommended'],
+  {
+    ...playwright.configs['flat/recommended'],
+    files: ['e2e/**/*.ts'],
+  },
 
   ...baseConfig,
   ...nx.configs['flat/react'],

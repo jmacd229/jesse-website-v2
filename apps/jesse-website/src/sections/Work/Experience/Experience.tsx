@@ -84,6 +84,8 @@ const Experience = () => {
                 >
                   <SpotlightWorkNode item={PROJECT_ITEMS.JESSE_V2} />
                 </Badge>
+                <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
+                <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />
                 <SpotlightWorkNode item={PROJECT_ITEMS.ALICIA_V2} />
               </Tree.Branch>
               <SpotlightWorkNode item={WORK_ITEMS.PRODIGY} />

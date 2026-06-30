@@ -35,8 +35,8 @@ const CANADA_LIFE: WorkHistoryItem = {
       </ExperienceDetailsDescriptionHeading>
       Supported critical production systems written in ASP.NET, VB.NET, and C#.
       Served in a 24/7 on-call rotation, debugging legacy Windows/Unix systems
-      and C programs—gaining early experience in high-pressure, low-support
-      environments.
+      and C programs, which gave me early experience working in high-pressure,
+      low-support environments.
       <ExperienceDetailsDescriptionHeading icon="Work">
         Full-stack Development
       </ExperienceDetailsDescriptionHeading>

@@ -54,3 +54,6 @@ vite.config.*.timestamp*
 
 # Ignore macOS visual snapshots
 **/*-snapshots/*-darwin.png
+
+# Local Claude Code instructions (not shared with other contributors)
+CLAUDE.local.md

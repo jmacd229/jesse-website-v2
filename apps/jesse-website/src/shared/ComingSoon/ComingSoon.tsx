@@ -8,7 +8,7 @@ import {
 } from '@jmacd229/design-system';
 
 import { useMemo } from 'react';
-import henryImg from '../../assets/images/henry.png';
+import henryImg from '../../assets/images/henry.webp';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import styles from './comingSoon.module.css';
 

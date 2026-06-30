@@ -1,8 +1,8 @@
 import { Icon } from '@jmacd229/design-system';
 import AliciaWebsiteV1 from '../../../../assets/images/SVG/AliciaWebsiteV1';
 import AliciaWebsiteV2 from '../../../../assets/images/SVG/AliciaWebsiteV2';
-import alicia_v1 from '../../../../assets/images/alicia_v1.jpg';
-import alicia_v2 from '../../../../assets/images/alicia_v2.jpg';
+import alicia_v1 from '../../../../assets/images/alicia_v1.webp';
+import alicia_v2 from '../../../../assets/images/alicia_v2.webp';
 import ExperienceDetailsDescriptionHeading from '../../Experience/ExperienceDetails/ExperienceDetailsDescriptionHeading/ExperienceDetailsDescriptionHeading';
 import ExperienceDetailsDescriptionImage from '../../Experience/ExperienceDetails/ExperienceDetailsDescriptionImage/ExperienceDetailsDescriptionImage';
 import { ProjectHistoryItem } from '../../types';

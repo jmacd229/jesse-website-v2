@@ -49,7 +49,7 @@ export const Animation = ({
 
   // In the case of a loopDelay, we set an interval to play the animation at
   useEffect(() => {
-    let timer: NodeJS.Timer | undefined;
+    let timer: NodeJS.Timeout | undefined;
     if (animationRef && loopDelay && areAnimationsEnabled) {
       timer = setInterval(() => {
         animationRef?.stop();

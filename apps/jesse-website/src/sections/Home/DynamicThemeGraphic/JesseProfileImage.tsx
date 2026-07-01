@@ -1,4 +1,4 @@
-import jesseImg from '../../../assets/images/jesse.png';
+import jesseImg from '../../../assets/images/jesse.webp';
 import ProfileImage from '../../../shared/ProfileImage/ProfileImage';
 
 const JesseProfileImage = ({ className }: { className?: string }) => (

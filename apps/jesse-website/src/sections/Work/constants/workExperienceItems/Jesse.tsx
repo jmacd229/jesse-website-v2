@@ -1,7 +1,7 @@
 import { Icon } from '@jmacd229/design-system';
 import JesseWebsiteV2 from '../../../../assets/images/SVG/JesseWebsiteV2';
-import jesse_v1_logo from '../../../../assets/images/jesse-website-v1.png';
-import jesse_v1 from '../../../../assets/images/jesse_v1.jpg';
+import jesse_v1_logo from '../../../../assets/images/jesse-website-v1.webp';
+import jesse_v1 from '../../../../assets/images/jesse_v1.webp';
 import ExperienceDetailsDescriptionHeading from '../../Experience/ExperienceDetails/ExperienceDetailsDescriptionHeading/ExperienceDetailsDescriptionHeading';
 import ExperienceDetailsDescriptionImage from '../../Experience/ExperienceDetails/ExperienceDetailsDescriptionImage/ExperienceDetailsDescriptionImage';
 import { ProjectHistoryItem } from '../../types';

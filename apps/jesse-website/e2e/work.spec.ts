@@ -1,4 +1,5 @@
 import { expect, Page, test } from '@playwright/test';
+import { waitForImagesLoaded } from './utils/waitForImagesLoaded';
 
 test.describe('Work Section', () => {
   const navigateToWorkSection = async (page: Page) => {
@@ -6,6 +7,7 @@ test.describe('Work Section', () => {
     await page
       .getByRole('heading', { name: 'My Work' })
       .evaluate((heading) => heading.scrollIntoView());
+    await waitForImagesLoaded(page);
   };
 
   test('light mode matches snapshot', async ({ page }) => {

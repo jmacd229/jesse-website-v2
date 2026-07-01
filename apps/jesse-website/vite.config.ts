@@ -31,6 +31,7 @@ export default defineConfig({
   },
   plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   resolve: {
+    preserveSymlinks: true,
     alias: [
       {
         find: 'test-utils',

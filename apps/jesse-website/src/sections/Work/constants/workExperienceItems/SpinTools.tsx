@@ -1,6 +1,6 @@
 import { Icon } from '@jmacd229/design-system';
-import spin_tools_logo from '../../../../assets/images/spintools.png';
-import spin_tools_logo_dark from '../../../../assets/images/spintools_dark.png';
+import spin_tools_logo from '../../../../assets/images/spintools.webp';
+import spin_tools_logo_dark from '../../../../assets/images/spintools_dark.webp';
 import ExperienceDetailsDescriptionHeading from '../../Experience/ExperienceDetails/ExperienceDetailsDescriptionHeading/ExperienceDetailsDescriptionHeading';
 import { ProjectHistoryItem } from '../../types';
 

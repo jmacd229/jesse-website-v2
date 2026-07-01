@@ -8,7 +8,6 @@ import {
 import {
   CSSProperties,
   HTMLAttributes,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -21,9 +20,15 @@ type DynamicThemeGraphicProps = HTMLAttributes<HTMLDivElement>;
 
 const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
   const [colorInputValue, setColorInputValue] = useState('8500BB');
-  const [graphicThemeColor, setGraphicThemeColor] =
-    useState<HexString>('#8500BB');
   const { getCSSColor } = useCSS();
+
+  const graphicThemeColor = useMemo<HexString>(
+    () =>
+      HEX_COLOR_VALIDATOR.test(colorInputValue)
+        ? `#${colorInputValue}`
+        : '#8500BB',
+    [colorInputValue]
+  );
 
   const htmlAnimationData = useMemo(
     () =>
@@ -34,12 +39,6 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
       ),
     [graphicThemeColor, getCSSColor]
   );
-
-  useEffect(() => {
-    if (HEX_COLOR_VALIDATOR.test(colorInputValue)) {
-      setGraphicThemeColor(`#${colorInputValue}`);
-    }
-  }, [colorInputValue]);
 
   return (
     <div

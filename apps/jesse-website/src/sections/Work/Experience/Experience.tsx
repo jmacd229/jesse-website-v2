@@ -49,9 +49,9 @@ const Experience = () => {
       getAnimation(
         dynamicAnimations.gearAnimation,
         getCSSColor('--primary-500'),
-        getCSSColor('--neutral-700')
+        getCSSColor('--neutral-700'),
       ),
-    [getCSSColor]
+    [getCSSColor],
   );
 
   return (
@@ -75,6 +75,7 @@ const Experience = () => {
         <div className={styles['experience-container']}>
           <div className={styles['experience-items']}>
             <Tree>
+              <SpotlightWorkNode item={WORK_ITEMS.EMPLOYMENT_HERO} />
               <SpotlightWorkNode item={WORK_ITEMS.HUMI} />
               <Tree.Branch>
                 <Badge

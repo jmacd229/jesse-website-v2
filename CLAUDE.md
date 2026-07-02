@@ -63,6 +63,14 @@ All resume/project content is defined as plain data objects in `apps/jesse-websi
 
 SVGs used as company/project icons are React components in `apps/jesse-website/src/assets/images/SVG/`. Static raster images (`.png`, `.jpg`) are also in `src/assets/images/`. Work items reference icons either as a JSX `icon` prop (SVG component) or an `iconImg` prop (`{ src, alt }` for raster images).
 
+### Adding icons to the design system
+
+Icons in `libs/design-system/src/lib/icons/` are sourced from [Lucide](https://lucide.dev) at size 32, stroke-width 1. To add a new one:
+
+1. Pull the SVG for the desired icon from Lucide at 32px / stroke-width 1.
+2. Convert it to a `.tsx` file in `libs/design-system/src/lib/icons/` (e.g. `Brain.tsx`), matching the existing pattern — a default-exported function component spreading `React.SVGProps<SVGSVGElement>` onto the `<svg>`, with no hard-coded `className`.
+3. Import it and add it to the `Icon` object in `libs/design-system/src/lib/icons/index.ts`, alphabetically.
+
 ### Dynamic animations in the design system
 
 The `libs/design-system/src/assets/animations/dynamic/` directory contains SVG-based animations that accept color overrides so they render correctly in both light and dark modes. See the README in that directory. Static Lottie animations (`light.json`, `dark.json`, `rocket.json`) are loaded via the `Animation` component, which uses `lottie-web`.

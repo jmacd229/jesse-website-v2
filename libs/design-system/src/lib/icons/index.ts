@@ -3,6 +3,7 @@ import Accessibility from './Accessibility';
 import Android from './Android';
 import BackEnd from './BackEnd';
 import Blocks from './Blocks';
+import Brain from './Brain';
 import Bug from './Bug';
 import Close from './Close';
 import Compass from './Compass';
@@ -12,12 +13,16 @@ import Files from './Files';
 import FrontEnd from './FrontEnd';
 import GitFolder from './GitFolder';
 import GitHub from './GitHub';
+import Globe from './Globe';
+import Handshake from './Handshake';
 import Help from './Help';
 import Home from './Home';
 import Learn from './Learn';
 import Link from './Link';
+import ListMusic from './ListMusic';
 import Lock from './Lock';
 import Mountain from './Mountain';
+import Move from './Move';
 import Pause from './Pause';
 import Play from './Play';
 import Puzzle from './Puzzle';
@@ -26,6 +31,7 @@ import Replace from './Replace';
 import Responsive from './Responsive';
 import Scale from './Scale';
 import Speed from './Speed';
+import Table from './Table';
 import Target from './Target';
 import Test from './Test';
 import Work from './Work';
@@ -49,6 +55,8 @@ export const Icon = {
   Design,
   FrontEnd,
   BackEnd,
+  Globe,
+  Handshake,
   Help,
   Speed,
   Bug,
@@ -64,6 +72,10 @@ export const Icon = {
   Puzzle,
   Scale,
   Blocks,
+  Brain,
+  Move,
+  Table,
+  ListMusic,
 };
 
 export * from './types';

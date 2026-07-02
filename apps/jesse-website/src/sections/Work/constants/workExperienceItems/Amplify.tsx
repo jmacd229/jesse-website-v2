@@ -25,7 +25,7 @@ export const AMPLIFY: ProjectHistoryItem = {
       </ExperienceDetailsDescriptionHeading>
       Continuously iterated on the shared MUI theme: light and dark palettes
       from design tokens, with overrides across nearly every component.
-      <ExperienceDetailsDescriptionHeading icon="Puzzle">
+      <ExperienceDetailsDescriptionHeading icon="Move">
         Drag-and-Drop at the Core
       </ExperienceDetailsDescriptionHeading>
       Built the music planner with dnd-kit, integrating the complex multi-column

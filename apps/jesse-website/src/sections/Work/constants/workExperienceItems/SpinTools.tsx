@@ -30,18 +30,18 @@ export const SPIN_TOOLS: ProjectHistoryItem = {
       Joined at the project's start and helped establish the Electron shell and
       shared type system, using path aliasing to keep types in sync between the
       main process and renderer without a separate package.
-      <ExperienceDetailsDescriptionHeading icon="Replace">
-        Spotify Playlist Import
-      </ExperienceDetailsDescriptionHeading>
-      Built the first multi-source import flow: a drag-and-drop URL component
-      with immediate validation, backed by a Zustand store that normalized
-      Spotify API responses.
-      <ExperienceDetailsDescriptionHeading icon="Repeat">
+      <ExperienceDetailsDescriptionHeading icon="Table">
         A Table Component Built Once, Used Everywhere
       </ExperienceDetailsDescriptionHeading>
       Built the DataTable component used across the app on top of TanStack
       Table, with row virtualization and a Zustand store that persists each
       table's column layout.
+      <ExperienceDetailsDescriptionHeading icon="ListMusic">
+        Spotify Playlist Import
+      </ExperienceDetailsDescriptionHeading>
+      Built the first multi-source import flow: a drag-and-drop URL component
+      with immediate validation, backed by a Zustand store that normalized
+      Spotify API responses.
     </div>
   ),
 };

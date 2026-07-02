@@ -7,6 +7,7 @@ const HUMI: WorkHistoryItem = {
   title: 'Humi',
   icon: <Humi />,
   startDate: '2022',
+  endDate: '2025',
   role: 'Staff Developer (Front-end) - Platform Team',
   content: (
     <div>

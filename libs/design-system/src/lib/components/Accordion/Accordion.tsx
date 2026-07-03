@@ -1,9 +1,13 @@
-import { HTMLAttributes, PropsWithChildren, ReactNode, useState } from 'react';
-import { OnActivateProps } from '../../utilities/onActivateProps';
+import {
+  ButtonHTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+  useState,
+} from 'react';
 import styles from './accordion.module.css';
 
 export type AccordionProps = PropsWithChildren<
-  Omit<HTMLAttributes<HTMLDivElement>, 'title'> & {
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'> & {
     title: ReactNode;
     onOpen?: () => void;
     onClose?: () => void;
@@ -31,14 +35,13 @@ export const Accordion = ({
   };
 
   return (
-    <div
+    <button
+      type="button"
       className={`${styles['accordion']} ${
         isExpanded && styles['expanded']
       } ${className}`}
-      tabIndex={0}
-      role="button"
       aria-expanded={isExpanded}
-      {...OnActivateProps(handleToggle)}
+      onClick={handleToggle}
       {...rest}
     >
       <div className={styles['title']}>{title}</div>
@@ -47,6 +50,6 @@ export const Accordion = ({
           {children}
         </div>
       </div>
-    </div>
+    </button>
   );
 };

@@ -4,12 +4,11 @@ import {
   dynamicAnimations,
   getAnimation,
   Heading,
-  OnActivateProps,
   Tree,
   useCSS,
 } from '@jmacd229/design-system';
 
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { PROJECT_ITEMS, WORK_ITEMS } from '../constants';
 import { ProjectHistoryItem, WorkHistoryItem } from '../types';
 import styles from './experience.module.css';
@@ -22,17 +21,18 @@ import WorkItem from './WorkItem/WorkItem';
 
 const SpotlightWorkNode = ({
   item,
+  badge,
 }: {
   item: WorkHistoryItem | ProjectHistoryItem;
+  badge?: ReactNode;
 }) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
   return (
     <Tree.Node
-      tabIndex={0}
-      role="button"
+      badge={badge}
       aria-expanded={selectedItem?.id === item.id}
       aria-owns={`${selectedItem?.id}-details`}
-      {...OnActivateProps(() => setSelectedItem(item))}
+      onClick={() => setSelectedItem(item)}
       className={`${styles['spotlight-hover']} ${
         selectedItem?.id === item.id && styles['active']
       }`}
@@ -78,13 +78,16 @@ const Experience = () => {
               <SpotlightWorkNode item={WORK_ITEMS.EMPLOYMENT_HERO} />
               <SpotlightWorkNode item={WORK_ITEMS.HUMI} />
               <Tree.Branch>
-                <Badge
-                  position="top-left"
-                  content="This site!"
-                  role="presentation"
-                >
-                  <SpotlightWorkNode item={PROJECT_ITEMS.JESSE_V2} />
-                </Badge>
+                <SpotlightWorkNode
+                  item={PROJECT_ITEMS.JESSE_V2}
+                  badge={
+                    <Badge
+                      position="top-left"
+                      content="This site!"
+                      role="presentation"
+                    />
+                  }
+                />
                 <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
                 <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />
                 <SpotlightWorkNode item={PROJECT_ITEMS.ALICIA_V2} />

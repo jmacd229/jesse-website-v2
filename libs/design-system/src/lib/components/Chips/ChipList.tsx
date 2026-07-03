@@ -2,13 +2,11 @@ import { HTMLProps, PropsWithChildren } from 'react';
 
 import styles from './chips.module.css';
 
-type ChipListProps = PropsWithChildren<HTMLProps<HTMLDivElement>>;
+type ChipListProps = PropsWithChildren<HTMLProps<HTMLUListElement>>;
 
 const ChipList = ({ children, className }: ChipListProps) => {
   return (
-    <div role="list" className={`${styles['chip-list']} ${className}`}>
-      {children}
-    </div>
+    <ul className={`${styles['chip-list']} ${className}`}>{children}</ul>
   );
 };
 

@@ -17,7 +17,7 @@ const NavigationItem = ({
 }: NavigationItemProps) => {
   const IconElement = Icon[icon];
   return (
-    <div role="listitem">
+    <li>
       <Link
         disabled={isUnavailable}
         tabIndex={isUnavailable ? -1 : 0}
@@ -40,7 +40,7 @@ const NavigationItem = ({
         )}
         <div className={style[`icon-text`]}>{children}</div>
       </Link>
-    </div>
+    </li>
   );
 };
 

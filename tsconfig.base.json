@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "paths": {
       "@jmacd229/design-system": ["./libs/design-system/src/index.ts"],
-      "@test-utils/*": ["./test-utils/*"]
+      "@test-utils/*": ["./test-utils/*"],
+      "test-utils": ["./test-utils/index.tsx"]
     }
   },
   "exclude": ["node_modules", "tmp"]

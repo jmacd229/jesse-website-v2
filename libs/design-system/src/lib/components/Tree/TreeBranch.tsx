@@ -3,11 +3,9 @@ import styles from './tree.module.css';
 
 const TreeBranch = ({ children }: PropsWithChildren) => {
   return (
-    <div className={styles['tree-branch']} role="listitem">
-      <div role="list" className={styles['tree-root']}>
-        {children}
-      </div>
-    </div>
+    <li className={styles['tree-branch']}>
+      <ul className={styles['tree-root']}>{children}</ul>
+    </li>
   );
 };
 

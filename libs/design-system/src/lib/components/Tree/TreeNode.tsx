@@ -1,17 +1,24 @@
-import { HTMLProps, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import styles from './tree.module.css';
 
-const TreeNode = ({
-  children,
-  className,
-  ...rest
-}: PropsWithChildren<HTMLProps<HTMLDivElement>>) => {
+type TreeNodeProps = PropsWithChildren<
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    badge?: ReactNode;
+  }
+>;
+
+const TreeNode = ({ children, className, badge, ...rest }: TreeNodeProps) => {
   return (
-    <div role="listitem" className={styles['tree-node']}>
-      <div className={`${className} ${styles['tree-node-content']}`} {...rest}>
+    <li className={styles['tree-node']}>
+      {badge}
+      <button
+        type="button"
+        className={`${className} ${styles['tree-node-content']}`}
+        {...rest}
+      >
         {children}
-      </div>
-    </div>
+      </button>
+    </li>
   );
 };
 

@@ -28,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Run Lint
+        run: yarn nx affected -t lint --output-style=stream
+
+      - name: Run Typecheck
+        run: yarn nx affected -t typecheck --output-style=stream
+
       - name: Run Unit/Integration Tests
         run: yarn nx affected -t test --output-style=stream
 

@@ -1,6 +1,6 @@
 import {
   Animation,
-  Badge,
+  BadgeProps,
   dynamicAnimations,
   getAnimation,
   Heading,
@@ -8,7 +8,7 @@ import {
   useCSS,
 } from '@jmacd229/design-system';
 
-import { ReactNode, useMemo } from 'react';
+import { useMemo } from 'react';
 import { PROJECT_ITEMS, WORK_ITEMS } from '../constants';
 import { ProjectHistoryItem, WorkHistoryItem } from '../types';
 import styles from './experience.module.css';
@@ -24,7 +24,7 @@ const SpotlightWorkNode = ({
   badge,
 }: {
   item: WorkHistoryItem | ProjectHistoryItem;
-  badge?: ReactNode;
+  badge?: BadgeProps;
 }) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
   return (
@@ -80,13 +80,11 @@ const Experience = () => {
               <Tree.Branch>
                 <SpotlightWorkNode
                   item={PROJECT_ITEMS.JESSE_V2}
-                  badge={
-                    <Badge
-                      position="top-left"
-                      content="This site!"
-                      role="presentation"
-                    />
-                  }
+                  badge={{
+                    position: 'top-left',
+                    content: 'This site!',
+                    role: 'presentation',
+                  }}
                 />
                 <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
                 <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />

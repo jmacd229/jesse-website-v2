@@ -3,7 +3,7 @@ import { BadgePosition } from './types';
 
 import styles from './badge.module.css';
 
-type BadgeProps = PropsWithChildren<
+export type BadgeProps = PropsWithChildren<
   HTMLProps<HTMLDivElement> & {
     position: BadgePosition;
     content: ReactNode;

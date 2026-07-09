@@ -1,13 +1,19 @@
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/libs/design-system',
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    nxViteTsPaths(),
+    nxCopyAssetsPlugin(['*.md']),
+  ],
   css: { transformer: 'lightningcss' },
   test: {
     watch: false,

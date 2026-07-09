@@ -57,3 +57,4 @@ vite.config.*.timestamp*
 
 # Local Claude Code instructions (not shared with other contributors)
 CLAUDE.local.md
+.token-savior-cache.json

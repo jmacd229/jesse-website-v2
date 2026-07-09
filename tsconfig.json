@@ -1,0 +1,8 @@
+{
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    { "path": "./apps/jesse-website" },
+    { "path": "./libs/design-system" }
+  ]
+}

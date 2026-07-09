@@ -1,4 +1,4 @@
-import { render, RenderOptions } from '@testing-library/react';
+import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ReactElement, ReactNode } from 'react';
 
@@ -18,7 +18,7 @@ const AllTheProviders = ({ children }: { children: ReactNode }) => {
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) => {
+): RenderResult & { user: ReturnType<typeof userEvent.setup> } => {
   return {
     user: userEvent.setup(),
     ...render(ui, { wrapper: AllTheProviders, ...options }),

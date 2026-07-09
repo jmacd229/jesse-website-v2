@@ -2,6 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "composite": true,
+    "declaration": true,
     "types": [
       "vitest/globals",
       "vitest/importMeta",
@@ -27,5 +29,9 @@
     "../../test-utils/*.ts",
     "../../test-utils/*.tsx",
     "../../test-utils/*.js",
+  ],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "../../libs/design-system/tsconfig.lib.json" }
   ]
 }

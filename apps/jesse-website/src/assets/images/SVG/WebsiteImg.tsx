@@ -6,7 +6,6 @@ export default () => (
     height="451.84"
     viewBox="0 0 654.016 451.84"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    role="img"
   >
     <g
       id="Group_266"

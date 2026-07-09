@@ -20,9 +20,12 @@
   }
 }
 
-/* The nav group is only used to supply an a11y role */
+/* The nav group is only used to supply a11y list semantics */
 .nav-group {
   display: contents;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {

@@ -1,7 +1,8 @@
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -29,7 +30,12 @@ export default defineConfig({
     port: 4300,
     host: 'localhost',
   },
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    tsconfigPaths(),
+    viteStaticCopy({ targets: [{ src: 'README.md', dest: '.' }] }),
+  ],
   resolve: {
     preserveSymlinks: true,
     alias: [
@@ -37,6 +43,16 @@ export default defineConfig({
         find: 'test-utils',
         replacement: fileURLToPath(
           new URL('../../test-utils', import.meta.url)
+        ),
+      },
+      {
+        find: /^@jmacd229\/design-system\//,
+        replacement: `${fileURLToPath(new URL('../../libs/design-system/', import.meta.url))}/`,
+      },
+      {
+        find: '@jmacd229/design-system',
+        replacement: fileURLToPath(
+          new URL('../../libs/design-system/src/index.ts', import.meta.url)
         ),
       },
     ],

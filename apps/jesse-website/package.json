@@ -1,6 +1,7 @@
 {
   "name": "jesse-website",
   "version": "0.0.0",
+  "type": "module",
   "dependencies": {
     "@jmacd229/design-system": "1.0.1",
     "react": "^19.2.7",

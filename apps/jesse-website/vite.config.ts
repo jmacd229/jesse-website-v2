@@ -2,7 +2,6 @@ import babel from '@rolldown/plugin-babel';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -33,10 +32,10 @@ export default defineConfig({
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] }),
-    tsconfigPaths(),
     viteStaticCopy({ targets: [{ src: 'README.md', dest: '.' }] }),
   ],
   resolve: {
+    tsconfigPaths: true,
     preserveSymlinks: true,
     alias: [
       {

@@ -1,14 +1,15 @@
-import {
-  Card,
-  Chip,
-  Heading,
-  Icon,
-  useBreakpoint,
-} from '@jmacd229/design-system';
+import { Chip, Heading, Icon, useBreakpoint } from '@jmacd229/design-system';
 import { useExperienceContext } from '../ExperienceContext';
 
+import { AnimatePresence, motion } from 'motion/react';
 import { HTMLProps, useMemo } from 'react';
 import { itemIsWorkHistory } from '../utilities';
+import {
+  AnimatedCard,
+  cardRevealVariants,
+  cardWipeVariants,
+  contentVariants,
+} from './ExperienceDetails.animations';
 import styles from './experienceDetails.module.css';
 import ExperienceDetailsMobileDialog from './ExperienceDetailsMobileDialog/ExperienceDetailsMobileDialog';
 
@@ -60,26 +61,60 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
     );
   }, [selectedItem]);
 
-  if (!experienceDetailsContent) {
-    return undefined;
-  }
-
   if (matchesLargeUp) {
     return (
-      <Card
-        elevation="0"
+      <div
         className={`${styles['experience-details']} ${className}`}
+        data-open={selectedItem ? '' : undefined}
       >
-        <button
-          className={styles['close-button']}
-          onClick={() => setSelectedItem(undefined)}
-          aria-label={`Close ${selectedItem?.title}`}
-        >
-          <Icon.Close />
-        </button>
-        <div>{experienceDetailsContent}</div>
-      </Card>
+        {/* Animate Card presence */}
+        <AnimatePresence>
+          {selectedItem && (
+            <>
+              {/* Overall Card wipe in/out animation */}
+              <AnimatedCard
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                elevation="0"
+                variants={cardWipeVariants}
+              >
+                {/* Delays the Card content appearing until wipe animation is done */}
+                <motion.div variants={cardRevealVariants}>
+                  {/* Fades content when switching between cards*/}
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.div
+                      key={selectedItem.id}
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      {experienceDetailsContent}
+                    </motion.div>
+                  </AnimatePresence>
+                </motion.div>
+              </AnimatedCard>
+              <motion.button
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={cardRevealVariants}
+                className={styles['close-button']}
+                onClick={() => setSelectedItem(undefined)}
+                aria-label={`Close ${selectedItem.title}`}
+              >
+                <Icon.Close />
+              </motion.button>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
     );
+  }
+
+  if (!experienceDetailsContent) {
+    return undefined;
   }
 
   return (

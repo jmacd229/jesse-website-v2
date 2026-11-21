@@ -76,8 +76,9 @@ const Experience = () => {
           <div className={styles['experience-items']}>
             <Tree>
               <SpotlightWorkNode item={WORK_ITEMS.EMPLOYMENT_HERO} />
-              <SpotlightWorkNode item={WORK_ITEMS.HUMI} />
               <Tree.Branch>
+                <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
+                <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />
                 <SpotlightWorkNode
                   item={PROJECT_ITEMS.JESSE_V2}
                   badge={{
@@ -86,8 +87,9 @@ const Experience = () => {
                     role: 'presentation',
                   }}
                 />
-                <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
-                <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />
+              </Tree.Branch>
+              <SpotlightWorkNode item={WORK_ITEMS.HUMI} />
+              <Tree.Branch>
                 <SpotlightWorkNode item={PROJECT_ITEMS.ALICIA_V2} />
               </Tree.Branch>
               <SpotlightWorkNode item={WORK_ITEMS.PRODIGY} />

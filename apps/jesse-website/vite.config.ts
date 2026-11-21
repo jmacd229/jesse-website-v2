@@ -1,5 +1,4 @@
-import babel from '@rolldown/plugin-babel';
-import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { defineConfig } from 'vitest/config';
@@ -30,8 +29,7 @@ export default defineConfig({
     host: 'localhost',
   },
   plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] }),
+    react({ compiler: true }),
     viteStaticCopy({ targets: [{ src: 'README.md', dest: '.' }] }),
   ],
   resolve: {

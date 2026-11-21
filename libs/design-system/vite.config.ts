@@ -1,13 +1,15 @@
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'url';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/libs/design-system',
-  plugins: [react(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [
+    react({ compiler: true }),
+    viteStaticCopy({ targets: [{ src: 'README.md', dest: '.' }] }),
+  ],
   css: { transformer: 'lightningcss' },
   test: {
     watch: false,
@@ -23,12 +25,21 @@ export default defineConfig({
     },
   },
   resolve: {
+    tsconfigPaths: true,
     alias: [
       {
         find: 'test-utils',
         replacement: fileURLToPath(
           new URL('../../test-utils', import.meta.url)
         ),
+      },
+      {
+        find: /^@jmacd229\/design-system\//,
+        replacement: `${fileURLToPath(new URL('./', import.meta.url))}/`,
+      },
+      {
+        find: '@jmacd229/design-system',
+        replacement: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       },
     ],
   },

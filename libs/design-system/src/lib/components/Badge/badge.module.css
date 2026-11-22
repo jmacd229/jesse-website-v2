@@ -103,25 +103,36 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
-    transform: rotate(-12deg);
     color: var(--white);
   }
 
   &.top-left {
-    top: 0;
-    left: 0;
+    top: var(--badge-y-offset, 0);
+    left: var(--badge-x-offset, 0);
+    .badge-content {
+      transform: rotate(-12deg);
+    }
   }
   &.top-right {
-    top: 0;
-    right: 0;
+    top: var(--badge-y-offset, 0);
+    right: var(--badge-x-offset, 0);
+    .badge-content {
+      transform: rotate(12deg);
+    }
   }
   &.bottom-left {
-    bottom: 0;
-    left: 0;
+    bottom: var(--badge-y-offset, 0);
+    left: var(--badge-x-offset, 0);
+    .badge-content {
+      transform: rotate(12deg);
+    }
   }
   &.bottom-right {
-    bottom: 0;
-    right: 0;
+    bottom: var(--badge-y-offset, 0);
+    right: var(--badge-x-offset, 0);
+    .badge-content {
+      transform: rotate(-12deg);
+    }
   }
 }
 

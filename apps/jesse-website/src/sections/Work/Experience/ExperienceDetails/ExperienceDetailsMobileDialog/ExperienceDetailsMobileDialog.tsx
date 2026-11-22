@@ -1,4 +1,4 @@
-import { Card, Icon } from '@jmacd229/design-system';
+import { Badge, Card, Icon } from '@jmacd229/design-system';
 import { motion, useIsPresent } from 'motion/react';
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useExperienceContext } from '../../ExperienceContext';
@@ -52,7 +52,8 @@ const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
       >
         <Icon.Close />
       </button>
-      <Card className="flex" elevation="2">
+      <Card elevation="2" className={styles['card']}>
+        {selectedItem?.badge && <Badge {...selectedItem.badge.mobile} />}
         {children}
       </Card>
     </motion.dialog>

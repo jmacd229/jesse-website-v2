@@ -1,6 +1,5 @@
 import {
   Animation,
-  BadgeProps,
   dynamicAnimations,
   getAnimation,
   Heading,
@@ -21,15 +20,13 @@ import WorkItem from './WorkItem/WorkItem';
 
 const SpotlightWorkNode = ({
   item,
-  badge,
 }: {
   item: WorkHistoryItem | ProjectHistoryItem;
-  badge?: BadgeProps;
 }) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
   return (
     <Tree.Node
-      badge={badge}
+      badge={item.badge?.desktop}
       aria-expanded={selectedItem?.id === item.id}
       aria-owns={`${selectedItem?.id}-details`}
       onClick={() => setSelectedItem(item)}
@@ -79,14 +76,7 @@ const Experience = () => {
               <Tree.Branch>
                 <SpotlightWorkNode item={PROJECT_ITEMS.AMPLIFY} />
                 <SpotlightWorkNode item={PROJECT_ITEMS.SPIN_TOOLS} />
-                <SpotlightWorkNode
-                  item={PROJECT_ITEMS.JESSE_V2}
-                  badge={{
-                    position: 'top-left',
-                    content: 'This site!',
-                    role: 'presentation',
-                  }}
-                />
+                <SpotlightWorkNode item={PROJECT_ITEMS.JESSE_V2} />
               </Tree.Branch>
               <SpotlightWorkNode item={WORK_ITEMS.HUMI} />
               <Tree.Branch>

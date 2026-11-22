@@ -73,6 +73,19 @@ export const JESSE_V2: ProjectHistoryItem = {
     'Vitest',
   ],
   version: 2,
+  badge: {
+    desktop: {
+      position: 'top-left',
+      content: 'This site!',
+      role: 'presentation',
+    },
+    mobile: {
+      position: 'top-right',
+      offset: { x: 25, y: 4 },
+      content: 'This site!',
+      role: 'presentation',
+    },
+  },
   content: (
     <div>
       <ExperienceDetailsDescriptionHeading centered>

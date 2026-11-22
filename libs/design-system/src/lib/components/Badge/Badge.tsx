@@ -14,7 +14,7 @@ export const Badge = ({ position, content, children, ...rest }: BadgeProps) => {
   return (
     <>
       <div className={`${styles['badge']} ${styles[position]}`} {...rest}>
-        {content}
+        <span className={styles['badge-content']}>{content}</span>
       </div>
       {children}
     </>

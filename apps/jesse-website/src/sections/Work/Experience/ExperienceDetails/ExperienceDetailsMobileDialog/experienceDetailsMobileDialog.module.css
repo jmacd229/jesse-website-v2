@@ -11,12 +11,12 @@
     background-color: color-mix(in hsl, var(--black), transparent 50%);
   }
 
-  &:open {
-    animation: slide-in 150ms ease-out;
+  &:open::backdrop {
+    animation: backdrop-fade-in 250ms ease-out forwards;
+  }
 
-    &::backdrop {
-      animation: backdrop-fade-in 250ms ease-out forwards;
-    }
+  &[data-exiting]::backdrop {
+    animation: backdrop-fade-out 250ms ease-in forwards;
   }
 }
 
@@ -25,20 +25,6 @@
   top: 0;
   right: 0;
   z-index: 2;
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translateY(100%);
-    display: none;
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    display: block;
-  }
 }
 
 @keyframes backdrop-fade-in {
@@ -50,5 +36,12 @@
   100% {
     backdrop-filter: blur(3px);
     background-color: color-mix(in hsl, var(--black), transparent 50%);
+  }
+}
+
+@keyframes backdrop-fade-out {
+  to {
+    backdrop-filter: blur(0px);
+    background-color: transparent;
   }
 }

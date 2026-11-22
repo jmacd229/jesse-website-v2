@@ -25,6 +25,14 @@ export const cardWipeVariants: Variants = {
   },
 };
 
+export const sheetVariants: Variants = {
+  hidden: { y: '-100%', transition: { duration: 0.25, ease: EASE } },
+  visible: {
+    y: 0,
+    transition: { duration: 0.3, ease: EASE, delayChildren: 0.15 },
+  },
+};
+
 export const closeButtonVariants: Variants = {
   hidden: { opacity: 0, transition: { duration: 0.15, ease: EASE } },
   visible: {

@@ -146,14 +146,14 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
     );
   }
 
-  if (!experienceDetailsContent) {
-    return undefined;
-  }
-
   return (
-    <ExperienceDetailsMobileDialog>
-      {experienceDetailsContent}
-    </ExperienceDetailsMobileDialog>
+    <AnimatePresence>
+      {experienceDetailsContent && (
+        <ExperienceDetailsMobileDialog>
+          {experienceDetailsContent}
+        </ExperienceDetailsMobileDialog>
+      )}
+    </AnimatePresence>
   );
 };
 

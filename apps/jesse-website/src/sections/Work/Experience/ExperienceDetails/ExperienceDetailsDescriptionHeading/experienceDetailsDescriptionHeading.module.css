@@ -17,6 +17,7 @@
     padding: 1rem;
     border-radius: var(--radius-1);
     background-color: var(--neutral-200);
+    margin-top: 0.5rem;
   }
 }
 

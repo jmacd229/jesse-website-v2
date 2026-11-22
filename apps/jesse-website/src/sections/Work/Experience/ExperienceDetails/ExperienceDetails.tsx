@@ -2,16 +2,48 @@ import { Chip, Heading, Icon, useBreakpoint } from '@jmacd229/design-system';
 import { useExperienceContext } from '../ExperienceContext';
 
 import { AnimatePresence, motion } from 'motion/react';
-import { HTMLProps, useMemo } from 'react';
+import {
+  Children,
+  Fragment,
+  HTMLProps,
+  isValidElement,
+  PropsWithChildren,
+  ReactNode,
+  useMemo,
+} from 'react';
 import { itemIsWorkHistory } from '../utilities';
 import {
   AnimatedCard,
-  cardRevealVariants,
+  AnimatedChip,
   cardWipeVariants,
-  contentVariants,
+  chipSequenceVariants,
+  chipVariants,
+  closeButtonVariants,
+  headerVariants,
+  itemVariants,
+  sequenceVariants,
 } from './ExperienceDetails.animations';
 import styles from './experienceDetails.module.css';
+import ExperienceDetailsDescriptionHeading from './ExperienceDetailsDescriptionHeading/ExperienceDetailsDescriptionHeading';
 import ExperienceDetailsMobileDialog from './ExperienceDetailsMobileDialog/ExperienceDetailsMobileDialog';
+
+// Convert dynamic content to key-able sections to allow for staggered animations
+const toSections = (content: ReactNode) =>
+  Children.toArray(
+    isValidElement<PropsWithChildren>(content)
+      ? content.props.children
+      : content,
+  ).reduce<ReactNode[][]>((sections, child) => {
+    const isHeading =
+      isValidElement(child) &&
+      child.type === ExperienceDetailsDescriptionHeading;
+    if (isHeading || !sections.length) {
+      sections.push([child]);
+    } else {
+      sections[sections.length - 1].push(child);
+    }
+    return sections;
+  }, []);
 
 const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
@@ -29,34 +61,49 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
         id={`${selectedItem.id}-details`}
         className={styles['details-container']}
       >
-        <div className={styles['sticky-header']}>
-          <Heading
-            id={`${selectedItem.id}-title`}
-            className={styles['main-title']}
-            level={4}
-            displayAs={2}
+        <Fragment key={selectedItem.id}>
+          <motion.div
+            className={styles['sticky-header']}
+            variants={headerVariants}
           >
-            <span>{selectedItem.title}</span>
-            {!isWorkItem && selectedItem.version ? (
-              <span
-                className={styles['version']}
-              >{`Version ${selectedItem.version?.toString()}`}</span>
-            ) : (
-              ''
-            )}
-          </Heading>
-          {isWorkItem && (
-            <Heading className={styles['role-title']} level={5} displayAs={3}>
-              {selectedItem.role}
+            <Heading
+              id={`${selectedItem.id}-title`}
+              className={styles['main-title']}
+              level={4}
+              displayAs={2}
+            >
+              <span>{selectedItem.title}</span>
+              {!isWorkItem && selectedItem.version ? (
+                <span
+                  className={styles['version']}
+                >{`Version ${selectedItem.version?.toString()}`}</span>
+              ) : (
+                ''
+              )}
             </Heading>
-          )}
-        </div>
-        <Chip.List className={styles['chip-list']}>
-          {selectedItem.tools.map((tool) => (
-            <Chip key={tool}>{tool}</Chip>
-          ))}
-        </Chip.List>
-        {selectedItem.content}
+            {isWorkItem && (
+              <Heading className={styles['role-title']} level={5} displayAs={3}>
+                {selectedItem.role}
+              </Heading>
+            )}
+          </motion.div>
+          <motion.div variants={chipSequenceVariants}>
+            <Chip.List className={styles['chip-list']}>
+              {selectedItem.tools.map((tool) => (
+                <AnimatedChip key={tool} variants={chipVariants}>
+                  {tool}
+                </AnimatedChip>
+              ))}
+            </Chip.List>
+          </motion.div>
+          <motion.div variants={sequenceVariants}>
+            {toSections(selectedItem.content).map((section, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                {section}
+              </motion.div>
+            ))}
+          </motion.div>
+        </Fragment>
       </div>
     );
   }, [selectedItem]);
@@ -79,27 +126,13 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
                 elevation="0"
                 variants={cardWipeVariants}
               >
-                {/* Delays the Card content appearing until wipe animation is done */}
-                <motion.div variants={cardRevealVariants}>
-                  {/* Fades content when switching between cards*/}
-                  <AnimatePresence mode="popLayout" initial={false}>
-                    <motion.div
-                      key={selectedItem.id}
-                      variants={contentVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      {experienceDetailsContent}
-                    </motion.div>
-                  </AnimatePresence>
-                </motion.div>
+                {experienceDetailsContent}
               </AnimatedCard>
               <motion.button
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                variants={cardRevealVariants}
+                variants={closeButtonVariants}
                 className={styles['close-button']}
                 onClick={() => setSelectedItem(undefined)}
                 aria-label={`Close ${selectedItem.title}`}

@@ -1,4 +1,4 @@
-import type { IconType, Theme } from '@jmacd229/design-system';
+import type { BadgeProps, IconType, Theme } from '@jmacd229/design-system';
 import { ReactNode } from 'react';
 
 export type Tool =
@@ -53,6 +53,7 @@ type BaseWorkItem = {
   iconImg?: { src: string | Record<Theme, string>; alt: string };
   tools: Tool[];
   content: ReactNode;
+  badge?: { desktop: BadgeProps; mobile: BadgeProps };
 };
 
 export type WorkHistoryItem = BaseWorkItem & {

@@ -16,7 +16,10 @@ export const ExperienceContextProvider = ({ children }: PropsWithChildren) => {
     <ExperienceContext.Provider
       value={{
         selectedItem,
-        setSelectedItem,
+        setSelectedItem: (newItem: HistoryItem | undefined) =>
+          setSelectedItem(
+            newItem?.id === selectedItem?.id ? undefined : newItem,
+          ),
       }}
     >
       {children}

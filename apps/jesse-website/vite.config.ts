@@ -9,7 +9,7 @@ export default defineConfig({
     globals: true,
     css: true,
     environment: 'happy-dom',
-    setupFiles: ['../../test-utils/vitest.setup.ts'],
+    setupFiles: ['../../test-utils/vitest.setup.ts', './vitest.setup.ts'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
     coverage: {

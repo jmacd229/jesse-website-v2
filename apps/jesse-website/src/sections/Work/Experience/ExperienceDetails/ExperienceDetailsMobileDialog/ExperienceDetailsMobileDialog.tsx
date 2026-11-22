@@ -1,7 +1,9 @@
-import { Card, Icon } from '@jmacd229/design-system';
+import { Badge, Card, Icon } from '@jmacd229/design-system';
+import { motion, useIsPresent } from 'motion/react';
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useExperienceContext } from '../../ExperienceContext';
 
+import { sheetVariants } from '../ExperienceDetails.animations';
 import detailsStyles from '../experienceDetails.module.css';
 import styles from './experienceDetailsMobileDialog.module.css';
 
@@ -12,9 +14,15 @@ const lockScroll = (isLocked: boolean) =>
 const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
   const { selectedItem, setSelectedItem } = useExperienceContext();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const isPresent = useIsPresent();
 
   useEffect(() => {
     if (dialogRef.current) {
+      // Keep the dialog open on Escape so the exit animation can play before unmount
+      dialogRef.current.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        setSelectedItem(undefined);
+      });
       dialogRef.current.addEventListener('close', () => {
         setSelectedItem(undefined);
         lockScroll(false);
@@ -27,8 +35,13 @@ const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
   }, [dialogRef, setSelectedItem]);
 
   return (
-    <dialog
+    <motion.dialog
       ref={dialogRef}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      data-exiting={isPresent ? undefined : ''}
+      variants={sheetVariants}
       className={styles['experience-details-dialog']}
       aria-labelledby={`${selectedItem?.id}-title`}
     >
@@ -39,10 +52,11 @@ const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
       >
         <Icon.Close />
       </button>
-      <Card className="flex" elevation="2">
+      <Card elevation="2" className={styles['card']}>
+        {selectedItem?.badge && <Badge {...selectedItem.badge.mobile} />}
         {children}
       </Card>
-    </dialog>
+    </motion.dialog>
   );
 };
 

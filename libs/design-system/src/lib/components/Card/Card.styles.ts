@@ -1,14 +1,9 @@
-:root {
-  --card-padding: 1rem;
+import { css } from '@linaria/core';
+import './card.tokens.css';
 
-  @media (min-width: 576px) {
-    --card-padding: 2rem;
-  }
-}
-
-.card {
+export const card = css`
   background-color: var(--element-background);
   padding: var(--card-padding);
   border-radius: var(--radius-2);
   border: 1px solid var(--neutral-300);
-}
+`;

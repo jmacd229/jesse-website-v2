@@ -4,8 +4,11 @@ import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useExperienceContext } from '../../ExperienceContext';
 
 import { sheetVariants } from '../ExperienceDetails.animations';
-import detailsStyles from '../experienceDetails.module.css';
-import styles from './experienceDetailsMobileDialog.module.css';
+import { closeButton } from '../ExperienceDetails.styles';
+import {
+  card,
+  experienceDetailsDialog,
+} from './ExperienceDetailsMobileDialog.styles';
 
 const lockScroll = (isLocked: boolean) =>
   document
@@ -42,17 +45,17 @@ const ExperienceDetailsMobileDialog = ({ children }: PropsWithChildren) => {
       exit="hidden"
       data-exiting={isPresent ? undefined : ''}
       variants={sheetVariants}
-      className={styles['experience-details-dialog']}
+      className={experienceDetailsDialog}
       aria-labelledby={`${selectedItem?.id}-title`}
     >
       <button
-        className={`${detailsStyles['close-button']} ${styles['close-button']}`}
+        className={closeButton}
         aria-label="Close dialog"
         onClick={() => setSelectedItem(undefined)}
       >
         <Icon.Close />
       </button>
-      <Card elevation="2" className={styles['card']}>
+      <Card elevation="2" className={card}>
         {selectedItem?.badge && <Badge {...selectedItem.badge.mobile} />}
         {children}
       </Card>

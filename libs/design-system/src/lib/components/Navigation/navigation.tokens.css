@@ -1,0 +1,9 @@
+:root {
+  --nav-item-hover-color: var(--primary-500);
+  --nav-item-horizontal-padding: 1rem;
+  --nav-item-vertical-padding: 1rem;
+}
+
+html.dark {
+  --nav-item-hover-color: var(--primary-800);
+}

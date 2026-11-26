@@ -1,30 +1,11 @@
-.details-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  overflow-y: auto;
+import { css } from '@linaria/core';
 
-  @media (min-width: 576px) {
-    max-height: calc(100vh - 11rem);
-  }
-
-  @media (min-width: 1500px) {
-    max-height: calc(100vh - 8rem);
-  }
-}
-
-.experience-details {
-  position: sticky;
-  align-self: flex-start;
-  top: 5rem;
-
-  @media (min-width: 1500px) {
-    top: 2rem;
-  }
-}
-
-.close-button {
+/*
+ * Shared with ExperienceDetailsMobileDialog, which repositions it. Lives here
+ * rather than in ExperienceDetails.tsx to avoid an import cycle, since
+ * ExperienceDetails.tsx renders the dialog.
+ */
+export const closeButton = css`
   --button-size: 3rem;
 
   position: absolute;
@@ -49,9 +30,35 @@
   &:focus {
     background-color: var(--secondary-600);
   }
-}
+`;
 
-.main-title {
+export const detailsContainer = css`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  overflow-y: auto;
+
+  @media (min-width: 576px) {
+    max-height: calc(100vh - 11rem);
+  }
+
+  @media (min-width: 1500px) {
+    max-height: calc(100vh - 8rem);
+  }
+`;
+
+export const experienceDetails = css`
+  position: sticky;
+  align-self: flex-start;
+  top: 5rem;
+
+  @media (min-width: 1500px) {
+    top: 2rem;
+  }
+`;
+
+export const mainTitle = css`
   background-color: var(--element-background);
   color: var(--neutral-900);
   width: 100%;
@@ -64,30 +71,32 @@
   h2::after {
     opacity: var(--underline-opacity, 1);
   }
-}
+`;
 
-.chip-list:not(:empty) {
-  margin: 1rem 0;
-}
+export const chipList = css`
+  &:not(:empty) {
+    margin: 1rem 0;
+  }
+`;
 
-.role-title {
+export const roleTitle = css`
   margin-top: 1rem;
   color: var(--primary-900);
   background-color: var(--element-background);
   z-index: 1;
-}
+`;
 
-.version {
+export const version = css`
   font-size: 1.5rem;
   color: var(--neutral-700);
   vertical-align: middle;
   margin-left: 1rem;
-}
+`;
 
-.sticky-header {
+export const stickyHeader = css`
   position: sticky;
   top: 0;
   z-index: 1;
   padding-bottom: 0.5rem;
   background-color: var(--element-background);
-}
+`;

@@ -1,34 +1,26 @@
-:root {
-  --nav-item-hover-color: var(--primary-500);
-  --nav-item-horizontal-padding: 1rem;
-  --nav-item-vertical-padding: 1rem;
-}
+import { css } from '@linaria/core';
+import './navigation.tokens.css';
 
-:global(html.dark) {
-  --nav-item-hover-color: var(--primary-800);
-}
+export const iconText = css`
+  max-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 500;
+  transition:
+    max-width 0.5s ease-in,
+    max-height 0.5s ease-in;
 
-/* Reserves space in the layout for either nav type */
-.nav-anchor {
-  /* Vertical Navigation */
-  @media (min-width: 1500px) {
-    width: 6rem;
+  /* Touch screen can always see the text labels since hover is not possible */
+  @media (pointer: coarse) {
+    max-width: 200px !important;
+    max-height: 200px !important;
   }
-  /* Horizontal Navigation */
-  @media (max-width: 1499px) {
-    height: 6rem;
-  }
-}
+`;
 
-/* The nav group is only used to supply a11y list semantics */
-.nav-group {
-  display: contents;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+// Styled only from the comingSoon selector below, preserving its nesting depth
+export const comingSoonText = css``;
 
-.nav-item {
+export const navItem = css`
   position: relative;
   display: flex;
   padding: var(--nav-item-vertical-padding) var(--nav-item-horizontal-padding);
@@ -40,20 +32,6 @@
   svg {
     flex-shrink: 0;
     transition: color var(--animation);
-  }
-
-  .icon-text {
-    max-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: 500;
-    transition: max-width 0.5s ease-in, max-height 0.5s ease-in;
-
-    /* Touch screen can always see the text labels since hover is not possible */
-    @media (pointer: coarse) {
-      max-width: 200px !important;
-      max-height: 200px !important;
-    }
   }
 
   /* Pseudo element used for underline animation*/
@@ -71,7 +49,7 @@
 
   &:hover,
   &:focus {
-    .icon-text {
+    .${iconText} {
       max-width: 200px;
     }
 
@@ -84,9 +62,81 @@
       color: var(--nav-item-hover-color);
     }
   }
-}
 
-.root-nav-container {
+  html.no-motion & {
+    .${iconText} {
+      max-height: 200px;
+      max-width: 200px;
+    }
+    &::after {
+      width: 0;
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotateY(20deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+  }
+`;
+
+export const comingSoon = css`
+  &,
+  &:hover {
+    cursor: default;
+
+    svg {
+      color: var(--neutral-300);
+    }
+
+    .${iconText} {
+      color: var(--neutral-600);
+    }
+
+    .${comingSoonText} {
+      position: absolute;
+      top: 25%;
+      rotate: -10deg;
+      color: var(--secondary-700);
+      transition-duration: 100ms;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+`;
+
+/* Reserves space in the layout for either nav type */
+export const navAnchor = css`
+  /* Vertical Navigation */
+  @media (min-width: 1500px) {
+    width: 6rem;
+  }
+  /* Horizontal Navigation */
+  @media (max-width: 1499px) {
+    height: 6rem;
+  }
+
+  html.no-motion & {
+    @media (min-width: 1500px) {
+      width: 16rem;
+    }
+  }
+`;
+
+/* The nav group is only used to supply a11y list semantics */
+export const navGroup = css`
+  display: contents;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+export const rootNavContainer = css`
   position: fixed;
   display: flex;
   z-index: var(--nav-z-index);
@@ -94,8 +144,12 @@
   border: 1px solid transparent;
   border-radius: var(--radius-2);
 
-  transition: box-shadow var(--animation), background-color var(--animation),
-    width var(--animation), padding var(--animation), border var(--animation);
+  transition:
+    box-shadow var(--animation),
+    background-color var(--animation),
+    width var(--animation),
+    padding var(--animation),
+    border var(--animation);
 
   a {
     color: unset;
@@ -135,20 +189,19 @@
     gap: var(--nav-item-horizontal-padding);
     box-shadow: var(--elevation-1);
 
-    .nav-item {
+    .${navItem} {
       flex-direction: column;
       align-items: center;
       width: 5rem;
       gap: 0.25rem;
       padding: 0;
 
-      .icon-text {
+      .${iconText} {
         max-height: 0;
       }
 
       /* Horizontal nav items expand in width and height at the same time. Whereas vertical only expands horizontally*/
-      &:hover .icon-text,
-      &:focus .icon-text {
+      &:hover .${iconText}, &:focus .${iconText} {
         max-height: 200px;
       }
 
@@ -157,32 +210,15 @@
       }
     }
   }
-}
 
-:global(html.no-motion) {
-  @media (min-width: 1500px) {
-    .nav-anchor {
-      width: 16rem;
-    }
-  }
-  .root-nav-container {
+  html.no-motion & {
     border-color: var(--neutral-300);
     background: var(--element-background);
     box-shadow: var(--elevation-1);
   }
+`;
 
-  .nav-item {
-    .icon-text {
-      max-height: 200px;
-      max-width: 200px;
-    }
-    &::after {
-      width: 0;
-    }
-  }
-}
-
-.skip-to-content {
+export const skipToContent = css`
   --skip-content-line-height: 1rem;
 
   max-width: unset;
@@ -204,38 +240,4 @@
     top: 0;
     color: var(--link-hover-color);
   }
-}
-
-.coming-soon,
-.coming-soon:hover {
-  cursor: default;
-
-  svg {
-    color: var(--neutral-300);
-  }
-
-  .icon-text {
-    color: var(--neutral-600);
-  }
-
-  .coming-soon-text {
-    position: absolute;
-    top: 25%;
-    rotate: -10deg;
-    color: var(--secondary-700);
-    transition-duration: 100ms;
-  }
-
-  &::after {
-    display: none;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotateY(20deg);
-  }
-  to {
-    transform: rotateY(180deg);
-  }
-}
+`;

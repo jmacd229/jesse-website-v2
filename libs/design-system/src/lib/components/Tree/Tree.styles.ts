@@ -1,21 +1,48 @@
-:global(html.dark) .tree-root {
-  --trunk-glow: -1px 0px 0px var(--secondary-600);
-}
+import { css } from '@linaria/core';
+import './tree.tokens.css';
 
-:root {
-  /* Border Values */
-  --tree-border-width: 3px;
-  --tree-trunk-border-color: var(--primary-700);
-  --tree-branch-border-color: var(--primary-500);
-  --tree-radius: var(--radius-3);
+export const treeBranch = css`
+  display: contents;
+`;
 
-  /* Node Values */
-  --tree-consecutive-node-spacing: 3rem;
-  --tree-node-size: 8rem;
-  --tree-node-padding: 1rem;
-}
+export const treeNode = css`
+  position: relative;
+  grid-column: 1 / span 2;
 
-.tree-root {
+  /* Branches root node to new path*/
+  &:has(+ .${treeBranch})::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    border: var(--tree-border-width) dashed var(--tree-branch-border-color);
+    border-bottom: none;
+    border-left: none;
+    border-top-right-radius: var(--tree-radius);
+    top: 50%;
+    left: 50%;
+  }
+
+  /* Spaces out consecutive nodes*/
+  &:has(+ &) {
+    padding-bottom: var(--tree-consecutive-node-spacing);
+
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: var(--tree-consecutive-node-spacing);
+      border-left: var(--tree-border-width) solid var(--tree-trunk-border-color);
+      left: 25%;
+      top: calc(100% - var(--tree-consecutive-node-spacing));
+      box-shadow: var(--trunk-glow);
+    }
+  }
+`;
+
+export const treeRoot = css`
   --trunk-glow: none;
 
   display: grid;
@@ -25,10 +52,14 @@
   margin: 0;
   padding: 0;
 
-  .tree-root {
+  html.dark & {
+    --trunk-glow: -1px 0px 0px var(--secondary-600);
+  }
+
+  & & {
     grid-column: 2 / span 1;
 
-    .tree-node {
+    .${treeNode} {
       /* Creates connecter for root tree branch */
       &::before {
         display: block;
@@ -68,50 +99,9 @@
       }
     }
   }
-}
+`;
 
-.tree-node {
-  position: relative;
-  grid-column: 1 / span 2;
-
-  /* Branches root node to new path*/
-  &:has(+ .tree-branch)::before {
-    display: block;
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 100%;
-    border: var(--tree-border-width) dashed var(--tree-branch-border-color);
-    border-bottom: none;
-    border-left: none;
-    border-top-right-radius: var(--tree-radius);
-    top: 50%;
-    left: 50%;
-  }
-
-  /* Spaces out consecutive nodes*/
-  &:has(+ .tree-node) {
-    padding-bottom: var(--tree-consecutive-node-spacing);
-
-    &::after {
-      display: block;
-      content: '';
-      position: absolute;
-      width: 1px;
-      height: var(--tree-consecutive-node-spacing);
-      border-left: var(--tree-border-width) solid var(--tree-trunk-border-color);
-      left: 25%;
-      top: calc(100% - var(--tree-consecutive-node-spacing));
-      box-shadow: var(--trunk-glow);
-    }
-  }
-}
-
-.tree-branch {
-  display: contents;
-}
-
-.tree-node-content {
+export const treeNodeContent = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,4 +126,4 @@
     outline-width: 4px;
     outline-offset: 2px;
   }
-}
+`;

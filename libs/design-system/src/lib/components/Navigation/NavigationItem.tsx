@@ -1,7 +1,12 @@
 import { PropsWithChildren } from 'react';
 import { Icon, IconType } from '../../icons';
 import { Link } from '../Link';
-import style from './navigation.module.css';
+import {
+  comingSoon,
+  comingSoonText,
+  iconText,
+  navItem,
+} from './Navigation.styles';
 
 type NavigationItemProps = PropsWithChildren<{
   id: string;
@@ -21,24 +26,16 @@ const NavigationItem = ({
       <Link
         disabled={isUnavailable}
         tabIndex={isUnavailable ? -1 : 0}
-        className={`${style[`nav-item`]} ${
-          isUnavailable && style[`coming-soon`]
-        }`}
+        className={`${navItem} ${isUnavailable ? comingSoon : ''}`}
         to={id}
       >
         <IconElement />
         {isUnavailable && (
-          <div
-            className={[
-              style[`icon-text`],
-              style[`coming-soon-text`],
-              'small-text',
-            ].join(' ')}
-          >
+          <div className={[iconText, comingSoonText, 'small-text'].join(' ')}>
             In progress!
           </div>
         )}
-        <div className={style[`icon-text`]}>{children}</div>
+        <div className={iconText}>{children}</div>
       </Link>
     </li>
   );

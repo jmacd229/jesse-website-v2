@@ -30,6 +30,8 @@
     "@vitejs/plugin-react": "^6.3.0",
     "@vitest/coverage-v8": "^4.1.9",
     "@vitest/ui": "^4.1.9",
+    "@wyw-in-js/babel-preset": "^2.7.2",
+    "@wyw-in-js/vite": "^2.7.2",
     "eslint-plugin-playwright": "^2.10.4",
     "lightningcss": "^1.32.0",
     "nx": "23.0.1",

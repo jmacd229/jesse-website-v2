@@ -44,7 +44,8 @@ export type Tool =
   | 'React Query'
   | 'Zustand'
   | 'Motion'
-  | 'dnd-kit';
+  | 'dnd-kit'
+  | 'Linaria';
 
 type BaseWorkItem = {
   id: string;

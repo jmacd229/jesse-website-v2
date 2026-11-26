@@ -1,8 +1,8 @@
 import { PropsWithChildren } from 'react';
-import style from './navigation.module.css';
+import { navGroup } from './Navigation.styles';
 
 const NavigationGroup = ({ children }: PropsWithChildren) => (
-  <ul className={style[`nav-group`]}>{children}</ul>
+  <ul className={navGroup}>{children}</ul>
 );
 
 export default NavigationGroup;

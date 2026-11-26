@@ -1,8 +1,10 @@
-.principles-container {
-  margin-bottom: 4rem;
-}
+import { css } from '@linaria/core';
 
-.principles {
+export const principlesContainer = css`
+  margin-bottom: 4rem;
+`;
+
+export const principles = css`
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
@@ -19,8 +21,8 @@
     display: grid;
     grid-template-columns: repeat(4, auto);
   }
-}
+`;
 
-.main-title {
+export const mainTitle = css`
   justify-content: flex-end;
-}
+`;

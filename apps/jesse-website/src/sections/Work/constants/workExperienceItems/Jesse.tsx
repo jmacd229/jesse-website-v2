@@ -66,7 +66,7 @@ export const JESSE_V2: ProjectHistoryItem = {
     'React',
     'TypeScript',
     'Vite',
-    'CSS Modules',
+    'Linaria',
     'Motion',
     'Nx',
     'Playwright',

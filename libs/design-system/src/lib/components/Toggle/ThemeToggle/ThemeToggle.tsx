@@ -2,7 +2,7 @@ import { HTMLProps, useMemo } from 'react';
 import { useTheme } from '../../../hooks';
 import { Animation } from '../../Animation/Animation';
 import { Toggle } from '../Toggle';
-import styles from './themeToggle.module.css';
+import { animation } from './ThemeToggle.styles';
 
 export const ThemeToggle = ({ ...rest }: HTMLProps<HTMLDivElement>) => {
   const { setTheme, currentTheme } = useTheme();
@@ -15,20 +15,20 @@ export const ThemeToggle = ({ ...rest }: HTMLProps<HTMLDivElement>) => {
     () => ({
       enabled: (
         <Animation
-          className={styles['animation']}
+          className={animation}
           animation="dark"
           animationConfig={{ loop: false }}
         />
       ),
       disabled: (
         <Animation
-          className={styles['animation']}
+          className={animation}
           animation="light"
           animationConfig={{ loop: false }}
         />
       ),
     }),
-    []
+    [],
   );
 
   return (

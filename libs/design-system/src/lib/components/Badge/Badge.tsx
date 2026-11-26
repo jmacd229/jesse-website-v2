@@ -1,7 +1,6 @@
 import { CSSProperties, HTMLProps, PropsWithChildren, ReactNode } from 'react';
 import { BadgePosition } from './types';
-
-import styles from './badge.module.css';
+import { badge, badgeContent, POSITION_CLASSES } from './Badge.styles';
 
 export type BadgeProps = PropsWithChildren<
   HTMLProps<HTMLDivElement> & {
@@ -27,10 +26,10 @@ export const Badge = ({
             '--badge-y-offset': offset?.y && `${offset.y}px`,
           } as CSSProperties
         }
-        className={`${styles['badge']} ${styles[position]}`}
+        className={`${badge} ${POSITION_CLASSES[position]}`}
         {...rest}
       >
-        <span className={styles['badge-content']}>{content}</span>
+        <span className={badgeContent}>{content}</span>
       </div>
       {children}
     </>

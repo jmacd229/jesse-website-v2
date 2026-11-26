@@ -1,13 +1,10 @@
 import { HTMLProps, PropsWithChildren } from 'react';
-
-import styles from './chips.module.css';
+import { chipList } from './Chips.styles';
 
 type ChipListProps = PropsWithChildren<HTMLProps<HTMLUListElement>>;
 
 const ChipList = ({ children, className }: ChipListProps) => {
-  return (
-    <ul className={`${styles['chip-list']} ${className}`}>{children}</ul>
-  );
+  return <ul className={`${chipList} ${className}`}>{children}</ul>;
 };
 
 export default ChipList;

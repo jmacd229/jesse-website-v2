@@ -1,10 +1,12 @@
-.app {
+import { css } from '@linaria/core';
+
+export const app = css`
   --theme-toggle-spacing: 1rem;
 
   display: contents;
-}
+`;
 
-.theme-toggle {
+export const themeToggle = css`
   position: absolute;
   right: var(--theme-toggle-spacing);
   /* Horizontal nav bar positioning */
@@ -15,9 +17,9 @@
     right: calc(50% - (var(--toggle-height) / 2));
     bottom: var(--theme-toggle-spacing);
   }
-}
+`;
 
-.animation-toggle {
+export const animationToggle = css`
   position: absolute;
   bottom: calc(50% - (var(--toggle-height) / 2));
   left: var(--theme-toggle-spacing);
@@ -35,11 +37,11 @@
     margin-bottom: 1.5rem;
     margin-right: 0;
   }
-}
+`;
 
-.sections {
+export const sections = css`
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: clamp(4rem, 5vw, 8rem);
-}
+`;

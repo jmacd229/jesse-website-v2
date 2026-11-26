@@ -1,5 +1,10 @@
 import { PropsWithChildren } from 'react';
-import style from './navigation.module.css';
+import {
+  navAnchor,
+  navItem,
+  rootNavContainer,
+  skipToContent,
+} from './Navigation.styles';
 
 const focusMain = () => {
   const main = document.querySelector('main');
@@ -14,14 +19,11 @@ const focusMain = () => {
 };
 
 const Navigation = ({ children }: PropsWithChildren) => (
-  <nav className={style['nav-anchor']}>
-    <button
-      onClick={focusMain}
-      className={`${style[`skip-to-content`]} ${style['nav-item']}`}
-    >
+  <nav className={navAnchor}>
+    <button onClick={focusMain} className={`${skipToContent} ${navItem}`}>
       Skip to Content
     </button>
-    <div className={style['root-nav-container']}>{children}</div>
+    <div className={rootNavContainer}>{children}</div>
   </nav>
 );
 

@@ -2,6 +2,8 @@
   "name": "@jmacd229/design-system",
   "version": "1.0.1",
   "dependencies": {
+    "@linaria/core": "^8.3.0",
+    "@linaria/react": "^8.3.0",
     "react": "^19.2.7",
     "react-dom": "19.2.7"
   }

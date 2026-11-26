@@ -1,7 +1,10 @@
 import { Heading, Icon, IconType } from '@jmacd229/design-system';
 
 import { PropsWithChildren } from 'react';
-import styles from './experienceDetailsDescriptionHeading.module.css';
+import {
+  centeredHeading,
+  workItemHeading,
+} from './ExperienceDetailsDescriptionHeading.styles';
 
 const ExperienceDetailsDescriptionHeading = ({
   children,
@@ -10,11 +13,7 @@ const ExperienceDetailsDescriptionHeading = ({
 }: PropsWithChildren<{ icon?: IconType; centered?: boolean }>) => {
   const IconType = icon ? Icon[icon] : undefined;
   return (
-    <div
-      className={`${styles['work-item-heading']} ${
-        centered && styles['centered']
-      }`}
-    >
+    <div className={`${workItemHeading} ${centered ? centeredHeading : ''}`}>
       {IconType && <IconType />}
       <Heading level={6} displayAs={4}>
         {children}

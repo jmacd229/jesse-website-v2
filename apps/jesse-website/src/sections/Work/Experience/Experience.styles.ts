@@ -1,12 +1,19 @@
-.experience-container {
+import { css } from '@linaria/core';
+
+export const experienceDetails = css`
+  flex: 1 1 0;
+  min-width: 0;
+`;
+
+export const experienceContainer = css`
   --details-window-gap: 8rem;
   margin-bottom: 3rem;
   display: flex;
   align-items: flex-start;
   column-gap: var(--details-window-gap);
-}
+`;
 
-.experience-items {
+export const experienceItems = css`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -16,39 +23,37 @@
   transition:
     left 500ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-.experience-container:has(.experience-details[data-open]) .experience-items {
-  left: 0;
-  transform: translateX(0);
-}
+  .${experienceContainer}:has(.${experienceDetails}[data-open]) & {
+    left: 0;
+    transform: translateX(0);
+  }
 
-.experience-details {
-  flex: 1 1 0;
-  min-width: 0;
-}
+  html.no-motion & {
+    transition: none;
+  }
+`;
 
-:global(html.no-motion) .experience-items {
-  transition: none;
-}
-
-.heading-container {
+export const headingContainer = css`
   display: grid;
   grid-template-columns: 5rem 1fr;
   align-items: flex-end;
   column-gap: 1rem;
   margin-bottom: 3rem;
-}
+`;
 
-.gears {
+export const gears = css`
   grid-row: 1 / span 2;
-}
+`;
 
-.instructions {
+export const instructions = css`
   align-self: flex-start;
-}
+`;
 
-.spotlight-hover {
+// Applied alongside spotlightHover when an item is selected; styled from its selector
+export const active = css``;
+
+export const spotlightHover = css`
   --spotlight-color: color-mix(
     in hsl,
     var(--primary-500),
@@ -68,7 +73,7 @@
 
   &:hover,
   &:focus,
-  &.active {
+  &.${active} {
     background-size: 100% 100%;
     border-color: var(--primary-500);
     box-shadow: 0 3px 0 var(--secondary-700);
@@ -76,8 +81,8 @@
       transition: color 500ms;
     }
   }
-}
 
-:global(html.dark) .spotlight-hover {
-  --spotlight-color: var(--primary-500);
-}
+  html.dark & {
+    --spotlight-color: var(--primary-500);
+  }
+`;

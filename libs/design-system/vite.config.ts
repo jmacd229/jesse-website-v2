@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import wyw from '@wyw-in-js/vite';
 import { fileURLToPath } from 'url';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { defineConfig } from 'vitest/config';
@@ -8,6 +9,13 @@ export default defineConfig({
   cacheDir: '../../node_modules/.vite/libs/design-system',
   plugins: [
     react({ compiler: true }),
+    wyw({
+      include: ['**/src/**/*.{ts,tsx}'],
+      exclude: ['**/node_modules/**'],
+      babelOptions: {
+        presets: ['@babel/preset-typescript', '@babel/preset-react'],
+      },
+    }),
     viteStaticCopy({ targets: [{ src: 'README.md', dest: '.' }] }),
   ],
   css: { transformer: 'lightningcss' },

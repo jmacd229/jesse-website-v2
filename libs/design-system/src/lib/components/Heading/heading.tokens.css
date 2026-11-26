@@ -1,10 +1,16 @@
+/*
+ * Global on purpose. The h1-h6 rules were never scoped even as a CSS module
+ * (CSS modules only scope class names), so they are base typography for the
+ * whole page and have to stay in plain CSS. The h1 tokens are overridable by
+ * consumers, so they stay on :root rather than moving onto the component.
+ */
 :root {
   --h1-fill-color: var(--element-background);
   --h1-stroke-color: var(--page-font-color);
   --h1-shadow-color: var(--page-font-color);
 }
 
-:global(html.dark) {
+html.dark {
   --h1-fill-color: var(--neutral-200);
   --h1-stroke-color: var(--secondary-900);
   --h1-shadow-color: var(--primary-500);
@@ -12,28 +18,6 @@
   h2::after {
     border-top: 1px solid var(--secondary-900);
     border-radius: 50%;
-  }
-}
-
-.heading-container {
-  position: relative;
-  display: flex;
-}
-
-h1.heading {
-  position: relative;
-  z-index: 1;
-  color: var(--h1-fill-color);
-  paint-order: stroke fill;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--h1-stroke-color);
-  animation: hover 5s linear infinite;
-}
-
-:global(html.no-motion) {
-  h1.heading {
-    left: -4px;
-    top: -4px;
   }
 }
 
@@ -87,28 +71,4 @@ h6 {
   font-size: 0.9rem;
   line-height: 1.6;
   font-weight: bold;
-}
-
-.heading-shadow {
-  position: absolute;
-  color: var(--h1-shadow-color);
-  top: 0;
-  left: 0;
-}
-
-.centered {
-  justify-content: center;
-  text-align: center;
-}
-
-@keyframes hover {
-  0% {
-    translate: -2px -2px;
-  }
-  50% {
-    translate: -4px -4px;
-  }
-  100% {
-    translate: -2px -2px;
-  }
 }

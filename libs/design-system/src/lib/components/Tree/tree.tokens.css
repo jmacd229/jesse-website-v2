@@ -1,0 +1,12 @@
+:root {
+  /* Border Values */
+  --tree-border-width: 3px;
+  --tree-trunk-border-color: var(--primary-700);
+  --tree-branch-border-color: var(--primary-500);
+  --tree-radius: var(--radius-3);
+
+  /* Node Values */
+  --tree-consecutive-node-spacing: 3rem;
+  --tree-node-size: 8rem;
+  --tree-node-padding: 1rem;
+}

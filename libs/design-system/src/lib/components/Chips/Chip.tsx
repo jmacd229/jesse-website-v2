@@ -1,10 +1,9 @@
 import { HTMLProps } from 'react';
-
-import styles from './chips.module.css';
+import { chip } from './Chips.styles';
 
 const Chip = ({ children, ...rest }: HTMLProps<HTMLLIElement>) => {
   return (
-    <li {...rest} className={styles['chip']}>
+    <li {...rest} className={chip}>
       {children}
     </li>
   );

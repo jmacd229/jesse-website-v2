@@ -8,7 +8,15 @@ import {
   useState,
 } from 'react';
 import { OnActivateProps } from '../../utilities/onActivateProps';
-import styles from './toggle.module.css';
+import {
+  active,
+  label,
+  loaded,
+  loading,
+  switchContainer,
+  switchHandle,
+  touchTarget,
+} from './Toggle.styles';
 import { centerLabel, getCurrentRemRatio, isBasicLabel } from './utilities';
 
 export type ToggleProps = HTMLProps<HTMLDivElement> & {
@@ -49,11 +57,11 @@ export const Toggle = ({
     // Gets the width of the label in REM
     const staticWidth = labelRef.current.getBoundingClientRect().width / ratio;
     // We then remove a temporary class that is used for calculating the initial width of the label
-    labelRef.current?.classList.remove(styles['loading']);
+    labelRef.current?.classList.remove(loading);
     // After giving the DOM a ms to update with the removed class, then we can add animations back onto the label
     // Waiting for this ensures that the user's don't see a flash of the label on screen when the page first loads
     setTimeout(() => {
-      labelRef.current?.classList.add(styles['loaded']);
+      labelRef.current?.classList.add(loaded);
     });
 
     const calculateLabelPosition = () => {
@@ -61,7 +69,7 @@ export const Toggle = ({
         labelRef.current,
         staticWidth,
         getCurrentRemRatio(),
-        lastLabelPosition.current
+        lastLabelPosition.current,
       );
       // Store the value of the last window width
       // This way the function can return without re-calculating the label position if the screen has not been resized
@@ -84,30 +92,26 @@ export const Toggle = ({
     <div
       ref={switchRef}
       {...rest}
-      className={`${styles['switch-container']} ${
-        isActive && styles['active']
-      } ${className}`}
+      className={`${switchContainer} ${isActive ? active : ''} ${className}`}
       tabIndex={0}
       role="switch"
       {...OnActivateProps(handleToggle)}
       aria-labelledby={`toggle-label-${id}`}
       aria-checked={isActive}
     >
-      <div className={styles['switch-handle']}>
+      <div className={switchHandle}>
         {isActive ? display?.enabled : display?.disabled}
         {/* loading is a temporary class used for calculating the label width on first render */}
         <div
           id={`toggle-label-${id}`}
-          className={`${styles['label']} ${
-            hideLabel ? 'sr-only' : styles['loading']
-          }`}
+          className={`${label} ${hideLabel ? 'sr-only' : loading}`}
           ref={labelRef}
         >
           {isBasicLabel(labelValue)
             ? labelValue
             : labelValue[isActive ? 'enabled' : 'disabled']}
         </div>
-        <div className={styles['touch-target']}></div>
+        <div className={touchTarget}></div>
       </div>
     </div>
   );

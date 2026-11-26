@@ -10,7 +10,11 @@ import {
 import { useMemo } from 'react';
 import henryImg from '../../assets/images/henry.webp';
 import ProfileImage from '../ProfileImage/ProfileImage';
-import styles from './comingSoon.module.css';
+import {
+  comingSoonCard,
+  comingSoonContainer,
+  hammer,
+} from './ComingSoon.styles';
 
 const ComingSoon = () => {
   const { getCSSColor } = useCSS();
@@ -21,22 +25,22 @@ const ComingSoon = () => {
         getCSSColor('--neutral-700'),
         getCSSColor('--primary-500'),
         getCSSColor('--neutral-500'),
-        getCSSColor('--neutral-200')
+        getCSSColor('--neutral-200'),
       ),
-    [getCSSColor]
+    [getCSSColor],
   );
 
   return (
-    <div className={styles['coming-soon-container']}>
+    <div className={comingSoonContainer}>
       <ProfileImage src={henryImg} alt="A Boston Terrier dog" isRotating />
       <Heading centered level={3} displayAs={2}>
         More Coming Soon
       </Heading>
-      <Card className={styles['coming-soon-card']} elevation="1">
+      <Card className={comingSoonCard} elevation="1">
         This section of the site is not yet available. I'm eager to deliver this
         content so please check back soon!
         <Animation
-          className={styles['hammer']}
+          className={hammer}
           animationConfig={{
             loop: false,
             animationData: hammerAnimationData,

@@ -23,9 +23,18 @@ import {
   itemVariants,
   sequenceVariants,
 } from './ExperienceDetails.animations';
-import styles from './experienceDetails.module.css';
 import ExperienceDetailsDescriptionHeading from './ExperienceDetailsDescriptionHeading/ExperienceDetailsDescriptionHeading';
 import ExperienceDetailsMobileDialog from './ExperienceDetailsMobileDialog/ExperienceDetailsMobileDialog';
+import {
+  chipList,
+  closeButton,
+  detailsContainer,
+  experienceDetails,
+  mainTitle,
+  roleTitle,
+  stickyHeader,
+  version,
+} from './ExperienceDetails.styles';
 
 // Convert dynamic content to key-able sections to allow for staggered animations
 const toSections = (content: ReactNode) =>
@@ -57,38 +66,32 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
     const isWorkItem = itemIsWorkHistory(selectedItem);
 
     return (
-      <div
-        id={`${selectedItem.id}-details`}
-        className={styles['details-container']}
-      >
+      <div id={`${selectedItem.id}-details`} className={detailsContainer}>
         <Fragment key={selectedItem.id}>
-          <motion.div
-            className={styles['sticky-header']}
-            variants={headerVariants}
-          >
+          <motion.div className={stickyHeader} variants={headerVariants}>
             <Heading
               id={`${selectedItem.id}-title`}
-              className={styles['main-title']}
+              className={mainTitle}
               level={4}
               displayAs={2}
             >
               <span>{selectedItem.title}</span>
               {!isWorkItem && selectedItem.version ? (
                 <span
-                  className={styles['version']}
+                  className={version}
                 >{`Version ${selectedItem.version?.toString()}`}</span>
               ) : (
                 ''
               )}
             </Heading>
             {isWorkItem && (
-              <Heading className={styles['role-title']} level={5} displayAs={3}>
+              <Heading className={roleTitle} level={5} displayAs={3}>
                 {selectedItem.role}
               </Heading>
             )}
           </motion.div>
           <motion.div variants={chipSequenceVariants}>
-            <Chip.List className={styles['chip-list']}>
+            <Chip.List className={chipList}>
               {selectedItem.tools.map((tool) => (
                 <AnimatedChip key={tool} variants={chipVariants}>
                   {tool}
@@ -111,7 +114,7 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
   if (matchesLargeUp) {
     return (
       <div
-        className={`${styles['experience-details']} ${className}`}
+        className={`${experienceDetails} ${className}`}
         data-open={selectedItem ? '' : undefined}
       >
         {/* Animate Card presence */}
@@ -133,7 +136,7 @@ const ExperienceDetails = ({ className }: HTMLProps<HTMLDivElement>) => {
                 animate="visible"
                 exit="hidden"
                 variants={closeButtonVariants}
-                className={styles['close-button']}
+                className={closeButton}
                 onClick={() => setSelectedItem(undefined)}
                 aria-label={`Close ${selectedItem.title}`}
               >

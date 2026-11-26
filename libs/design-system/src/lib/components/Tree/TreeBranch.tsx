@@ -1,10 +1,10 @@
 import { PropsWithChildren } from 'react';
-import styles from './tree.module.css';
+import { treeBranch, treeRoot } from './Tree.styles';
 
 const TreeBranch = ({ children }: PropsWithChildren) => {
   return (
-    <li className={styles['tree-branch']}>
-      <ul className={styles['tree-root']}>{children}</ul>
+    <li className={treeBranch}>
+      <ul className={treeRoot}>{children}</ul>
     </li>
   );
 };

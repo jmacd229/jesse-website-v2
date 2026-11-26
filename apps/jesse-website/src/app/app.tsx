@@ -8,14 +8,14 @@ import { MotionConfig } from 'motion/react';
 import About from '../sections/About/About';
 import Home from '../sections/Home/Home';
 import Work from '../sections/Work/Work';
-import styles from './app.module.css';
+import { animationToggle, app, sections, themeToggle } from './app.styles';
 
 export function App() {
   const { areAnimationsEnabled } = useAnimations();
 
   return (
     <MotionConfig skipAnimations={!areAnimationsEnabled}>
-      <div className={styles['app']}>
+      <div className={app}>
         <Navigation>
           <Navigation.Group>
             <Navigation.Item id="home" icon="Home">
@@ -28,11 +28,11 @@ export function App() {
               About Me
             </Navigation.Item>
           </Navigation.Group>
-          <AnimationToggle className={styles['animation-toggle']} />
-          <ThemeToggle className={styles['theme-toggle']} />
+          <AnimationToggle className={animationToggle} />
+          <ThemeToggle className={themeToggle} />
         </Navigation>
         <main>
-          <div className={styles['sections']}>
+          <div className={sections}>
             <Home />
             <Work />
             <About />

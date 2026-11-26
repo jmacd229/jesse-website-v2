@@ -1,5 +1,5 @@
 import { HTMLProps } from 'react';
-import styles from './profileImage.module.css';
+import { imageMask, profile, rotate } from './ProfileImage.styles';
 
 type ProfileImageProps = {
   /* Allows for a subtle rotation animation on the image */
@@ -13,9 +13,9 @@ const ProfileImage = ({
   alt,
   isRotating,
 }: ProfileImageProps) => (
-  <div className={`${styles['profile']} ${className}`}>
-    <div className={styles['image-mask']}>
-      <img className={isRotating ? styles['rotate'] : ''} src={src} alt={alt} />
+  <div className={`${profile} ${className}`}>
+    <div className={imageMask}>
+      <img className={isRotating ? rotate : ''} src={src} alt={alt} />
     </div>
   </div>
 );

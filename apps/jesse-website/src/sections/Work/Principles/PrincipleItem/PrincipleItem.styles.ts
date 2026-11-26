@@ -1,8 +1,10 @@
-.principle-description {
-  padding: 0.5rem;
-}
+import { css } from '@linaria/core';
 
-.principle-card-container {
+export const principleDescription = css`
+  padding: 0.5rem;
+`;
+
+export const principleCardContainer = css`
   display: flex;
   position: relative;
   transition: transform var(--animation);
@@ -33,28 +35,37 @@
     left: 0;
     opacity: 0;
     z-index: -1;
-    transition: transform var(--animation), opacity var(--animation);
+    transition:
+      transform var(--animation),
+      opacity var(--animation);
   }
-}
 
-.principle-card {
+  html.no-motion & {
+    transform: none;
+  }
+`;
+
+export const principleCard = css`
   position: relative;
   overflow: hidden;
 
   --card-padding: 0;
-}
+`;
 
-.principle-accordion {
+export const principleAccordion = css`
   position: relative;
   z-index: 1;
   padding: 2rem;
-}
+`;
 
-.title {
+export const title = css`
   font-weight: 500;
-}
+`;
 
-.icon {
+// Toggled on the icon when the accordion is open; styled from the icon's selector
+export const expanded = css``;
+
+export const icon = css`
   position: absolute;
   right: -1rem;
   bottom: -1rem;
@@ -65,21 +76,17 @@
   transform: scaleX(-1);
   z-index: 0;
 
-  &.expanded {
+  &.${expanded} {
     color: var(--secondary-500);
   }
 
   transition: color 100ms;
-}
 
-:global(html.dark) .icon {
-  color: var(--primary-800);
+  html.dark & {
+    color: var(--primary-800);
 
-  &.expanded {
-    color: var(--secondary-800);
+    &.${expanded} {
+      color: var(--secondary-800);
+    }
   }
-}
-
-:global(html.no-motion) .principle-card-container {
-  transform: none;
-}
+`;

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import { Badge, BadgeProps } from '../Badge/Badge';
-import styles from './tree.module.css';
+import { treeNode, treeNodeContent } from './Tree.styles';
 
 type TreeNodeProps = PropsWithChildren<
   ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -10,11 +10,11 @@ type TreeNodeProps = PropsWithChildren<
 
 const TreeNode = ({ children, className, badge, ...rest }: TreeNodeProps) => {
   return (
-    <li className={styles['tree-node']}>
+    <li className={treeNode}>
       {badge && <Badge {...badge} />}
       <button
         type="button"
-        className={`${className} ${styles['tree-node-content']}`}
+        className={`${className} ${treeNodeContent}`}
         {...rest}
       >
         {children}

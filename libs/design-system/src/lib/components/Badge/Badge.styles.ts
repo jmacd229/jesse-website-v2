@@ -1,4 +1,19 @@
-.badge {
+import { css } from '@linaria/core';
+import { BadgePosition } from './types';
+
+// Empty handles: all of these are styled from the badge selector below, which
+// keeps the original nesting (and therefore the original specificity).
+export const badgeContent = css``;
+
+export const topLeft = css``;
+
+export const topRight = css``;
+
+export const bottomLeft = css``;
+
+export const bottomRight = css``;
+
+export const badge = css`
   --badge-color: var(--secondary-800);
   --badge-border: 2px;
   /* Highlights capped and shadows deepened so white text holds 7:1 on the lighter base */
@@ -99,64 +114,71 @@
   }
 
   /* Tilted like a sticker */
-  .badge-content {
+  .${badgeContent} {
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
     color: var(--white);
   }
 
-  &.top-left {
+  &.${topLeft} {
     top: var(--badge-y-offset, 0);
     left: var(--badge-x-offset, 0);
-    .badge-content {
+    .${badgeContent} {
       transform: rotate(-12deg);
     }
   }
-  &.top-right {
+  &.${topRight} {
     top: var(--badge-y-offset, 0);
     right: var(--badge-x-offset, 0);
-    .badge-content {
+    .${badgeContent} {
       transform: rotate(12deg);
     }
   }
-  &.bottom-left {
+  &.${bottomLeft} {
     bottom: var(--badge-y-offset, 0);
     left: var(--badge-x-offset, 0);
-    .badge-content {
+    .${badgeContent} {
       transform: rotate(12deg);
     }
   }
-  &.bottom-right {
+  &.${bottomRight} {
     bottom: var(--badge-y-offset, 0);
     right: var(--badge-x-offset, 0);
-    .badge-content {
+    .${badgeContent} {
       transform: rotate(-12deg);
     }
   }
-}
 
-@keyframes badge-shine {
-  25%,
-  100% {
-    background-position: 0%;
+  @keyframes badge-shine {
+    25%,
+    100% {
+      background-position: 0%;
+    }
   }
-}
 
-/* `html.no-motion *` doesn't reach pseudo-elements */
-:global(html.no-motion) .badge::after {
-  animation: none;
-}
-
-/* Base colours chosen so text holds WCAG AAA (7:1) against every facet shade */
-:global(html.dark) .badge {
-  --badge-color: var(--secondary-700);
-  --hi2: color-mix(in srgb, var(--badge-color), var(--white) 18%);
-  --hi1: color-mix(in srgb, var(--badge-color), var(--white) 8%);
-  --lo1: color-mix(in srgb, var(--badge-color), var(--black) 10%);
-  --lo2: color-mix(in srgb, var(--badge-color), var(--black) 20%);
-
-  .badge-content {
-    color: color-mix(in srgb, var(--badge-color), var(--black) 85%);
+  /* 'html.no-motion *' doesn't reach pseudo-elements */
+  html.no-motion &::after {
+    animation: none;
   }
-}
+
+  /* Base colours chosen so text holds WCAG AAA (7:1) against every facet shade */
+  html.dark & {
+    --badge-color: var(--secondary-700);
+    --hi2: color-mix(in srgb, var(--badge-color), var(--white) 18%);
+    --hi1: color-mix(in srgb, var(--badge-color), var(--white) 8%);
+    --lo1: color-mix(in srgb, var(--badge-color), var(--black) 10%);
+    --lo2: color-mix(in srgb, var(--badge-color), var(--black) 20%);
+
+    .${badgeContent} {
+      color: color-mix(in srgb, var(--badge-color), var(--black) 85%);
+    }
+  }
+`;
+
+export const POSITION_CLASSES: Record<BadgePosition, string> = {
+  'top-left': topLeft,
+  'top-right': topRight,
+  'bottom-left': bottomLeft,
+  'bottom-right': bottomRight,
+};

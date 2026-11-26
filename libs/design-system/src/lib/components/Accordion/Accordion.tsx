@@ -1,10 +1,16 @@
 import {
+  accordion,
+  content,
+  expanded,
+  expander,
+  title,
+} from './Accordion.styles';
+import {
   ButtonHTMLAttributes,
   PropsWithChildren,
   ReactNode,
   useState,
 } from 'react';
-import styles from './accordion.module.css';
 
 export type AccordionProps = PropsWithChildren<
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'> & {
@@ -15,7 +21,7 @@ export type AccordionProps = PropsWithChildren<
 >;
 
 export const Accordion = ({
-  title,
+  title: titleContent,
   children,
   className,
   onClose,
@@ -37,16 +43,14 @@ export const Accordion = ({
   return (
     <button
       type="button"
-      className={`${styles['accordion']} ${
-        isExpanded && styles['expanded']
-      } ${className}`}
+      className={`${accordion} ${isExpanded ? expanded : ''} ${className}`}
       aria-expanded={isExpanded}
       onClick={handleToggle}
       {...rest}
     >
-      <div className={styles['title']}>{title}</div>
-      <div className={styles['expander']}>
-        <div aria-hidden={!isExpanded} className={styles['content']}>
+      <div className={title}>{titleContent}</div>
+      <div className={expander}>
+        <div aria-hidden={!isExpanded} className={content}>
           {children}
         </div>
       </div>

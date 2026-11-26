@@ -1,13 +1,16 @@
 import { Card } from '@jmacd229/design-system';
 import { HTMLProps } from 'react';
-import styles from './experienceDetailsDescriptionImage.module.css';
+import {
+  workItemCard,
+  workItemImage,
+} from './ExperienceDetailsDescriptionImage.styles';
 
 const ExperienceDetailsDescriptionImage = ({
   src,
   alt,
 }: HTMLProps<HTMLImageElement>) => (
-  <Card className={styles['work-item-card']} elevation="1">
-    <img className={styles['work-item-image']} src={src} alt={alt} />
+  <Card className={workItemCard} elevation="1">
+    <img className={workItemImage} src={src} alt={alt} />
   </Card>
 );
 

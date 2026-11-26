@@ -1,0 +1,123 @@
+import { css } from '@linaria/core';
+
+// Styled from dynamicText's selector below, preserving the original nesting depth
+export const code = css``;
+
+export const indent = css``;
+
+export const input = css``;
+
+export const dynamicText = css`
+  position: absolute;
+  bottom: -4rem;
+  right: -5rem;
+  font-family: 'Inter';
+  white-space: nowrap;
+  font-size: 2rem;
+  color: var(--graphic-theme-color-dark);
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: var(--graphic-text-outline-color);
+  paint-order: stroke fill;
+
+  .${input} {
+    --monospace-character-width: 0.6em;
+
+    display: flex;
+    align-items: flex-end;
+    input {
+      font-family: 'Courier New', monospace;
+      border: none;
+      font-size: 2rem;
+      color: var(--graphic-theme-color-dark);
+      -webkit-text-stroke-width: 4px;
+      -webkit-text-stroke-color: var(--graphic-text-outline-color);
+      background: none;
+      width: calc(6 * var(--monospace-character-width));
+      overflow: hidden;
+      height: 2rem;
+      padding: 0 4px;
+    }
+  }
+
+  .${code} {
+    font-size: 4rem;
+    color: var(--theme-color);
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: var(--graphic-text-outline-color);
+  }
+
+  .${indent} {
+    margin-left: 3rem;
+  }
+`;
+
+export const htmlIcon = css`
+  position: absolute;
+  width: 9.5rem;
+  top: -4rem;
+  right: 10rem;
+  z-index: 1;
+
+  @media (min-width: 1499px) {
+    right: 12rem;
+  }
+`;
+
+export const jesse = css`
+  position: absolute;
+  bottom: -16rem;
+  right: -13rem;
+  z-index: -1;
+
+  @media (max-width: 1500px) {
+    bottom: -12rem;
+    right: -10rem;
+  }
+`;
+
+export const website = css`
+  position: absolute;
+  display: flex;
+  bottom: -20rem;
+  right: 4rem;
+  width: 19rem;
+  z-index: -1;
+`;
+
+export const graphic = css`
+  --graphic-theme-color-dark: color-mix(
+    in hsl,
+    var(--theme-color),
+    var(--neutral-900) 30%
+  );
+  --graphic-theme-color-light: color-mix(
+    in hsl,
+    var(--theme-color),
+    var(--neutral-100) 30%
+  );
+
+  --graphic-text-outline-color: var(--neutral-100);
+  --graphic-shadow-color: var(--shadow-color);
+
+  color: var(--page-background);
+
+  html.dark & {
+    --graphic-theme-color-light: var(--secondary-400);
+    --graphic-text-outline-color: var(--neutral-900);
+    --graphic-shadow-color: var(--secondary-900);
+
+    .${dynamicText} {
+      -webkit-text-stroke-width: 1px;
+      text-shadow: 1px 1px 0 var(--graphic-shadow-color);
+
+      .${code} {
+        -webkit-text-stroke-width: 1px;
+      }
+
+      input {
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: var(--graphic-shadow-color);
+      }
+    }
+  }
+`;

@@ -3,7 +3,15 @@ import { Accordion, Card, Icon } from '@jmacd229/design-system';
 import { WorkPrinciple } from '../../types';
 
 import { HTMLProps, useState } from 'react';
-import styles from './principleItem.module.css';
+import {
+  expanded,
+  icon,
+  principleAccordion,
+  principleCard,
+  principleCardContainer,
+  principleDescription,
+  title,
+} from './PrincipleItem.styles';
 
 export type PrincipleItemProps = HTMLProps<HTMLDivElement> & {
   item: WorkPrinciple;
@@ -16,23 +24,19 @@ const PrincipleItem = ({ item, ...rest }: PrincipleItemProps) => {
     <div
       {...rest}
       aria-expanded={isExpanded}
-      className={styles['principle-card-container']}
+      className={principleCardContainer}
     >
-      <Card className={styles['principle-card']} elevation="0">
+      <Card className={principleCard} elevation="0">
         <Accordion
-          className={styles['principle-accordion']}
+          className={principleAccordion}
           onClose={() => setIsExpanded(false)}
           onOpen={() => setIsExpanded(true)}
-          title={<div className={styles['title']}>{item.title}</div>}
+          title={<div className={title}>{item.title}</div>}
           aria-expanded={undefined}
         >
-          <div className={styles['principle-description']}>
-            {item.description}
-          </div>
+          <div className={principleDescription}>{item.description}</div>
         </Accordion>
-        <IconType
-          className={`${styles['icon']} ${isExpanded && styles['expanded']}`}
-        />
+        <IconType className={`${icon} ${isExpanded ? expanded : ''}`} />
       </Card>
     </div>
   );

@@ -5,16 +5,20 @@ import {
   HexString,
   useCSS,
 } from '@jmacd229/design-system';
-import {
-  CSSProperties,
-  HTMLAttributes,
-  useMemo,
-  useState,
-} from 'react';
+import { CSSProperties, HTMLAttributes, useMemo, useState } from 'react';
 import WebsiteImg from '../../../assets/images/SVG/WebsiteImg';
 import JesseProfileImage from './JesseProfileImage';
 import { HEX_COLOR_VALIDATOR } from './constants';
-import styles from './dynamicThemeGraphic.module.css';
+import {
+  code,
+  dynamicText,
+  graphic,
+  htmlIcon,
+  indent,
+  input,
+  jesse,
+  website,
+} from './DynamicThemeGraphic.styles';
 
 type DynamicThemeGraphicProps = HTMLAttributes<HTMLDivElement>;
 
@@ -27,7 +31,7 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
       HEX_COLOR_VALIDATOR.test(colorInputValue)
         ? `#${colorInputValue}`
         : '#8500BB',
-    [colorInputValue]
+    [colorInputValue],
   );
 
   const htmlAnimationData = useMemo(
@@ -35,17 +39,17 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
       getAnimation(
         dynamicAnimations.htmlAnimation,
         graphicThemeColor,
-        getCSSColor('--neutral-700')
+        getCSSColor('--neutral-700'),
       ),
-    [graphicThemeColor, getCSSColor]
+    [graphicThemeColor, getCSSColor],
   );
 
   return (
     <div
       style={{ '--theme-color': graphicThemeColor } as CSSProperties}
-      className={`${className} ${styles['graphic']}`}
+      className={`${className} ${graphic}`}
     >
-      <div className={styles['html']}>
+      <div className={htmlIcon}>
         <Animation
           animationConfig={{
             loop: false,
@@ -53,18 +57,18 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
           }}
           loopDelay={5000}
         />
-        <div className={styles['jesse']}>
+        <div className={jesse}>
           <JesseProfileImage />
 
-          <div className={styles['website']}>
+          <div className={website}>
             <WebsiteImg />
 
-            <div className={styles['dynamic-text']}>
+            <div className={dynamicText}>
               <div>
-                <i className={styles['code']}>.jesse-dev</i>
+                <i className={code}>.jesse-dev</i>
                 <span>&nbsp;&#123;</span>
               </div>
-              <div className={`${styles['indent']} ${styles['input']}`}>
+              <div className={`${indent} ${input}`}>
                 --theme-color: #
                 <input
                   aria-label="Theme customization hex value editor"
@@ -76,7 +80,7 @@ const DynamicThemeGraphic = ({ className }: DynamicThemeGraphicProps) => {
                 />
                 ;
               </div>
-              <div className={styles['indent']}>color: var(--theme-color);</div>
+              <div className={indent}>color: var(--theme-color);</div>
               <span>&nbsp;&#125;</span>
             </div>
           </div>

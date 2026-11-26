@@ -1,4 +1,6 @@
-.work-item-heading {
+import { css } from '@linaria/core';
+
+export const workItemHeading = css`
   display: flex;
   margin-top: 1.75rem;
   margin-bottom: 0.5rem;
@@ -19,9 +21,9 @@
     background-color: var(--neutral-200);
     margin-top: 0.5rem;
   }
-}
+`;
 
-.centered {
+export const centeredHeading = css`
   justify-content: center;
   text-align: center;
-}
+`;

@@ -1,4 +1,6 @@
-.accordion {
+import { css } from '@linaria/core';
+
+export const accordion = css`
   --animation: 100ms ease-out;
 
   display: block;
@@ -10,9 +12,9 @@
   text-align: inherit;
   cursor: pointer;
   position: relative;
-}
+`;
 
-.title {
+export const title = css`
   --arrow-size: 0.5rem;
 
   display: flex;
@@ -29,34 +31,36 @@
     border-top: var(--arrow-size) solid transparent;
     border-left: var(--arrow-size) solid var(--primary-600);
 
-    transition: transform var(--animation), border-left-color var(--animation);
+    transition:
+      transform var(--animation),
+      border-left-color var(--animation);
   }
-}
+`;
 
-.expander {
+export const expander = css`
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
   transition: grid-template-rows var(--animation);
-}
+`;
 
-.content {
+export const content = css`
   min-height: 0;
   transition: visibility var(--animation);
   visibility: hidden;
-}
+`;
 
-.expanded {
-  .expander {
+export const expanded = css`
+  .${expander} {
     grid-template-rows: 1fr;
   }
 
-  .title::before {
+  .${title}::before {
     transform: rotate(90deg);
     border-left-color: var(--secondary-600);
   }
 
-  .content {
+  .${content} {
     visibility: visible;
   }
-}
+`;

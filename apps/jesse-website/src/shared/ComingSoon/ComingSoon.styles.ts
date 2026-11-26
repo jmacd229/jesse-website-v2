@@ -1,16 +1,18 @@
-.coming-soon-container {
+import { css } from '@linaria/core';
+
+export const comingSoonContainer = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-}
+`;
 
-.coming-soon-card {
+export const comingSoonCard = css`
   position: relative;
-}
+`;
 
-.hammer {
+export const hammer = css`
   --animation-width: 6rem;
 
   position: absolute;
@@ -18,4 +20,4 @@
   right: 0;
   top: calc(var(--animation-width) * -0.9);
   scale: -1 1;
-}
+`;

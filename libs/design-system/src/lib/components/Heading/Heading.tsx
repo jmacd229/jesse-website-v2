@@ -1,5 +1,10 @@
 import { createElement, HTMLProps, JSX, PropsWithChildren } from 'react';
-import style from './heading.module.css';
+import {
+  centered as centeredStyle,
+  heading,
+  headingContainer,
+  headingShadow,
+} from './Heading.styles';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -23,17 +28,17 @@ export const Heading = ({
   const Tag: keyof JSX.IntrinsicElements = `h${displayAs ?? level}`;
   return (
     <div
-      className={`${className} ${style['heading-container']} ${
-        centered && style['centered']
+      className={`${className} ${headingContainer} ${
+        centered ? centeredStyle : ''
       }`}
     >
       {createElement(
         Tag,
-        { 'aria-level': level, className: style['heading'], ...rest },
-        children
+        { 'aria-level': level, className: heading, ...rest },
+        children,
       )}
       {level === 1 && (
-        <h1 aria-hidden className={style['heading-shadow']}>
+        <h1 aria-hidden className={headingShadow}>
           {children}
         </h1>
       )}

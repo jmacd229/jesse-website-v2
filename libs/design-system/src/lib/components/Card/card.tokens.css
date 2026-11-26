@@ -1,0 +1,12 @@
+/*
+ * Global on purpose: --card-padding is read outside the Card subtree (the
+ * ExperienceDetails close button offsets itself by it as a sibling of the Card)
+ * and overridden by consumers (PrincipleItem sets it to 0).
+ */
+:root {
+  --card-padding: 1rem;
+
+  @media (min-width: 576px) {
+    --card-padding: 2rem;
+  }
+}

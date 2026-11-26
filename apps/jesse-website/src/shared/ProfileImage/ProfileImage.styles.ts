@@ -1,4 +1,9 @@
-.profile {
+import { css } from '@linaria/core';
+
+// Applied to the img when rotating; the animation is attached from profile's selector
+export const rotate = css``;
+
+export const profile = css`
   --image-width: 16rem;
   position: relative;
   border: 1px solid var(--neutral-800);
@@ -19,7 +24,7 @@
     bottom: -45%;
     right: -25%;
 
-    &.rotate {
+    &.${rotate} {
       animation: rotation 5s ease-in-out infinite;
     }
   }
@@ -28,10 +33,27 @@
   @media (max-width: 992px) and (min-width: 576px) {
     --image-width: 24vw;
   }
-}
+
+  html.dark & {
+    outline: 2px inset var(--primary-600);
+    border: 2px solid var(--secondary-900);
+  }
+
+  @keyframes rotation {
+    0% {
+      rotate: -2deg;
+    }
+    50% {
+      rotate: 2deg;
+    }
+    100% {
+      rotate: -2deg;
+    }
+  }
+`;
 
 /* Used to create a rounded overflow cutoff for the image at the bottom. But extends upwards to allow for vertical overflow*/
-.image-mask {
+export const imageMask = css`
   position: absolute;
   width: 100%;
   height: 200%;
@@ -40,21 +62,4 @@
   border-bottom-right-radius: calc(var(--image-width) / 2);
   overflow: hidden;
   bottom: 0;
-}
-
-:global(html.dark) .profile {
-  outline: 2px inset var(--primary-600);
-  border: 2px solid var(--secondary-900);
-}
-
-@keyframes rotation {
-  0% {
-    rotate: -2deg;
-  }
-  50% {
-    rotate: 2deg;
-  }
-  100% {
-    rotate: -2deg;
-  }
-}
+`;
